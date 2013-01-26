@@ -34,7 +34,6 @@ public class LevelMapReader extends ConfigurationReader
 	 */
 	public MapModel read(int stageIndex, Level level)
 	{
-		MapModel mapModel = null;
 		
 		try {
 			String[][] stageArray = JSON.decode(readConfiguration("level" + stageIndex + ".json"), String[][].class);
@@ -46,7 +45,7 @@ public class LevelMapReader extends ConfigurationReader
 				height = Math.max(height, stageArray[i].length);
 			}
 			
-			mapModel = new MapModel(width, height, level);
+			MapModel mapModel = new MapModel(width, height);
 			
 			for (int y=0; y<height; y++) {
 				for (int x=0; x<width; x++) {

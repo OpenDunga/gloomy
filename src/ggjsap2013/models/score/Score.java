@@ -1,10 +1,15 @@
 package ggjsap2013.models.score;
 
+import ggjsap2013.models.Stage;
+
 /**
  * スコアのモデル.
  * @author tohhy
  */
 public class Score {
+    private static final int[] LEVEL_TERMS = 
+        {5, 10, Integer.MAX_VALUE};
+    private final Stage stage;
     //スコア
     private int score = 0;
     /*
@@ -14,12 +19,21 @@ public class Score {
      */
     private int charaCount = 0;
     
+    public Score(Stage stage) {
+        this.stage = stage;
+    }
+    
     public void addScore(int toAdd) {
         this.score += toAdd;
     }
     
     public void charaCountUp() {
         charaCount++;
+        for(int term : LEVEL_TERMS) {
+            if(charaCount == term)
+                stage.nextLevel();
+        }
+        
     }
 
     public int getScore() {

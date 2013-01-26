@@ -21,7 +21,6 @@ public class MapModel {
      */
     public void createPointItemBlock(Level currentLevel) 
     {
-        
         while (true) {
             int putX = RandomUtil.nextInt(map[0].length);
             int putY = RandomUtil.nextInt(map.length);
@@ -70,6 +69,14 @@ public class MapModel {
             for(int j=0;j<map[0].length; j++) {
                 if(toMerge[i][j] != null)
                     map[i][j] = toMerge[i][j];
+            }
+        }
+    }
+    
+    public void clear() {
+        for(int i=0; i<map.length; i++) {
+            for(int j=0;j<map[0].length; j++) {
+                map[i][j] = null;
             }
         }
     }
