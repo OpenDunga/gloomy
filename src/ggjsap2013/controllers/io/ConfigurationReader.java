@@ -9,7 +9,7 @@ import java.io.InputStream;
 
 
 /**
- * 設定値読み込みの規定クラス
+ * 設定値読み込みの基底クラス
  * 
  * @author Casamorica
  *

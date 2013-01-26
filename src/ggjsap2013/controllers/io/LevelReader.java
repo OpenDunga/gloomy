@@ -71,6 +71,4 @@ public class LevelReader extends ConfigurationReader
 		LevelReader reader = new LevelReader();
 		reader.read();
 	}
-	
-	
 }

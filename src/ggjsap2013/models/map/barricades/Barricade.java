@@ -95,67 +95,56 @@ public class Barricade implements Block
 		switch (type) {
 			case STONE:
 				/* 一人減るよ */
-				snake.getBodies().killHead();
+			    killHeads(snake, 1);
 				break;
 				
 			case ROCK:
 				/* 二人減るよ */
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
+			    killHeads(snake, 2);
 				break;
 				
 			case BOMB:
 				/* 四人減るよ */
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
+			    killHeads(snake, 4);
 				break;
 				
 			case WALL:
 				/* 一人減るよ */
-				snake.getBodies().killHead();
+			    killHeads(snake, 1);
+			    //TODO 跳ね返り
 				break;
 				
 			case BACHI_BACHI:
 				/* 三人減るよ */
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
+			    killHeads(snake, 3);
 				break;
 
 			case SOLDIER:
 				/* 一人減るよ */
-				snake.getBodies().killHead();
+			    killHeads(snake, 1);
 				break;
 				
 			case KING:
 				/* 五人減るよ */
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
+			    killHeads(snake, 5);
 				break;
 
 			case JOKER:
 				/* 十人減るよ */
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
-				snake.getBodies().killHead();
+			    killHeads(snake, 10);
 				break;
-
+        default:
+            break;
 		}
 		
 		/* 一定時間無敵になるよ */
 		snake.invokiSkill(new Skill(Skill.TYPES.DAMAGE_ZERO));
+	}
+	
+	private void killHeads(SnakeModel snake, int times) throws GameOverException {
+	    for(int i=0; i<times; i++) {
+	        snake.getBodies().killHead();
+	    }
 	}
 	
 	@Override
@@ -207,8 +196,6 @@ public class Barricade implements Block
 		return currentMove;
 	}
 	
-	
-	
 	@Override
 	public void move(MapModel mapModel, int currentX, int currentY)
 	{
@@ -243,15 +230,12 @@ public class Barricade implements Block
 			}
 		}
 	}
-	
-	
-	
+
 	
 	@Override
 	public String toString()
 	{
 		return type + "";
 	}
-	
 	
 }

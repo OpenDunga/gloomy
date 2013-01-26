@@ -9,10 +9,9 @@ public class Level
 {
 	
 	/**
-	 * ステージの順番
-	 * 
+	 * レベル番号
 	 */
-	private int							index;
+	private final int				   index;
 	
 	
 	
@@ -43,14 +42,11 @@ public class Level
 	/**
 	 * インスタンスつくるよ！
 	 */
-	public Level()
+	public Level(int levelID)
 	{
+	    this.index = levelID;
 	}
 	
-	public void setIndex(int index)
-	{
-		this.index = index;
-	}
 	public int getIndex()
 	{
 		return index;

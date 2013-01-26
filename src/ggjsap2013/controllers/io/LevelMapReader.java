@@ -25,49 +25,45 @@ public class LevelMapReader extends ConfigurationReader
 	{
 	}
 	
-	
-	/**
-	 * ステージ情報を読み込みましょう
-	 * 
-	 * @param stageIndex ステージインデックス
-	 * @return {@link MapModel}
-	 */
-	public MapModel read(int stageIndex, Level level)
-	{
-		
-		try {
-			String[][] stageArray = JSON.decode(readConfiguration("level" + stageIndex + ".json"), String[][].class);
-			
-			int width = 0;
-			int height = 0;
-			width = stageArray.length;
-			for (int i=0; i<width; i++) {
-				height = Math.max(height, stageArray[i].length);
-			}
-			
-			MapModel mapModel = new MapModel(width, height);
-			
-			for (int y=0; y<height; y++) {
-				for (int x=0; x<width; x++) {
-					try {
-						TYPES type = Barricade.getType(stageArray[y][x]);
-						Barricade barricade = new Barricade(type);
-						mapModel.setBlock(x, y, barricade);
-					} catch (Exception e) {
-						//例外は障害物じゃないよ
-					}
-				}
-			}
-			
-			mapModel.init();
-			
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-		}
-		
-		return mapModel;
-	}
+    /**
+     * ステージ情報を読み込みましょう
+     * 
+     * @param stageIndex ステージインデックス
+     * @return {@link MapModel}
+     */
+    public MapModel readLevelMap(int levelNum, Level level)
+    {
+        
+        try {
+            String[][] stageArray = JSON.decode(readConfiguration("level" + levelNum + ".json"), String[][].class);
+            
+            int width = 0;
+            int height = 0;
+            width = stageArray.length;
+            for (int i=0; i<width; i++) {
+                height = Math.max(height, stageArray[i].length);
+            }
+            
+            MapModel mapModel = new MapModel(width, height);
+            
+            for (int y=0; y<height; y++) {
+                for (int x=0; x<width; x++) {
+                    try {
+                        TYPES type = Barricade.getType(stageArray[y][x]);
+                        Barricade barricade = new Barricade(type);
+                        mapModel.setBlock(x, y, barricade);
+                    } catch (Exception e) {
+                        //例外は障害物じゃないよ
+                    }
+                }
+            }
+            return mapModel;
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 	
 }

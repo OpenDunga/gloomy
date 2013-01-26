@@ -35,7 +35,7 @@ public class Stage {
     }
     
     public void setLevel(int level) {
-        MapModel levelMap = MapBuilder.create(levelInfoList.get(level));
+        MapModel levelMap = MapBuilder.create(currentLevelNum, levelInfoList.get(level));
         map.clear();
         map.mergeMap(levelMap.getArray());
     }
