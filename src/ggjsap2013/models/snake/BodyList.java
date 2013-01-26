@@ -27,6 +27,30 @@ public class BodyList {
     	}
     }
     
+    /**
+     * 頭を返す.
+     * @return
+     */
+    public SnakeBody getHead() {
+        return list.getFirst();
+    }
+    
+    /**
+     * 先頭を後ろに回す
+     */
+    public void changeForword() {
+        SnakeBody head = list.pollFirst();
+        list.add(head);
+    }
+    
+    /**
+     * 最後尾を前に回す.
+     */
+    public void changeBackward() {
+        SnakeBody tail = list.pollLast();
+        list.addFirst(tail);
+    }
+    
     public int size() {
         return list.size();
     }
