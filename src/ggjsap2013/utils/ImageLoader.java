@@ -46,7 +46,7 @@ public class ImageLoader {
     }
     
     private static void loadAnimalCharaChip(int id, String name) throws IOException {
-        Images.put("animal_" + id + "_n", prefix + "animals/" + name + "_s.png");
+        Images.put("animal_" + id + "_n", prefix + "animals/" + name + "_n.png");
         Images.put("animal_" + id + "_s", prefix + "animals/" + name + "_s.png");
         Images.put("animal_" + id + "_e", prefix + "animals/" + name + "_s.png");
         Images.put("animal_" + id + "_w", prefix + "animals/" + name + "_s.png");
