@@ -3,7 +3,7 @@ package ggjsap2013.controllers.io;
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.map.barricades.Barricade;
-import ggjsap2013.models.map.barricades.Barricade.TYPES;
+import ggjsap2013.models.map.barricades.Wall;
 
 import java.io.IOException;
 
@@ -49,9 +49,12 @@ public class LevelMapReader extends ConfigurationReader
             for (int y=0; y<height; y++) {
                 for (int x=0; x<width; x++) {
                     try {
-                        TYPES type = Barricade.getType(stageArray[y][x]);
-                        Barricade barricade = new Barricade(type);
-                        mapModel.setBlock(x, y, barricade);
+                        if(stageArray[y][x].equals("W")) {
+                            mapModel.setBlock(x, y, new Wall());
+                        }
+//                        TYPES type = Barricade.getType(stageArray[y][x]);
+//                        Barricade barricade = new Barricade(type);
+                        
                     } catch (Exception e) {
                         //例外は障害物じゃないよ
                     }

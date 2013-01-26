@@ -2,7 +2,6 @@ package ggjsap2013.models.map;
 
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.barricades.Barricade;
-import ggjsap2013.models.map.barricades.Barricade.TYPES;
 import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 import ggjsap2013.utils.RandomUtil;
@@ -99,22 +98,6 @@ public class MapModel {
         for(int i=0; i<map.length; i++) {
             for(int j=0;j<map[0].length; j++) {
                 map[i][j] = null;
-            }
-        }
-    }
-    
-    /**
-     * マップ上の全てのWallを取り除く.
-     */
-    public void removeAllWall() {
-        for(int i=0; i<map.length; i++) {
-            for(int j=0;j<map[0].length; j++) {
-                if(map[i][j] instanceof Barricade) {
-                    Barricade b = (Barricade) map[i][j];
-                    if(b.getType() == TYPES.WALL) {
-                        map[i][j] = null;
-                    }
-                }
             }
         }
     }

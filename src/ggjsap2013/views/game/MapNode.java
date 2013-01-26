@@ -5,6 +5,7 @@ import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.map.barricades.Barricade;
+import ggjsap2013.models.map.barricades.Wall;
 import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 
@@ -44,6 +45,9 @@ public class MapNode extends GameNode {
                 	} else if (b instanceof Barricade) {
                         g.setColor(Color.red);
                         g.drawText(b.toString(), j*size, i*size);
+                	} else if (b instanceof Wall) {
+                	    g.setColor(Color.lightGray);
+                        g.fillRect(j*size, i*size, Gloomy.CHIP_SIZE, Gloomy.CHIP_SIZE);
                 	}
                 }
             }

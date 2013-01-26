@@ -21,7 +21,6 @@ public class Barricade implements Block
 		STONE("S"),
 		ROCK("R"),
 		BOMB("B"),
-		WALL("W"),
 		BACHI_BACHI("8"),
 		SOLDIER("O"),
 		KING("K"),
@@ -108,12 +107,6 @@ public class Barricade implements Block
 			    killHeads(snake, 4);
 				break;
 				
-			case WALL:
-				/* 一人減るよ */
-			    killHeads(snake, 1);
-			    //TODO 跳ね返り
-				break;
-				
 			case BACHI_BACHI:
 				/* 三人減るよ */
 			    killHeads(snake, 3);
@@ -165,7 +158,6 @@ public class Barricade implements Block
 			case STONE:
 			case ROCK:
 			case BOMB:
-			case WALL:
 			case BACHI_BACHI:
 				isMovable = false;
 				break;
