@@ -1,7 +1,7 @@
 package ggjsap2013;
 
 import ggjsap2013.utils.ImageLoader;
-import ggjsap2013.views.StageNode;
+import ggjsap2013.views.Splash;
 
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -16,7 +16,7 @@ public class Launcher {
     
     public static void main(String[] args) {
         loadImages();
-        new GameWindow("SnakeGame", new Rectangle(100, 100, 800, 600), new StageNode()); 
+        new GameWindow("SnakeGame", new Rectangle(100, 100, 800, 600), new Splash()); 
     }
     
     /**

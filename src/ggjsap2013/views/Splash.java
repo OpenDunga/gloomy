@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.nodes.transition.Fade;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
@@ -20,7 +21,7 @@ public class Splash extends GameNode {
 
     @Override
     protected void drawNode(NodeGraphics g) {
-        
+        g.drawGameImage(Images.get("logo"), 260, 230);
     }
 
     @Override

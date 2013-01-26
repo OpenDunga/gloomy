@@ -18,15 +18,12 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  * @author tohhy
  */
 public class Title extends GameNode {
-
     private final Rectangle selector = new Rectangle();
     private int selectID = 1;
 
     public Title() {
         this.add(new Fade(null, null).fadeIn(200));
         this.setKeyWait(20);
-        BGMPlayer.getInstance().setMedia("resources/sound/bgm/main_theme.mp3");
-        BGMPlayer.getInstance().play();
     }
 
     public void drawNode(NodeGraphics g) {
@@ -59,7 +56,6 @@ public class Title extends GameNode {
     protected void listenMouse(MouseInfo arg0) {}
 
     private void execMenu(int selectID) {
-        SEPlayer.play(new WaveSound("resources/sound/se/select.wav"));
         switch(selectID) {
         case 1:
             isTransition = true;
