@@ -10,10 +10,12 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  * @author tohhy
  */
 public class StageNode extends GameNode {
+    private final GameScene scene;
     private final Stage stage = new Stage();
     private boolean isEnd = false;
     
-    public StageNode() {
+    public StageNode(GameScene scene) {
+        this.scene = scene;
         this.add(new MapNode(getStage()));
         this.add(new SnakeNode(getStage()));
         this.setPosition(230, 20);
@@ -26,7 +28,7 @@ public class StageNode extends GameNode {
     protected void updateNode() {
         if(isEnd) return;
         if(getStage().isGameOver()) {
-            this.add(new GameOverNode());
+            scene.gameOver();
             isEnd = true;
         }
     }

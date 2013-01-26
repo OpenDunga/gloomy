@@ -9,13 +9,25 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  * @author tohhy
  */
 public class GameScene extends GameNode {
-    
     public GameScene() {
-        StageNode stage = new StageNode();
+        reset();
+    }
+    
+    public void reset() {
+        removeAllChild();
+        StageNode stage = new StageNode(this);
         this.add(stage);
         InfomationNode score = new InfomationNode(stage.getStage());
         this.add(score);
     }
+    
+    public void gameOver() {
+        this.add(new GameOverNode(this));
+    }
+    
+    
+    
+    
 
     @Override
     protected void drawNode(NodeGraphics g) {
