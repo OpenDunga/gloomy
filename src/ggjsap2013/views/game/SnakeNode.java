@@ -85,6 +85,18 @@ public class SnakeNode extends GameNode {
             } else if(keys[KeyEvent.VK_DOWN]) {
                 model.setDirection(Direction.SOUTH);
             }
+            if(keys[KeyEvent.VK_Z]) {
+                model.getBodies().changeForward();
+            }
+            if(keys[KeyEvent.VK_X]) {
+                model.getBodies().changeBackward();
+            }
+            if(keys[KeyEvent.VK_C]) {
+                //TODO ポーズ、ヘルプ表示
+            }
+            if(keys[KeyEvent.VK_SPACE]) {
+                //TODO スキル発動
+            }
     }
 
     @Override
