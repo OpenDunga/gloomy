@@ -1,5 +1,8 @@
 package ggjsap2013.views.game;
 
+import java.awt.Color;
+
+import ggjsap2013.Gloomy;
 import ggjsap2013.models.Stage;
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
@@ -12,6 +15,7 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
 public class StageNode extends GameNode {
     private final GameScene scene;
     private final Stage stage = new Stage();
+    private final Color bgColor = new Color(255, 255, 255, 150);
     private boolean isEnd = false;
     
     public StageNode(GameScene scene) {
@@ -22,7 +26,12 @@ public class StageNode extends GameNode {
     }
 
     @Override
-    protected void drawNode(NodeGraphics g) {}
+    protected void drawNode(NodeGraphics g) {
+        g.setColor(bgColor);
+        g.fillRect(0, 0, 
+                Gloomy.CHIP_SIZE * Gloomy.STAGE_WIDTH, 
+                Gloomy.CHIP_SIZE * Gloomy.STAGE_HEIGHT);
+    }
 
     @Override
     protected void updateNode() {

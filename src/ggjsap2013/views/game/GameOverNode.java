@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.sounds.BGMPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 public class GameOverNode extends GameNode {
@@ -13,6 +14,7 @@ public class GameOverNode extends GameNode {
     
     public GameOverNode(GameScene scene) {
         this.scene = scene;
+        BGMPlayer.getInstance().stop();
     }
 
     @Override

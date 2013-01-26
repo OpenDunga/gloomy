@@ -11,21 +11,25 @@ public class ImageLoader {
     
     public static void load() throws IOException {
         
-        //通常の画像読み込み
         Images.put("logo", prefix + "logo.jpg");
+        Images.put("game_back", prefix + "system/game_back.jpg");
+
         
-        //チップセットの読み込み
-        //画像を32*32のチップに分割して左上から順に配列に格納している
-        BufferedImage[] bottomMap =
-                ImageBuilder.create(prefix + "bottommap.png").divideBySize(32, 32);
-        Images.put("bottommap", bottomMap);
-        
-        //キャラチップ
+
         loadCharaChips();
         
         loadAnimalCharaChips();
         
+        loadItemChips();
+        
         loadEffectChips();
+    }
+    
+    private static void loadItemChips() throws IOException {
+        for(int i=1; i<=6; i++) {
+            Images.put("item_" + i, prefix + "items/item_" + i + ".png");
+        }
+        
     }
     
     private static void loadCharaChips() throws IOException {

@@ -13,6 +13,8 @@ import java.awt.Color;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.images.GameImage;
+import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 public class MapNode extends GameNode {
@@ -35,8 +37,9 @@ public class MapNode extends GameNode {
                 Block b = map.getArray()[i][j];
                 if(b != null) {
                 	if (b instanceof PointItem) {
+                	    PointItem pointItem = (PointItem) b;
                         g.setColor(Color.BLACK);
-                        g.drawText(b.toString(), j*size, i*size);
+                        g.drawGameImage(getPointItemImage(pointItem.getType()), j*size, i*size);
                         
                 	} else if (b instanceof CharacterItem) {
                         g.setColor(Color.BLUE);
@@ -52,6 +55,24 @@ public class MapNode extends GameNode {
                 }
             }
         }
+    }
+    
+    private GameImage getPointItemImage(PointItem.TYPES type) {
+        switch(type) {
+        case CANDY:
+            return Images.get("item_1");
+        case DONUT:
+            return Images.get("item_2");
+        case RIBON:
+            return Images.get("item_3");
+        case CAKE:
+            return Images.get("item_4");
+        case JEWEL:
+            return Images.get("item_5");
+        case TRUMPET:
+            return Images.get("item_6");
+        }
+        return null;
     }
 
     @Override

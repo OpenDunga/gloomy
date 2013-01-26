@@ -18,7 +18,8 @@ public class PointItem implements Item
 		DONUT,
 		RIBON,
 		CAKE,
-		JEWEL
+		JEWEL,
+		TRUMPET
 	}
 	
 	
@@ -72,6 +73,10 @@ public class PointItem implements Item
 				/* 宝石10000点 */
 				addScore = 10000;
 				break;
+			case TRUMPET:
+			    /* メンバー数*1000点 */
+			    addScore = 1000 * snake.getLength();
+                break;
 		}
 
 		if (snake.isPointDouble()) {

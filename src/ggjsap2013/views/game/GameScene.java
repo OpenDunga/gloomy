@@ -2,6 +2,8 @@ package ggjsap2013.views.game;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.images.Images;
+import jp.tohhy.gamepanel.sounds.BGMPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 /**
@@ -19,13 +21,17 @@ public class GameScene extends GameNode {
         this.add(stage);
         InfomationNode score = new InfomationNode(stage.getStage());
         this.add(score);
+        BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/ggj1-1.wav");
+        BGMPlayer.getInstance().play();
     }
     
     public void gameOver() {
         this.add(new GameOverNode(this));
     }
     @Override
-    protected void drawNode(NodeGraphics g) {}
+    protected void drawNode(NodeGraphics g) {
+        g.drawGameImage(Images.get("game_back"));
+    }
 
     @Override
     protected void listenKeys(boolean[] keys) {}
