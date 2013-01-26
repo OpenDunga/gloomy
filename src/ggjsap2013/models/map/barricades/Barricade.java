@@ -5,6 +5,7 @@ import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
+import ggjsap2013.models.skill.Skill;
 import ggjsap2013.models.snake.SnakeModel;
 import ggjsap2013.utils.RandomUtil;
 
@@ -154,7 +155,7 @@ public class Barricade implements Block
 		}
 		
 		/* 一定時間無敵になるよ */
-		snake.invokeNoDamage();
+		snake.invokiSkill(new Skill(Skill.TYPES.DAMAGE_ZERO));
 	}
 	
 	@Override

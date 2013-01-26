@@ -1,5 +1,6 @@
 package ggjsap2013.models.skill;
 
+import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.SnakeModel;
@@ -52,22 +53,31 @@ public class Skill
 	 */
 	public void invoke(SnakeModel snake, MapModel map, Stage stage)
 	{
-		switch (type) {
-			case DAMAGE_ZERO:
-				break;
+		try {
+			switch (type) {
+				case DAMAGE_ZERO:
+					snake.invokiSkill(this);
+					snake.getBodies().killHead();
+					break;
+					
+				case SLOW:
+					break;
+					
+				case BREAK:
+					break;
+					
+				case POINT_DOUBLE:
+					break;
+					
+				case FRIEND_POINT:
+					break;
 				
-			case SLOW:
-				break;
-				
-			case BREAK:
-				break;
-				
-			case POINT_DOUBLE:
-				break;
-				
-			case FRIEND_POINT:
-				break;
-			
+			}
+		} catch (GameOverException e) {
+            // TODO ゲームオーバー処理
+            stage.setGameOver(true);
+            System.out.println("GameOver!");
+
 		}
 	}
 }
