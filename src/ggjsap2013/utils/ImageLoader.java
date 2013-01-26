@@ -10,7 +10,7 @@ public class ImageLoader {
     
     public static void load() throws IOException {
         //通常の画像読み込み
-        Images.put("splash", "ggjsap2013/resources/images/kawaz.jpg");
+        Images.put("logo", "ggjsap2013/resources/images/kawaz.jpg");
         
         //チップセットの読み込み
         //画像を32*32のチップに分割して左上から順に配列に格納している

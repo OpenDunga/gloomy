@@ -1,7 +1,11 @@
 package ggjsap2013.views;
 
+import java.awt.Color;
+
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.images.Images;
+import jp.tohhy.gamepanel.nodes.transition.Fade;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 /**
@@ -9,28 +13,29 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  * @author tohhy
  */
 public class Splash extends GameNode {
+    private int passedFrame = 0;
+    
+    public Splash() {
+        this.add(new Fade(null, null).setColor(Color.white).fadeIn(80));
+    }
 
     @Override
     protected void drawNode(NodeGraphics g) {
-        // TODO Auto-generated method stub
-        
+        g.drawGameImage(Images.get("logo"), 260, 230);
     }
 
     @Override
-    protected void listenKeys(boolean[] keys) {
-        // TODO Auto-generated method stub
-        
-    }
+    protected void listenKeys(boolean[] keys) {}
 
     @Override
-    protected void listenMouse(MouseInfo info) {
-        // TODO Auto-generated method stub
-        
-    }
+    protected void listenMouse(MouseInfo info) {}
 
     @Override
     protected void updateNode() {
-        // TODO Auto-generated method stub
-        
+        if(passedFrame > 160) {
+            this.add(new Fade(this, new Title()).fadeOut(100).setAutoFadeIn(50, 50));
+            this.passedFrame = 0;
+        }
+        passedFrame++;
     }
 }
