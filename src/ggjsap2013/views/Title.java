@@ -4,13 +4,9 @@ import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
-import jp.tohhy.ejmp.sounds.wave.WaveSound;
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
-import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.nodes.transition.Fade;
-import jp.tohhy.gamepanel.sounds.BGMPlayer;
-import jp.tohhy.gamepanel.sounds.SEPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 /**

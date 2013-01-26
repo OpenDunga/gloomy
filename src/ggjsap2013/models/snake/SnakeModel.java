@@ -1,5 +1,6 @@
 package ggjsap2013.models.snake;
 
+import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 
@@ -74,7 +75,12 @@ public class SnakeModel {
         Block b = map.getArray()[p.y][p.x];
         if(b != null) {
             map.getArray()[p.y][p.x] = null;
-            b.intersects(this, map);
+            try {
+                b.intersects(this, map);
+            } catch (GameOverException e) {
+                // TODO ゲームオーバー処理
+                System.out.println("GameOver!");
+            }
         }
     }
 
