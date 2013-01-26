@@ -108,8 +108,42 @@ public class SnakeModel {
         return direction;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    public void setDirection(Direction direction)
+    {
+    	/* 現在の進行方向の逆はセットできないよ！ */
+    	boolean isReverse = false;
+    	
+    	Direction current = this.direction;
+    	
+    	switch (current) {
+    		case NORTH:
+    			if (direction == Direction.SOUTH) {
+    				isReverse = true;
+    			}
+    			break;
+    			
+    		case EAST:
+    			if (direction == Direction.WEST) {
+    				isReverse = true;
+    			}
+    			break;
+    			
+    		case SOUTH:
+    			if (direction == Direction.NORTH) {
+    				isReverse = true;
+    			}
+    			break;
+    			
+    		case WEST:
+    			if (direction == Direction.EAST) {
+    				isReverse = true;
+    			}
+    			break;
+    	}
+    	
+    	if (isReverse == false) {
+            this.direction = direction;
+    	}
     }
 
 }
