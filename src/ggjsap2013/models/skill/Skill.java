@@ -14,6 +14,28 @@ import ggjsap2013.models.snake.SnakeModel;
  */
 public class Skill
 {
+	
+
+	
+	/**
+	 * 無敵状態の制限時間(10秒)
+	 */
+	public static final int		NO_DAMAGE_SKILL_LIMIT		= 500;
+	
+	/**
+	 * ゆっくり状態の制限時間(10秒)
+	 */
+	public static final int		SLOW_SKILL_LIMIT			= 500;
+	
+	
+	/**
+	 * ポイント２倍の制限時間(10秒)
+	 * 
+	 */
+	public static final int		POINT_DOUBLE_SKILL_LIMIT	= 500;
+	
+	
+	
 	public static enum TYPES {
 		DAMAGE_ZERO,
 		SLOW,
@@ -56,22 +78,29 @@ public class Skill
 		try {
 			switch (type) {
 				case DAMAGE_ZERO:
-					snake.invokiSkill(this);
+					snake.invokeSkill(this);
 					snake.getBodies().killHead();
 					break;
 					
 				case SLOW:
-					snake.invokiSkill(this);
+					snake.invokeSkill(this);
 					snake.getBodies().killHead();
 					break;
 					
 				case BREAK:
+					map.breakOneMovingBarricade();
+					snake.getBodies().killHead();
 					break;
 					
 				case POINT_DOUBLE:
+					snake.invokeSkill(this);
+					snake.getBodies().killHead();
 					break;
 					
 				case FRIEND_POINT:
+					int size = snake.getBodies().size();
+					stage.getScore().addScore(size * 1000);
+					snake.getBodies().killHead();
 					break;
 				
 			}

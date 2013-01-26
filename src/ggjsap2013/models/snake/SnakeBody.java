@@ -22,15 +22,15 @@ public class SnakeBody {
         			break;
         			
         		case C:
-        			this.skill = new Skill(Skill.TYPES.DAMAGE_ZERO);
+        			this.skill = new Skill(Skill.TYPES.BREAK);
         			break;
         			
         		case D:
-        			this.skill = new Skill(Skill.TYPES.DAMAGE_ZERO);
+        			this.skill = new Skill(Skill.TYPES.POINT_DOUBLE);
         			break;
         			
         		case E:
-        			this.skill = new Skill(Skill.TYPES.DAMAGE_ZERO);
+        			this.skill = new Skill(Skill.TYPES.FRIEND_POINT);
         			break;
         			
         		default:

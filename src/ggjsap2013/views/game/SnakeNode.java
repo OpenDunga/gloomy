@@ -53,7 +53,12 @@ public class SnakeNode extends GameNode {
                     history.get(0).getPoint().y*CHIP_SIZE, 
                     CHIP_SIZE, CHIP_SIZE);
         } else {
-            g.setColor(Color.blue);
+        	
+        	if (model.isCollisionDamageZero()) {
+            	g.setColor(Color.red);
+        	} else {
+            	g.setColor(Color.blue);
+        	}
             Point headPoint = history.get(0).getPoint();
             g.drawRect(
                     headPoint.x*CHIP_SIZE, headPoint.y*CHIP_SIZE, 
@@ -154,6 +159,7 @@ public class SnakeNode extends GameNode {
         }
         
         model.decreaseSkillCount();
+        model.decreaseCollisionDamageZeroCount();
     }
 
     @Override

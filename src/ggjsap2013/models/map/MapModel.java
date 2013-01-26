@@ -7,6 +7,8 @@ import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 import ggjsap2013.utils.RandomUtil;
 
+import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapModel {	
@@ -112,4 +114,58 @@ public class MapModel {
     {
     	map[y][x] = b;
     }
+    
+    
+    /**
+     * 指定されたブロックの位置取得
+     * 
+     * @param targetBlock
+     * @return
+     */
+    public Point getBlockPosition(Block targetBlock)
+    {
+    	Point pos = null;
+        for(int i=0; i<map.length; i++) {
+            for(int j=0;j<map[0].length; j++) {
+            	Block b = map[i][j];
+            	if (b == targetBlock) {
+            		pos = new Point(j, i);
+            		break;
+            	}
+            }
+        }
+        
+        return pos;
+    }
+    
+    
+    /**
+     * ランダムでマップ中にいる移動中の障害物を破壊する
+     * 
+     */
+    public void breakOneMovingBarricade()
+    {
+    	List<Barricade> movingBarricade = new ArrayList<Barricade>();
+    	
+        for(int i=0; i<map.length; i++) {
+            for(int j=0;j<map[0].length; j++) {
+                if(map[i][j] instanceof Barricade) {
+                    Barricade b = (Barricade) map[i][j];
+                    
+                    if (b.isMovable()) {
+                    	movingBarricade.add(b);
+                    }
+                }
+            }
+        }
+        
+        if (movingBarricade.size() > 0) {
+        	Barricade target = movingBarricade.get(RandomUtil.nextInt(movingBarricade.size()));
+        	Point pos = getBlockPosition(target);
+        	
+        	map[pos.y][pos.x] = null;
+        }
+    }
+    
+    
 }
