@@ -18,7 +18,7 @@ public class SnakeBody {
         			break;
         			
         		case B:
-        			this.skill = new Skill(Skill.TYPES.DAMAGE_ZERO);
+        			this.skill = new Skill(Skill.TYPES.SLOW);
         			break;
         			
         		case C:

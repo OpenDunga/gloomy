@@ -61,6 +61,8 @@ public class Skill
 					break;
 					
 				case SLOW:
+					snake.invokiSkill(this);
+					snake.getBodies().killHead();
 					break;
 					
 				case BREAK:
