@@ -79,7 +79,8 @@ public class SnakeModel {
         if(b != null) {
             map.getArray()[p.y][p.x] = null;
             try {
-                b.intersects(this, map);
+                b.intersects(this, map, stage);
+                
             } catch (GameOverException e) {
                 // TODO ゲームオーバー処理
                 stage.setGameOver(true);

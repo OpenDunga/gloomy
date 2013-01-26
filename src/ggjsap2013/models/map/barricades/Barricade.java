@@ -1,6 +1,7 @@
 package ggjsap2013.models.map.barricades;
 
 import ggjsap2013.exceptions.GameOverException;
+import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.SnakeModel;
@@ -73,7 +74,7 @@ public class Barricade implements Block
 	}
 
 	@Override
-	public void intersects(SnakeModel snake, MapModel map)
+	public void intersects(SnakeModel snake, MapModel map, Stage stage)
 		throws GameOverException
 	{
 		switch (type) {

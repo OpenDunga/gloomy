@@ -1,6 +1,7 @@
 package ggjsap2013.models.map.item;
 
 import ggjsap2013.exceptions.GameOverException;
+import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.BodyType;
 import ggjsap2013.models.snake.SnakeBody;
@@ -43,7 +44,7 @@ public class CharacterItem implements Item
 	}
 
 	@Override
-	public void intersects(SnakeModel snake, MapModel map)
+	public void intersects(SnakeModel snake, MapModel map, Stage stage)
 			throws GameOverException
 	{
 		switch (getType()) {

@@ -5,7 +5,8 @@ import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.map.barricades.Barricade;
-import ggjsap2013.models.map.item.Item;
+import ggjsap2013.models.map.item.CharacterItem;
+import ggjsap2013.models.map.item.PointItem;
 
 import java.awt.Color;
 
@@ -32,11 +33,16 @@ public class MapNode extends GameNode {
                 g.drawRect(j*size, i*size, size, size);
                 Block b = map.getArray()[i][j];
                 if(b != null) {
-                	if (b instanceof Item) {
-                        g.setColor(Color.blue);
+                	if (b instanceof PointItem) {
+                        g.setColor(Color.BLACK);
                         g.drawText(b.toString(), j*size, i*size);
+                        
+                	} else if (b instanceof CharacterItem) {
+                        g.setColor(Color.BLUE);
+                        g.drawText(b.toString(), j*size, i*size);
+                		
                 	} else if (b instanceof Barricade) {
-                        g.setColor(Color.blue);
+                        g.setColor(Color.red);
                         g.drawText(b.toString(), j*size, i*size);
                 	}
                 }
