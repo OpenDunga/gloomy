@@ -12,12 +12,11 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  * @author tohhy
  */
 public class StageNode extends GameNode {
-    
+    private final Stage model = new Stage();
+    private boolean isEnd = false;
     public StageNode() {
-
-        Stage model = new Stage();
-        this.add(new MapNode(model.getMap()));
-        this.add(new SnakeNode(model.getSnake()));
+        this.add(new MapNode(model));
+        this.add(new SnakeNode(model));
         this.setPosition(230, 20);
     }
 
@@ -25,7 +24,13 @@ public class StageNode extends GameNode {
     protected void drawNode(NodeGraphics g) {}
 
     @Override
-    protected void updateNode() {}
+    protected void updateNode() {
+        if(isEnd) return;
+        if(model.isGameOver()) {
+            this.add(new GameOverNode());
+            isEnd = true;
+        }
+    }
 
     @Override
     protected void listenKeys(boolean[] keys) {}

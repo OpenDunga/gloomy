@@ -1,6 +1,7 @@
 package ggjsap2013.views.game;
 
 import ggjsap2013.Gloomy;
+import ggjsap2013.models.Stage;
 import ggjsap2013.models.snake.BodyList;
 import ggjsap2013.models.snake.BodyType;
 import ggjsap2013.models.snake.MovedPoints;
@@ -17,12 +18,14 @@ import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 public class SnakeNode extends GameNode {
+    private final Stage stage;
     private final SnakeModel model;
     private static final int CHIP_SIZE = Gloomy.CHIP_SIZE;
     private int currentMoveWait = 0;
 
-    public SnakeNode(SnakeModel model) {
-        this.model = model;
+    public SnakeNode(Stage stage) {
+        this.stage = stage;
+        this.model = stage.getSnake();
         this.setKeyWait(30);
         for(int i=0; i<2; i++) {
             model.getBodies().addBody(new SnakeBody(BodyType.A));
@@ -59,6 +62,9 @@ public class SnakeNode extends GameNode {
 
     @Override
     protected void updateNode() {
+        if(stage.isGameOver()) {
+            this.freeze(true);
+        }
         currentMoveWait++;
         if(model.getMoveWait() <= currentMoveWait) {
             currentMoveWait = 0;

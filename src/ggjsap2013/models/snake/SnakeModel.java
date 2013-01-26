@@ -1,6 +1,7 @@
 package ggjsap2013.models.snake;
 
 import ggjsap2013.exceptions.GameOverException;
+import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 
@@ -9,13 +10,15 @@ import java.awt.Point;
 public class SnakeModel {
     public enum Direction {NORTH, EAST, SOUTH, WEST}
     private final MapModel map;
+    private final Stage stage;
     private final BodyList bodies = new BodyList();
     private final MovedPoints movedPoints = new MovedPoints();
     private int moveWait = 10;
     private Direction direction = Direction.SOUTH;
     
-    public SnakeModel(MapModel map) {
-        this.map = map;
+    public SnakeModel(Stage stage) {
+        this.stage = stage;
+        this.map = stage.getMap();
         movedPoints.push(new Point());
     }
     
@@ -79,6 +82,7 @@ public class SnakeModel {
                 b.intersects(this, map);
             } catch (GameOverException e) {
                 // TODO ゲームオーバー処理
+                stage.setGameOver(true);
                 System.out.println("GameOver!");
             }
         }
