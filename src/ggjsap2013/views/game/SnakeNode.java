@@ -76,9 +76,29 @@ public class SnakeNode extends GameNode {
     }
     
     private GameImage getCharaImage(SnakeBody b) {
-        GameImage i = Images.get("chara_1_w");
-
-        return i;
+        String imageName = "chara_";
+        switch(b.getType()) {
+        case A:
+            imageName = imageName + "1_";
+            break;
+        default:
+            imageName = imageName + "1_";
+        }
+        switch(model.getDirection()) {
+        case NORTH:
+            imageName = imageName + "n";
+            break;
+        case SOUTH:
+            imageName = imageName + "s";
+            break;
+        case EAST:
+            imageName = imageName + "e";
+            break;
+        case WEST:
+            imageName = imageName + "w";
+            break;
+        }
+        return Images.get(imageName);
     }
 
     @Override
