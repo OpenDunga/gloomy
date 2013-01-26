@@ -6,10 +6,38 @@ import ggjsap2013.exceptions.GameOverException;
 import java.util.LinkedList;
 
 public class BodyList {
+    private static BodyType[] ANIMALS = 
+        {BodyType.ahiru, BodyType.kuma, BodyType.lion, BodyType.panda, BodyType.usagi};
     private final LinkedList<SnakeBody> list = new LinkedList<SnakeBody>();
 
+    /**
+     * Bodyを追加.もしそのBodyがすでに隊列にいればランダムに動物を追加する.
+     * @param body
+     */
     public void addBody(SnakeBody body) {
-        list.addFirst(body);
+        if(hasBody(body.getType())) {
+            list.addFirst(createRandomAnimal());
+        } else {
+            list.addFirst(body);
+        }
+    }
+    
+    private boolean hasBody(BodyType body) {
+        for(SnakeBody b : list) {
+            if(b.getType() == body) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * ランダムに動物を生成する.
+     * @return
+     */
+    private SnakeBody createRandomAnimal() {
+        int animalIndex = (int)(ANIMALS.length * Math.random());
+        return new SnakeBody(ANIMALS[animalIndex]);
     }
     
     /**

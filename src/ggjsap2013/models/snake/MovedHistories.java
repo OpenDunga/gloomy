@@ -23,7 +23,7 @@ public class MovedHistories {
         if(length <= 1) return false;
         for(int i=1; i<length; i++) {
             if(list.size() <= i) break;
-            if(list.get(i).equals(p)) {
+            if(list.get(i).getPoint().equals(p)) {
                 return true;
             }
         }

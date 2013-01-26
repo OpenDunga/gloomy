@@ -6,7 +6,7 @@
 		"availablePointItemTypes":["CANDY"],
 
 		"maxCharacterItemCount":1,
-		"availableCharacterItemTypes":["A"]
+		"availableCharacterItemTypes":["A", "B", "C"]
 		
 	},
 	{

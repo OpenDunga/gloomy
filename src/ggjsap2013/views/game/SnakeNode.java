@@ -50,16 +50,16 @@ public class SnakeNode extends GameNode {
                     CHIP_SIZE, CHIP_SIZE);
         } else {
             g.setColor(Color.blue);
+            Point headPoint = history.get(0).getPoint();
+            g.drawRect(
+                    headPoint.x*CHIP_SIZE, headPoint.y*CHIP_SIZE, 
+                    CHIP_SIZE, CHIP_SIZE);
             for(int i=0; i < length; i++) {
                 if(i >= history.size()) break;
                 Point p = history.get(i).getPoint();
                 Direction d = history.get(i).getDirection();
                 SnakeBody b = bodies.get(i);
-                g.drawRect(
-                        p.x*CHIP_SIZE, p.y*CHIP_SIZE, 
-                        CHIP_SIZE, CHIP_SIZE);
                 drawBody(b, p, d, g);
-                g.setColor(Color.red);
             }
         }
     }
@@ -67,7 +67,14 @@ public class SnakeNode extends GameNode {
     private void drawBody(SnakeBody b, Point p, Direction d, NodeGraphics g) {
         switch(b.getType()) {
         case A:
-            g.drawGameImage(getCharaImage(b, d), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+        case ahiru:
+        case kuma:
+        case lion:
+        case panda:
+        case usagi:
+            GameImage i = getCharaImage(b, d);
+            int heightGap = CHIP_SIZE - i.get(0).getHeight();
+            g.drawGameImage(i, p.x*CHIP_SIZE, p.y*CHIP_SIZE + heightGap);
             break;
         default:
             if (model.isNoDamage()) {
@@ -78,29 +85,52 @@ public class SnakeNode extends GameNode {
         }
     }
     
-    private GameImage getCharaImage(SnakeBody b, Direction d) {
-        String imageName = "chara_";
+    private String createImageName(SnakeBody b, Direction d) {
+        String bodyType = "chara";
+        int imageID = 0;
         switch(b.getType()) {
         case A:
-            imageName = imageName + "1_";
+            imageID = 1;
+            break;
+        case ahiru:
+            imageID = 1;
+            bodyType = "animal";
+            break;
+        case kuma:
+            imageID = 2;
+            bodyType = "animal";
+            break;
+        case lion:
+            imageID = 3;
+            bodyType = "animal";
+            break;
+        case panda:
+            imageID = 4;
+            bodyType = "animal";
+            break;
+        case usagi:
+            imageID = 5;
+            bodyType = "animal";
             break;
         default:
-            imageName = imageName + "1_";
+            imageID = 1;
         }
+        String imageName = bodyType + "_" + imageID + "_";
         switch(d) {
         case NORTH:
-            imageName = imageName + "n";
-            break;
+            return imageName + "n";
         case SOUTH:
-            imageName = imageName + "s";
-            break;
+            return imageName + "s";
         case EAST:
-            imageName = imageName + "e";
-            break;
+            return imageName + "e";
         case WEST:
-            imageName = imageName + "w";
-            break;
+        default:
+            return imageName + "w";
         }
+    }
+    
+    private GameImage getCharaImage(SnakeBody b, Direction d) {
+        String imageName = createImageName(b, d);
         return Images.get(imageName);
     }
 

@@ -6,11 +6,11 @@ public enum BodyType {
     C(true),
     D(true),
     E(true),
-    a(false),
-    b(false),
-    c(false),
-    d(false),
-    e(false);
+    ahiru(false),
+    kuma(false),
+    lion(false),
+    panda(false),
+    usagi(false);
     
     
     private boolean isCharacter = false;
