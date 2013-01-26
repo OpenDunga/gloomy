@@ -2,6 +2,7 @@ package ggjsap2013.views.game;
 
 import ggjsap2013.Gloomy;
 import ggjsap2013.models.Stage;
+import ggjsap2013.models.skill.Skill;
 import ggjsap2013.models.snake.BodyList;
 import ggjsap2013.models.snake.BodyType;
 import ggjsap2013.models.snake.MovedHistories;
@@ -114,7 +115,7 @@ public class SnakeNode extends GameNode {
             model.move();
         }
         
-        model.decreaseNoDamageCount();
+        model.decreaseSkillCount();
     }
 
     @Override
@@ -140,7 +141,13 @@ public class SnakeNode extends GameNode {
                 //TODO ポーズ、ヘルプ表示
             }
             if(keys[KeyEvent.VK_SPACE]) {
-                //TODO スキル発動
+            	/* ボディーが２以上のときだけスキル発動 */
+            	if (model.getBodies().size() >= 2) {
+                    Skill skill = model.getBodies().getHead().getSkill();
+                    if (skill != null) {
+                    	skill.invoke(model, stage.getMap(), stage);
+                    }
+            	}
             }
     }
 

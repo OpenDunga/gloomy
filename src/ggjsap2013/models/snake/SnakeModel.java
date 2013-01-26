@@ -4,13 +4,15 @@ import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
+import ggjsap2013.models.skill.Skill;
+import ggjsap2013.models.skill.Skill.TYPES;
 
 import java.awt.Point;
 
 public class SnakeModel {
 	
-	//TODO:無敵時間
-	public static final int		NO_DAMAGE_LIMIT		= 50;
+	public static final int		NO_DAMAGE_SKILL_LIMIT		= 50;
+	public static final int		SLOW_SKILL_LIMIT			= 500;
 	
 	
     public enum Direction {NORTH, EAST, SOUTH, WEST}
@@ -21,7 +23,8 @@ public class SnakeModel {
     private int moveWait = 10;
     private Direction direction = Direction.SOUTH;
     
-    private int		currentNoDamageCount = 0;
+    private Skill	currentSkill;
+    private int		skillCount = 0;
     
     
     public SnakeModel(Stage stage) {
@@ -162,22 +165,39 @@ public class SnakeModel {
     }
     
     
-    public void invokeNoDamage()
+    public void invokiSkill(Skill skill)
     {
-    	currentNoDamageCount = NO_DAMAGE_LIMIT;
-    }
-    
-    public void decreaseNoDamageCount()
-    {
-    	currentNoDamageCount--;
-    	if (currentNoDamageCount <= 0) {
-    		currentNoDamageCount = 0;
+    	/* 現在スキル未発動のときのみ */
+    	if (currentSkill == null) {
+    		currentSkill = skill;
+    		
+    		switch (skill.getType()) {
+    			case DAMAGE_ZERO:
+    				skillCount = NO_DAMAGE_SKILL_LIMIT;
+    				break;
+    			case SLOW:
+    				skillCount = SLOW_SKILL_LIMIT;
+    				break;
+    		}
     	}
     }
     
+    public void decreaseSkillCount()
+    {
+    	skillCount--;
+    	if (skillCount <= 0) {
+    		skillCount = 0;
+    		currentSkill = null;
+    	}
+    }
+    
+    
+    
     public boolean isNoDamage()
     {
-    	if (currentNoDamageCount > 0) {
+    	if (currentSkill == null) {
+    		return false;
+    	} else if (currentSkill.getType() == TYPES.DAMAGE_ZERO) {
     		return true;
     	} else {
     		return false;
