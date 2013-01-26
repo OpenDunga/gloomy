@@ -1,10 +1,10 @@
-package ggjsap2013.models.stage;
+package ggjsap2013.models.level;
 
 import ggjsap2013.models.map.item.Item;
 
 import java.util.List;
 
-public class Stage
+public class Level
 {
 	
 	/**
@@ -26,7 +26,7 @@ public class Stage
 	
 	
 	
-	public Stage()
+	public Level()
 	{
 	}
 	
