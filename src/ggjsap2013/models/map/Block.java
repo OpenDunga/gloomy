@@ -11,4 +11,44 @@ public interface Block {
      */
     public void intersects(SnakeModel snake, MapModel map, Stage stage)
     	throws GameOverException;
+    
+    
+    /**
+     * 移動の待ち時間
+     * 
+     * @return
+     */
+    public int getMoveWait();
+    
+    
+    /**
+     * 移動可能か？
+     * 
+     * @return
+     */
+    public boolean isMovable();
+    
+    
+    /**
+     * 現在の移動値を設定
+     * 
+     * @param n
+     */
+    public void setCurrentMove(int n);
+    
+    
+    /**
+     * 現在の移動値を取得
+     * 
+     * @return
+     */
+    public int getCurrentMove();
+    
+    
+    /**
+     * ブロックを移動
+     * 
+     */
+    public void move(MapModel mapModel, int currentX, int currentY);
+    
 }
