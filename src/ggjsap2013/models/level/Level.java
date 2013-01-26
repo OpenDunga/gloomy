@@ -42,10 +42,7 @@ public class Level
 	/**
 	 * インスタンスつくるよ！
 	 */
-	public Level(int levelID)
-	{
-	    this.index = levelID;
-	}
+	public Level() {}
 	
 	public int getIndex()
 	{
@@ -53,7 +50,11 @@ public class Level
 	}
 	
 	
-	public void setMaxPointItemCount(int maxPointItemCount)
+	public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public void setMaxPointItemCount(int maxPointItemCount)
 	{
 		this.maxPointItemCount = maxPointItemCount;
 	}
