@@ -12,15 +12,11 @@ import java.awt.Point;
 public class SnakeModel {
 	
 	/**
-	 * 無敵状態の制限時間(1秒)
+	 * 障害物衝突後の無敵状態の制限時間(10秒)
 	 */
-	public static final int		NO_DAMAGE_SKILL_LIMIT		= 50;
+	public static final int		COLLISION_DAMAGE_ZERO_LIMIT	= 500;
 	
-	/**
-	 * ゆっくり状態の制限時間(10秒)
-	 */
-	public static final int		SLOW_SKILL_LIMIT			= 500;
-	
+
 	
 	/**
 	 * 通常状態時の移動速度(1/5秒に1マス)
@@ -32,6 +28,11 @@ public class SnakeModel {
 	 */
 	public static final int		SLOW_MOVE_WAIT				= 50;
 	
+	
+	
+	
+	
+	
     public enum Direction {NORTH, EAST, SOUTH, WEST}
     private final MapModel map;
     private final Stage stage;
@@ -40,7 +41,25 @@ public class SnakeModel {
     private int moveWait = 10;
     private Direction direction = Direction.SOUTH;
     
+    
+    /**
+     * 障害物衝突後の無敵状態フラグ
+     */
+    private boolean isCollisionDamageZero;
+    
+    /**
+     * 障害物衝突後の無敵状態残りフレーム数
+     */
+    private int		collisionDamageZeroCount;
+    
+    /**
+     * 現在発動中のスキル
+     */
     private Skill	currentSkill;
+    
+    /**
+     * 現在発動中の残りフレーム数
+     */
     private int		skillCount = 0;
     
     
@@ -183,11 +202,49 @@ public class SnakeModel {
     
     
     /**
+     * 障害物衝突後の無敵状態を発動しますよー
+     * 
+     */
+    public void invokeCollisionDamageZero()
+    {
+    	if (isCollisionDamageZero == false) {
+        	collisionDamageZeroCount = COLLISION_DAMAGE_ZERO_LIMIT;
+        	isCollisionDamageZero = true;
+    	}
+    }
+    
+    /**
+     * 障害物衝突後の無敵状態の制限時間を減らしていきます
+     */
+    public void decreaseCollisionDamageZeroCount()
+    {
+    	if (collisionDamageZeroCount > 0) {
+    		collisionDamageZeroCount--;
+    		
+    		if (collisionDamageZeroCount <= 0) {
+    			isCollisionDamageZero = false;
+    		}
+    	}
+    }
+    
+    
+    /**
+     * 障害物衝突後の無敵状態かどうかを返します
+     * 
+     * @return
+     */
+    public boolean isCollisionDamageZero()
+	{
+		return isCollisionDamageZero;
+	}
+    
+    
+    /**
      * 指定されたスキルを発動します
      * 
      * @param skill
      */
-    public void invokiSkill(Skill skill)
+    public void invokeSkill(Skill skill)
     {
     	/* 現在スキル未発動のときのみ */
     	if (currentSkill == null) {
@@ -195,12 +252,18 @@ public class SnakeModel {
     		
     		switch (skill.getType()) {
     			case DAMAGE_ZERO:
-    				skillCount = NO_DAMAGE_SKILL_LIMIT;
+    				skillCount = Skill.NO_DAMAGE_SKILL_LIMIT;
     				break;
+    				
     			case SLOW:
-    				skillCount = SLOW_SKILL_LIMIT;
+    				skillCount = Skill.SLOW_SKILL_LIMIT;
     				setMoveWait(SLOW_MOVE_WAIT);
     				break;
+    				
+    			case POINT_DOUBLE:
+    				skillCount = Skill.POINT_DOUBLE_SKILL_LIMIT;
+    				break;
+    				
     		}
     	}
     }
@@ -263,6 +326,23 @@ public class SnakeModel {
     	if (currentSkill == null) {
     		return false;
     	} else if (currentSkill.getType() == TYPES.SLOW) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
+    
+    /**
+     * ポイント２倍状態が発動中かどうかを返します
+     * 
+     * @return
+     */
+    public boolean isPointDouble()
+    {
+    	if (currentSkill == null) {
+    		return false;
+    	} else if (currentSkill.getType() == TYPES.POINT_DOUBLE) {
     		return true;
     	} else {
     		return false;

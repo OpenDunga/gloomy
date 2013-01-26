@@ -45,33 +45,41 @@ public class PointItem implements Item
 	@Override
 	public void intersects(SnakeModel snake, MapModel map, Stage stage)
 	{
+		int addScore = 0;
+		
 		switch (getType()) {
 			case CANDY:
 				/* キャンディーは100点 */
-				stage.getScore().addScore(100);
+				addScore = 100;
 				break;
 				
 			case DONUT:
 				/* ドーナッツは500点 */
-				stage.getScore().addScore(500);
+				addScore = 500;
 				break;
 				
 			case RIBON:
 				/* リボンは1000点 */
-				stage.getScore().addScore(1000);
+				addScore = 1000;
 				break;
 				
 			case CAKE:
 				/* ケーキは5000点 */
-				stage.getScore().addScore(5000);
+				addScore = 5000;
 				break;
 			
 			case JEWEL:
 				/* 宝石10000点 */
-				stage.getScore().addScore(10000);
+				addScore = 10000;
 				break;
 		}
-		
+
+		if (snake.isPointDouble()) {
+			stage.getScore().addScore(addScore * 2);
+		} else {
+			stage.getScore().addScore(addScore);
+		}
+
 		map.createPointItemBlock(stage.getCurrentLevel());
 	}
 	
