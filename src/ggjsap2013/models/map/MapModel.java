@@ -2,7 +2,9 @@ package ggjsap2013.models.map;
 
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.item.Item;
-import ggjsap2013.models.map.item.Item.TYPES;
+import ggjsap2013.utils.RandomUtil;
+
+import java.util.List;
 
 public class MapModel {
 	
@@ -23,6 +25,9 @@ public class MapModel {
      */
     public void init()
     {
+    	for (int i=0; i<currentLevel.getMaxItemCount(); i++) {
+    		createRandomBlock();
+    	}
     }
 
     public Block[][] getArray() {
@@ -47,9 +52,15 @@ public class MapModel {
      */
     public void createRandomBlock() 
     {
-        //TODO ステージ情報の読み取り
-        int putX = (int)(map[0].length * Math.random());
-        int putY = (int)(map.length * Math.random());
-        map[putY][putX] = new Item(TYPES.A);
+//        int putX = (int)(map[0].length * Math.random());
+//        int putY = (int)(map.length * Math.random());
+        
+    	int putX = RandomUtil.nextInt(map[0].length);
+    	int putY = RandomUtil.nextInt(map.length);
+    	
+    	List<Item.TYPES> typeList = currentLevel.getAvailableItemTypes();
+    	Item.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
+    	
+        map[putY][putX] = new Item(itemType);
     }
 }

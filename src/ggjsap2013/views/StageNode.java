@@ -15,19 +15,6 @@ public class StageNode extends GameNode {
     
     public StageNode() {
 
-    	int currentStageIndex = 0;	//TODO ステージインデックスちゃんとかえること！
-//    	
-//    	LevelReader levelReader = new LevelReader();
-//    	List<Level> levelInfoList = levelReader.read();
-//    	
-//    	LevelMapReader levelMapReader = new LevelMapReader();
-//    	MapModel map = levelMapReader.read(currentStageIndex, levelInfoList.get(currentStageIndex));
-//    	
-//    	
-//        SnakeModel snake = new SnakeModel(map);
-//        this.add(new MapNode(map));
-//        this.add(new SnakeNode(snake));
-        
         Stage model = new Stage();
         this.add(new MapNode(model.getMap()));
         this.add(new SnakeNode(model.getSnake()));
