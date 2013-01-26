@@ -137,6 +137,9 @@ public class Barricade implements Block
 			stage.getScore().addScore(3000);
 		}
 		
+		/* ランダムな位置に同じ障害物配置するよ */
+		map.createBarricadeBlock(stage.getCurrentLevel(), type);
+		
 	}
 	
 	private void killHeads(SnakeModel snake, int times) throws GameOverException {

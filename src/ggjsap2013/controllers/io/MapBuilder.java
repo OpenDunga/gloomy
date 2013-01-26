@@ -1,7 +1,11 @@
 package ggjsap2013.controllers.io;
 
+import java.util.Map;
+import java.util.Set;
+
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.MapModel;
+import ggjsap2013.models.map.barricades.Barricade;
 
 /**
  * レベル値とレベルからマップを作成する.
@@ -26,8 +30,15 @@ public class MapBuilder {
         for (int i=0; i<level.getMaxCharacterItemCount(); i++) {
             map.createCharacterItemBlock(level);
         }
-        for (int i=0; i<level.getMaxBarricadeCount(); i++) {
-            map.createBarricadeBlock(level);
+        
+        for (Map.Entry<Barricade.TYPES, Integer> entry : level.getBarricades().entrySet()) {
+        	for (int i=0; i<entry.getValue(); i++) {
+        		map.createBarricadeBlock(level, entry.getKey());
+        	}
         }
+        
+//        for (int i=0; i<level.getMaxBarricadeCount(); i++) {
+//            map.createBarricadeBlock(level);
+//        }
     }
 }

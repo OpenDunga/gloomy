@@ -5,6 +5,7 @@ import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 
 import java.util.List;
+import java.util.Map;
 
 public class Level
 {
@@ -39,17 +40,21 @@ public class Level
 	 */
 	private List<CharacterItem.TYPES>	availableCharacterItemTypes;
 	
-	/**
-     * マップ中に出てくる障害物の最大数だよ
-     */
-    private int                         maxBarricadeCount;
 	
-	/**
-     * マップ中に出てくる可能性のある障害物の種類ですよー
-     */
-    private List<Barricade.TYPES>   availableBarricadeTypes;
+	
+//	/**
+//     * マップ中に出てくる障害物の最大数だよ
+//     */
+//    private int                         maxBarricadeCount;
+//	
+//	/**
+//     * マップ中に出てくる可能性のある障害物の種類ですよー
+//     */
+//    private List<Barricade.TYPES>   availableBarricadeTypes;
 	
     
+    
+    private Map<Barricade.TYPES, Integer>	barricades;
     
     
     
@@ -84,14 +89,14 @@ public class Level
 		return maxPointItemCount;
 	}
 	
-	public void setAvailableBarricadeTypes(List<Barricade.TYPES> availableBarricadeTypes)
-    {
-        this.availableBarricadeTypes = availableBarricadeTypes;
-    }
-    public List<Barricade.TYPES> getAvailableBarricadeTypes()
-    {
-        return availableBarricadeTypes;
-    }
+//	public void setAvailableBarricadeTypes(List<Barricade.TYPES> availableBarricadeTypes)
+//    {
+//        this.availableBarricadeTypes = availableBarricadeTypes;
+//    }
+//    public List<Barricade.TYPES> getAvailableBarricadeTypes()
+//    {
+//        return availableBarricadeTypes;
+//    }
 	
 	
 	public void setAvailablePointItemTypes(List<PointItem.TYPES> availablePointItemTypes)
@@ -123,13 +128,22 @@ public class Level
 		return availableCharacterItemTypes;
 	}
 
-    public int getMaxBarricadeCount() {
-        return maxBarricadeCount;
-    }
-
-    public void setMaxBarricadeCount(int maxBarricadeCount) {
-        this.maxBarricadeCount = maxBarricadeCount;
-    }
+//    public int getMaxBarricadeCount() {
+//        return maxBarricadeCount;
+//    }
+//
+//    public void setMaxBarricadeCount(int maxBarricadeCount) {
+//        this.maxBarricadeCount = maxBarricadeCount;
+//    }
+    
+    public void setBarricades(Map<Barricade.TYPES, Integer> barricades)
+	{
+		this.barricades = barricades;
+	}
+    public Map<Barricade.TYPES, Integer> getBarricades()
+	{
+		return barricades;
+	}
     
     public void setGameSpeed(int gameSpeed)
 	{

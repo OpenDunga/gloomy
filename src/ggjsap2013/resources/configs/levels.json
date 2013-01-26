@@ -8,9 +8,6 @@
 		"maxCharacterItemCount":1,
 		"availableCharacterItemTypes":["A", "B", "C"],
 
-		"maxBarricadeCount":1,
-		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
-		
 		"barricades":{
 			"STONE": 1
 		},
@@ -28,9 +25,11 @@
 		"maxCharacterItemCount":2,
 		"availableCharacterItemTypes":["B", "C"],
 
-		"maxBarricadeCount":1,
-		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
-		
+		"barricades":{
+			"STONE": 1,
+			"ROCK": 2
+		},
+
 		"gameSpeed":18
 	},
 	{
@@ -42,8 +41,14 @@
 		"maxCharacterItemCount":10,
 		"availableCharacterItemTypes":["C"],
 
-		"maxBarricadeCount":1,
-		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
+
+		"barricades":{
+			"STONE": 2,
+			"ROCK": 2,
+			"BOMB": 2,
+			"SOLDIER": 2
+		},
+
 
 		"gameSpeed":16
 	}
