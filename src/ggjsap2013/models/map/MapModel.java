@@ -2,12 +2,27 @@ package ggjsap2013.models.map;
 
 import ggjsap2013.models.map.item.Item;
 import ggjsap2013.models.map.item.Item.TYPES;
+import ggjsap2013.models.stage.Stage;
 
 public class MapModel {
+	
     private final Block[][] map;
     
-    public MapModel(int width, int height) {
+    private final Stage		currentStage;
+    
+    public MapModel(int width, int height, Stage stage) {
         map = new Block[height][width];
+        currentStage = stage;
+        
+       init();
+    }
+    
+    /**
+     * レベル情報に基づいてマップモデル初期化するよ！
+     * 
+     */
+    public void init()
+    {
     }
 
     public Block[][] getArray() {

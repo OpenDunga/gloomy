@@ -3,24 +3,25 @@ package ggjsap2013.controllers.io;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.barricades.Barricade.TYPES;
+import ggjsap2013.models.stage.Stage;
 
 import java.io.IOException;
 
 import net.arnx.jsonic.JSON;
 
 /**
- * ステージ情報を読み込むクラス
+ * 各レベルのマップ情報を読み込むクラス
  * 
  * @author Casamorica
  *
  */
-public class StageReader extends ConfigurationReader
+public class LevelMapReader extends ConfigurationReader
 {
 	
 	/**
 	 * インスタンス作るよ
 	 */
-	public StageReader()
+	public LevelMapReader()
 	{
 	}
 	
@@ -31,12 +32,12 @@ public class StageReader extends ConfigurationReader
 	 * @param stageIndex ステージインデックス
 	 * @return {@link MapModel}
 	 */
-	public MapModel read(int stageIndex)
+	public MapModel read(int stageIndex, Stage stage)
 	{
 		MapModel mapModel = null;
 		
 		try {
-			String[][] stageArray = JSON.decode(readConfiguration("stage" + stageIndex + ".json"), String[][].class);
+			String[][] stageArray = JSON.decode(readConfiguration("level" + stageIndex + ".json"), String[][].class);
 			
 			int width = 0;
 			int height = 0;
@@ -45,7 +46,7 @@ public class StageReader extends ConfigurationReader
 				height = Math.max(height, stageArray[i].length);
 			}
 			
-			mapModel = new MapModel(width, height);
+			mapModel = new MapModel(width, height, stage);
 			
 			for (int y=0; y<height; y++) {
 				for (int x=0; x<width; x++) {
@@ -70,7 +71,6 @@ public class StageReader extends ConfigurationReader
 	
 	public static void main(String[] args)
 	{
-		(new StageReader()).read(0);
 	}
 	
 }
