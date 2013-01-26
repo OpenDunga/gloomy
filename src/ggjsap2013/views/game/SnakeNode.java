@@ -54,7 +54,12 @@ public class SnakeNode extends GameNode {
                 g.drawRect(
                         p.x*CHIP_SIZE, p.y*CHIP_SIZE, 
                         CHIP_SIZE, CHIP_SIZE);
-                g.drawText(b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+                
+                if (model.isNoDamage()) {
+                    g.drawText("**" + b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+                } else {
+                    g.drawText(b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+                }
                 g.setColor(Color.red);
             }
         }
@@ -70,6 +75,8 @@ public class SnakeNode extends GameNode {
             currentMoveWait = 0;
             model.move();
         }
+        
+        model.decreaseNoDamageCount();
     }
 
     @Override

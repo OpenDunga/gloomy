@@ -87,6 +87,10 @@ public class Barricade implements Block
 	public void intersects(SnakeModel snake, MapModel map, Stage stage)
 		throws GameOverException
 	{
+		if (snake.isNoDamage()) {
+			return;
+		}
+		
 		switch (type) {
 			case STONE:
 				/* 一人減るよ */
@@ -148,6 +152,9 @@ public class Barricade implements Block
 				break;
 
 		}
+		
+		/* 一定時間無敵になるよ */
+		snake.invokeNoDamage();
 	}
 	
 	@Override
