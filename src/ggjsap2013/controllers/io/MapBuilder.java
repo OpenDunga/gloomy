@@ -26,5 +26,8 @@ public class MapBuilder {
         for (int i=0; i<level.getMaxCharacterItemCount(); i++) {
             map.createCharacterItemBlock(level);
         }
+        for (int i=0; i<level.getMaxBarricadeCount(); i++) {
+            map.createBarricadeBlock(level);
+        }
     }
 }
