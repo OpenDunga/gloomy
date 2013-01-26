@@ -1,9 +1,9 @@
 package ggjsap2013.controllers.io;
 
+import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.barricades.Barricade.TYPES;
-import ggjsap2013.models.stage.Stage;
 
 import java.io.IOException;
 
@@ -32,7 +32,7 @@ public class LevelMapReader extends ConfigurationReader
 	 * @param stageIndex ステージインデックス
 	 * @return {@link MapModel}
 	 */
-	public MapModel read(int stageIndex, Stage stage)
+	public MapModel read(int stageIndex, Level level)
 	{
 		MapModel mapModel = null;
 		
@@ -46,7 +46,7 @@ public class LevelMapReader extends ConfigurationReader
 				height = Math.max(height, stageArray[i].length);
 			}
 			
-			mapModel = new MapModel(width, height, stage);
+			mapModel = new MapModel(width, height, level);
 			
 			for (int y=0; y<height; y++) {
 				for (int x=0; x<width; x++) {

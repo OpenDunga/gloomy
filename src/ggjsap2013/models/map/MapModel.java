@@ -1,18 +1,18 @@
 package ggjsap2013.models.map;
 
+import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.item.Item;
 import ggjsap2013.models.map.item.Item.TYPES;
-import ggjsap2013.models.stage.Stage;
 
 public class MapModel {
 	
     private final Block[][] map;
     
-    private final Stage		currentStage;
+    private final Level		currentLevel;
     
-    public MapModel(int width, int height, Stage stage) {
+    public MapModel(int width, int height, Level level) {
         map = new Block[height][width];
-        currentStage = stage;
+        currentLevel = level;
         
        init();
     }

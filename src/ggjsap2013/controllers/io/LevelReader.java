@@ -1,6 +1,7 @@
 package ggjsap2013.controllers.io;
 
-import ggjsap2013.models.stage.Stage;
+import ggjsap2013.models.Stage;
+import ggjsap2013.models.level.Level;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,25 +33,25 @@ public class LevelReader extends ConfigurationReader
 	 * 
 	 * @return {@link Stage}の{@link List}
 	 */
-	public List<Stage> read()
+	public List<Level> read()
 	{
-		ArrayList<Stage> stageList = new ArrayList<Stage>();
+		ArrayList<Level> levelList = new ArrayList<Level>();
 		
 		try {
-			Stage[] stageArray = JSON.decode(readConfiguration("levels.json"), Stage[].class);
+			Level[] levelArray = JSON.decode(readConfiguration("levels.json"), Level[].class);
 			
-			if (stageArray != null) {
-				for (Stage stage: stageArray) {
-					if (stage != null) {
-						stageList.add(stage);
+			if (levelArray != null) {
+				for (Level level: levelArray) {
+					if (level != null) {
+						levelList.add(level);
 					}
 				}
 			}
 			
-			Collections.sort(stageList,
-				new Comparator<Stage>() {
+			Collections.sort(levelList,
+				new Comparator<Level>() {
 					@Override
-					public int compare(Stage s1, Stage s2)
+					public int compare(Level s1, Level s2)
 					{
 						return s1.getIndex() - s2.getIndex();
 					}
@@ -62,7 +63,7 @@ public class LevelReader extends ConfigurationReader
 		} finally {
 		}
 		
-		return stageList;
+		return levelList;
 	}
 	
 	public static void main(String[] args)

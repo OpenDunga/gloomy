@@ -1,10 +1,10 @@
 package ggjsap2013.views;
 
-import ggjsap2013.controllers.io.LevelReader;
 import ggjsap2013.controllers.io.LevelMapReader;
+import ggjsap2013.controllers.io.LevelReader;
+import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.SnakeModel;
-import ggjsap2013.models.stage.Stage;
 import ggjsap2013.views.game.MapNode;
 import ggjsap2013.views.game.SnakeNode;
 
@@ -24,11 +24,11 @@ public class StageNode extends GameNode {
     	
     	int currentStageIndex = 0;	//TODO ステージインデックスちゃんとかえること！
     	
-    	LevelReader stageInformationReader = new LevelReader();
-    	List<Stage> stageInfoList = stageInformationReader.read();
+    	LevelReader levelReader = new LevelReader();
+    	List<Level> levelInfoList = levelReader.read();
     	
-    	LevelMapReader stageReader = new LevelMapReader();
-    	MapModel map = stageReader.read(currentStageIndex, stageInfoList.get(currentStageIndex));
+    	LevelMapReader levelMapReader = new LevelMapReader();
+    	MapModel map = levelMapReader.read(currentStageIndex, levelInfoList.get(currentStageIndex));
     	
     	
 //        MapModel map = new MapModel(14, 14);
