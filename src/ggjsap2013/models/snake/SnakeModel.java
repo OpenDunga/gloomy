@@ -12,9 +12,9 @@ import java.awt.Point;
 public class SnakeModel {
 	
 	/**
-	 * 障害物衝突後の無敵状態の制限時間(10秒)
+	 * 障害物衝突後の無敵状態の制限時間(2秒)
 	 */
-	public static final int		COLLISION_DAMAGE_ZERO_LIMIT	= 500;
+	public static final int		COLLISION_DAMAGE_ZERO_LIMIT	= 100;
 	
 
 	
