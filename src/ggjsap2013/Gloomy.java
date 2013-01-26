@@ -24,4 +24,7 @@ public final class Gloomy
 	 */
 	public static int CHIP_SIZE = 40;
 	
+	public static int STAGE_WIDTH = 14;
+	public static int STAGE_HEIGHT = 14;
+	
 }

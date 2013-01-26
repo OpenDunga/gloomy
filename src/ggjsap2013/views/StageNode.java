@@ -1,8 +1,12 @@
 package ggjsap2013.views;
 
+<<<<<<< HEAD
 import ggjsap2013.controllers.io.StageReader;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.SnakeModel;
+=======
+import ggjsap2013.models.Stage;
+>>>>>>> tohhy
 import ggjsap2013.views.game.MapNode;
 import ggjsap2013.views.game.SnakeNode;
 import jp.tohhy.gamepanel.GameNode;
@@ -16,15 +20,21 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
 public class StageNode extends GameNode {
     
     public StageNode() {
-    	
-    	StageReader stageReader = new StageReader();
-    	MapModel map = stageReader.read(0); //TODO ステージインデックスちゃんとかえること！
-    	
-    	
-//        MapModel map = new MapModel(14, 14);
-        SnakeModel snake = new SnakeModel(map);
-        this.add(new MapNode(map));
-        this.add(new SnakeNode(snake));
+//
+//    	
+//    	StageReader stageReader = new StageReader();
+//    	MapModel map = stageReader.read(0); //TODO ステージインデックスちゃんとかえること！
+//    	
+//    	
+////        MapModel map = new MapModel(14, 14);
+//        SnakeModel snake = new SnakeModel(map);
+//        this.add(new MapNode(map));
+//        this.add(new SnakeNode(snake));
+
+        Stage model = new Stage();
+        this.add(new MapNode(model.getMap()));
+        this.add(new SnakeNode(model.getSnake()));
+
         this.setPosition(230, 20);
     }
 
