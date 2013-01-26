@@ -48,7 +48,7 @@ public class SnakeModel {
         this.stage = stage;
         this.bodies = new BodyList(stage);
         this.map = stage.getMap();
-        movedHistories.push(new Point(), Direction.SOUTH);
+        movedHistories.push(new Point(5, 5), Direction.SOUTH);
     }
     
     public void move(int dx, int dy) {

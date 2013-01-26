@@ -72,6 +72,8 @@ public class SnakeNode extends GameNode {
         switch(b.getType()) {
         case A:
         case B:
+        case C:
+        case D:
         case ahiru:
         case kuma:
         case lion:
@@ -99,6 +101,12 @@ public class SnakeNode extends GameNode {
             break;
         case B:
             imageID = 2;
+            break;
+        case C:
+            imageID = 3;
+            break;
+        case D:
+            imageID = 4;
             break;
         case ahiru:
             imageID = 1;

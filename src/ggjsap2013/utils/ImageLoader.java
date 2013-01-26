@@ -29,6 +29,8 @@ public class ImageLoader {
     private static void loadCharaChips() throws IOException {
         loadCharaChip(1, "alice");
         loadCharaChip(2, "marm");
+        loadCharaChip(3, "akaz");
+        loadCharaChip(4, "sira");
     }
     private static void loadCharaChip(int id, String name) throws IOException {
         Images.put("chara_" + id + "_n", prefix + "charachips/" + name + "_n.png");
@@ -48,8 +50,8 @@ public class ImageLoader {
     private static void loadAnimalCharaChip(int id, String name) throws IOException {
         Images.put("animal_" + id + "_n", prefix + "animals/" + name + "_n.png");
         Images.put("animal_" + id + "_s", prefix + "animals/" + name + "_s.png");
-        Images.put("animal_" + id + "_e", prefix + "animals/" + name + "_s.png");
-        Images.put("animal_" + id + "_w", prefix + "animals/" + name + "_s.png");
+        Images.put("animal_" + id + "_e", prefix + "animals/" + name + "_e.png");
+        Images.put("animal_" + id + "_w", prefix + "animals/" + name + "_w.png");
     }
 
 }
