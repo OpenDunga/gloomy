@@ -1,4 +1,6 @@
-package ggjsap2013.views;
+package ggjsap2013.views.title;
+
+import ggjsap2013.views.game.GameScene;
 
 import java.awt.Color;
 import java.awt.Rectangle;
@@ -55,7 +57,7 @@ public class Title extends GameNode {
         switch(selectID) {
         case 1:
             isTransition = true;
-            getParent().add(new Fade(this, new StageNode()).fadeOut(50).setAutoFadeIn(50, 100));
+            getParent().add(new Fade(this, new GameScene()).fadeOut(50).setAutoFadeIn(50, 100));
             break;
         case 2:
             break;

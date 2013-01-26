@@ -1,4 +1,5 @@
-package ggjsap2013.views;
+package ggjsap2013.views.title;
+
 
 import java.awt.Color;
 
