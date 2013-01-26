@@ -69,6 +69,22 @@ public class SnakeNode extends GameNode {
                 SnakeBody b = bodies.get(i);
                 drawBody(b, p, d, g);
             }
+            
+            boolean isRendered = false;
+            for (int i=0; i<length; i++) {
+                if(i >= history.size()) break;
+                Point p = history.get(i).getPoint();
+                SnakeBody b = bodies.get(i);
+                if (drawEffect(b, p, g)) {
+                	isRendered = true;
+                }
+            }
+            
+            if (isRendered) {
+            	currentEffectCount++;
+            } else {
+            	currentEffectCount = 0;
+            }
         }
     }
     
@@ -86,8 +102,6 @@ public class SnakeNode extends GameNode {
             GameImage i = getCharaImage(b, d);
             int heightGap = CHIP_SIZE - i.get(0).getHeight();
             g.drawGameImage(i, p.x*CHIP_SIZE, p.y*CHIP_SIZE + heightGap);
-            
-            drawEffect(b, p, g);
             
             break;
         default:
@@ -159,12 +173,12 @@ public class SnakeNode extends GameNode {
     }
     
     
-    private void drawEffect(SnakeBody b, Point p, NodeGraphics g)
+    private boolean drawEffect(SnakeBody b, Point p, NodeGraphics g)
     {
     	boolean isRendered = false;
     	if (model.isNoDamage() || model.isCollisionDamageZero()) {
     		
-    		int n = currentEffectCount / 50 % 3;
+    		int n = currentEffectCount / 10 % 3;
     		GameImage image = Images.get("effect_1_" + n);
             int heightGap = CHIP_SIZE - image.get(0).getHeight();
             g.drawGameImage(image, p.x*CHIP_SIZE, p.y*CHIP_SIZE + heightGap);
@@ -172,14 +186,7 @@ public class SnakeNode extends GameNode {
             isRendered = true;
     	}
     	
-    	
-    	if (isRendered) {
-    		currentEffectCount++;
-    	} else {
-    		currentEffectCount = 0;
-    	}
-    	
-    	
+    	return isRendered;
     }
 
 

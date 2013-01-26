@@ -1,11 +1,10 @@
 package ggjsap2013.controllers.io;
 
-import java.util.Map;
-import java.util.Set;
-
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.map.barricades.Barricade;
+
+import java.util.Map;
 
 /**
  * レベル値とレベルからマップを作成する.
