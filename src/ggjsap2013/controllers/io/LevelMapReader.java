@@ -60,6 +60,8 @@ public class LevelMapReader extends ConfigurationReader
 				}
 			}
 			
+			mapModel.init();
+			
 			
 		} catch (IOException e) {
 			e.printStackTrace();

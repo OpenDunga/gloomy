@@ -1,6 +1,6 @@
 package ggjsap2013.models.level;
 
-import ggjsap2013.models.map.item.Item;
+import ggjsap2013.models.map.item.PointItem;
 
 import java.util.List;
 
@@ -14,15 +14,15 @@ public class Level
 	private int					index;
 	
 	/**
-	 * マップ中に出てくるアイテムの最大数だよ
+	 * マップ中に出てくるポイントアイテムの最大数だよ
 	 */
-	private int					maxItemCount;
+	private int					maxPointItemCount;
 	
 
 	/**
 	 * マップ中に出てくる可能性のあるアイテムの種類ですよー
 	 */
-	private List<Item.TYPES>	availableItemTypes;
+	private List<PointItem.TYPES>	availableItemTypes;
 	
 	
 	
@@ -40,21 +40,21 @@ public class Level
 	}
 	
 	
-	public void setMaxItemCount(int maxItemCount)
+	public void setMaxPointItemCount(int maxPointItemCount)
 	{
-		this.maxItemCount = maxItemCount;
+		this.maxPointItemCount = maxPointItemCount;
 	}
-	public int getMaxItemCount()
+	public int getMaxPointItemCount()
 	{
-		return maxItemCount;
+		return maxPointItemCount;
 	}
 	
 	
-	public void setAvailableItemTypes(List<Item.TYPES> availableItemTypes)
+	public void setAvailableItemTypes(List<PointItem.TYPES> availableItemTypes)
 	{
 		this.availableItemTypes = availableItemTypes;
 	}
-	public List<Item.TYPES> getAvailableItemTypes()
+	public List<PointItem.TYPES> getAvailableItemTypes()
 	{
 		return availableItemTypes;
 	}

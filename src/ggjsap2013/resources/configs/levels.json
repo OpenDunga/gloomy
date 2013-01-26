@@ -2,17 +2,17 @@
 	{
 		"index":0,
 		"maxItemCount":2,
-		"availableItemTypes":["A", "B", "C"]
+		"availableItemTypes":["CANDY"]
 	},
 	{
 		"index":1,
 		"maxItemCount":5
-		"availableItemTypes":["B", "C"]
+		"availableItemTypes":["CANDY", "DONUT"]
 	},
 	{
 		"index":2,
 		"maxItemCount":1,
-		"availableItemTypes":["C"]
+		"availableItemTypes":["DONUT", "RIBON", "CAKE"]
 	}
 	
 ]

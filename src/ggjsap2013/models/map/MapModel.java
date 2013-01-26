@@ -1,7 +1,7 @@
 package ggjsap2013.models.map;
 
 import ggjsap2013.models.level.Level;
-import ggjsap2013.models.map.item.Item;
+import ggjsap2013.models.map.item.PointItem;
 import ggjsap2013.utils.RandomUtil;
 
 import java.util.List;
@@ -15,8 +15,6 @@ public class MapModel {
     public MapModel(int width, int height, Level level) {
         map = new Block[height][width];
         currentLevel = level;
-        
-       init();
     }
     
     /**
@@ -61,11 +59,10 @@ public class MapModel {
         		continue;
         	}
         	
+        	List<PointItem.TYPES> typeList = currentLevel.getAvailableItemTypes();
+        	PointItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
         	
-        	List<Item.TYPES> typeList = currentLevel.getAvailableItemTypes();
-        	Item.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
-        	
-            map[putY][putX] = new Item(itemType);
+            map[putY][putX] = new PointItem(itemType);
             break;
     	}
     }

@@ -5,7 +5,6 @@ import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.item.Item;
-import ggjsap2013.models.map.item.Item.TYPES;
 
 import java.awt.Color;
 
