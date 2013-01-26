@@ -4,7 +4,7 @@ import ggjsap2013.Gloomy;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.snake.BodyList;
 import ggjsap2013.models.snake.BodyType;
-import ggjsap2013.models.snake.MovedPoints;
+import ggjsap2013.models.snake.MovedHistories;
 import ggjsap2013.models.snake.SnakeBody;
 import ggjsap2013.models.snake.SnakeModel;
 import ggjsap2013.models.snake.SnakeModel.Direction;
@@ -39,32 +39,34 @@ public class SnakeNode extends GameNode {
     @Override
     protected void drawNode(NodeGraphics g) {
         int length = model.getLength();
-        MovedPoints points = model.getMovedPoints();
+        MovedHistories history = model.getHistories();
         BodyList bodies = model.getBodies();
         if(length <= 0) {
             //長さゼロはゲームオーバー
             g.setColor(Color.red);
-            g.fillRect(points.get(0).x*CHIP_SIZE, points.get(0).y*CHIP_SIZE, 
+            g.fillRect(history.get(0).getPoint().x*CHIP_SIZE, 
+                    history.get(0).getPoint().y*CHIP_SIZE, 
                     CHIP_SIZE, CHIP_SIZE);
         } else {
             g.setColor(Color.blue);
             for(int i=0; i < length; i++) {
-                if(i >= points.size()) break;
-                Point p = points.get(i);
+                if(i >= history.size()) break;
+                Point p = history.get(i).getPoint();
+                Direction d = history.get(i).getDirection();
                 SnakeBody b = bodies.get(i);
                 g.drawRect(
                         p.x*CHIP_SIZE, p.y*CHIP_SIZE, 
                         CHIP_SIZE, CHIP_SIZE);
-                drawBody(b, p, g);
+                drawBody(b, p, d, g);
                 g.setColor(Color.red);
             }
         }
     }
     
-    private void drawBody(SnakeBody b, Point p, NodeGraphics g) {
+    private void drawBody(SnakeBody b, Point p, Direction d, NodeGraphics g) {
         switch(b.getType()) {
         case A:
-            g.drawGameImage(getCharaImage(b), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+            g.drawGameImage(getCharaImage(b, d), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
             break;
         default:
             if (model.isNoDamage()) {
@@ -75,7 +77,7 @@ public class SnakeNode extends GameNode {
         }
     }
     
-    private GameImage getCharaImage(SnakeBody b) {
+    private GameImage getCharaImage(SnakeBody b, Direction d) {
         String imageName = "chara_";
         switch(b.getType()) {
         case A:
@@ -84,7 +86,7 @@ public class SnakeNode extends GameNode {
         default:
             imageName = imageName + "1_";
         }
-        switch(model.getDirection()) {
+        switch(d) {
         case NORTH:
             imageName = imageName + "n";
             break;

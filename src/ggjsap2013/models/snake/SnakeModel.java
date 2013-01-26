@@ -17,7 +17,7 @@ public class SnakeModel {
     private final MapModel map;
     private final Stage stage;
     private final BodyList bodies = new BodyList();
-    private final MovedPoints movedPoints = new MovedPoints();
+    private final MovedHistories movedHistories = new MovedHistories();
     private int moveWait = 10;
     private Direction direction = Direction.SOUTH;
     
@@ -27,19 +27,19 @@ public class SnakeModel {
     public SnakeModel(Stage stage) {
         this.stage = stage;
         this.map = stage.getMap();
-        movedPoints.push(new Point());
+        movedHistories.push(new Point(), Direction.SOUTH);
     }
     
     public void move(int dx, int dy) {
-        Point gotoPoint = new Point(movedPoints.get(0));
+        Point gotoPoint = new Point(movedHistories.get(0).getPoint());
         gotoPoint.x += dx;
         gotoPoint.y += dy;
         gotoPoint = getLoopedPoint(gotoPoint);
-        this.getMovedPoints().push(gotoPoint);
+        this.getHistories().push(gotoPoint, direction);
         try {
             intersectBlock();
             boolean isSelfEat = 
-                    movedPoints.isIntersect(bodies.size(), movedPoints.get(0));
+                    movedHistories.isIntersect(bodies.size(), movedHistories.get(0).getPoint());
             if(isSelfEat) throw new GameOverException();
         } catch (GameOverException e) {
             // TODO ゲームオーバー処理
@@ -91,7 +91,7 @@ public class SnakeModel {
      * ブロックと交差したときの処理.
      */
     public void intersectBlock() throws GameOverException {
-        Point p = movedPoints.get(0);
+        Point p = movedHistories.get(0).getPoint();
         Block b = map.getArray()[p.y][p.x];
         if(b != null) {
             map.getArray()[p.y][p.x] = null;
@@ -99,8 +99,8 @@ public class SnakeModel {
         }
     }
 
-    public MovedPoints getMovedPoints() {
-        return movedPoints;
+    public MovedHistories getHistories() {
+        return movedHistories;
     }
 
     public int getLength() {

@@ -1,5 +1,7 @@
 package ggjsap2013.models.snake;
 
+import ggjsap2013.models.snake.SnakeModel.Direction;
+
 import java.awt.Point;
 import java.util.LinkedList;
 
@@ -7,8 +9,8 @@ import java.util.LinkedList;
  * スネークが通過した地点のリスト.
  * @author tohhy
  */
-public class MovedPoints {
-    private final LinkedList<Point> list = new LinkedList<Point>();
+public class MovedHistories {
+    private final LinkedList<HistoryModel> list = new LinkedList<HistoryModel>();
     //限界の長さ.ゲームでの制限値を指定
     private int limitLength = 100;
     
@@ -31,8 +33,8 @@ public class MovedPoints {
     /**
      * リストの先頭に座標を追加する.
      */
-    public void push(Point p) {
-        list.push(p);
+    public void push(Point p, Direction d) {
+        list.push(new HistoryModel(p, d));
         while(list.size() > limitLength) {
             list.pollLast();
         }
@@ -51,7 +53,7 @@ public class MovedPoints {
      * @param i
      * @return
      */
-    public Point get(int i) {
+    public HistoryModel get(int i) {
         return list.get(i);
     }
 }
