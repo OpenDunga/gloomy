@@ -76,6 +76,34 @@ public class PointItem implements Item
 	}
 	
 	@Override
+	public int getMoveWait()
+	{
+		return 0;
+	}
+	
+	@Override
+	public boolean isMovable()
+	{
+		return false;
+	}
+	
+	@Override
+	public void setCurrentMove(int n)
+	{
+	}
+	@Override
+	public int getCurrentMove()
+	{
+		return 0;
+	}
+	
+	@Override
+	public void move(MapModel mapModel, int currentX, int currentY)
+	{
+	}
+	
+	
+	@Override
 	public String toString()
 	{
 		return type.toString();

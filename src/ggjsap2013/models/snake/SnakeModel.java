@@ -8,6 +8,11 @@ import ggjsap2013.models.map.MapModel;
 import java.awt.Point;
 
 public class SnakeModel {
+	
+	//TODO:無敵時間
+	public static final int		NO_DAMAGE_LIMIT		= 50;
+	
+	
     public enum Direction {NORTH, EAST, SOUTH, WEST}
     private final MapModel map;
     private final Stage stage;
@@ -15,6 +20,9 @@ public class SnakeModel {
     private final MovedPoints movedPoints = new MovedPoints();
     private int moveWait = 10;
     private Direction direction = Direction.SOUTH;
+    
+    private int		currentNoDamageCount = 0;
+    
     
     public SnakeModel(Stage stage) {
         this.stage = stage;
@@ -150,6 +158,29 @@ public class SnakeModel {
     	
     	if (isReverse == false) {
             this.direction = direction;
+    	}
+    }
+    
+    
+    public void invokeNoDamage()
+    {
+    	currentNoDamageCount = NO_DAMAGE_LIMIT;
+    }
+    
+    public void decreaseNoDamageCount()
+    {
+    	currentNoDamageCount--;
+    	if (currentNoDamageCount <= 0) {
+    		currentNoDamageCount = 0;
+    	}
+    }
+    
+    public boolean isNoDamage()
+    {
+    	if (currentNoDamageCount > 0) {
+    		return true;
+    	} else {
+    		return false;
     	}
     }
 

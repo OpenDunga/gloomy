@@ -57,5 +57,22 @@ public class MapNode extends GameNode {
     protected void listenMouse(MouseInfo arg0) {}
 
     @Override
-    protected void updateNode() {}
+    protected void updateNode()
+    {
+        for(int i=0; i<map.getArray().length; i++) {
+            for(int j=0; j<map.getArray()[i].length; j++) {
+            	Block b = map.getArray()[i][j];
+            	if (b != null) {
+                    
+            		b.setCurrentMove(b.getCurrentMove() + 1);
+            		
+                    if(b.getMoveWait() <= b.getCurrentMove()) {
+                        b.setCurrentMove(0);
+                        b.move(map, j, i);
+                    }
+
+            	}
+            }
+        }
+    }
 }

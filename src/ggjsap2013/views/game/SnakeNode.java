@@ -67,12 +67,17 @@ public class SnakeNode extends GameNode {
             g.drawGameImage(getCharaImage(b), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
             break;
         default:
-            g.drawText(b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+            if (model.isNoDamage()) {
+                g.drawText("**" + b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+            } else {
+                g.drawText(b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+            }
         }
     }
     
     private GameImage getCharaImage(SnakeBody b) {
         GameImage i = Images.get("chara_1_w");
+
         return i;
     }
 
@@ -86,6 +91,8 @@ public class SnakeNode extends GameNode {
             currentMoveWait = 0;
             model.move();
         }
+        
+        model.decreaseNoDamageCount();
     }
 
     @Override
