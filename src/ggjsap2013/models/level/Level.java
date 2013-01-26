@@ -49,6 +49,16 @@ public class Level
      */
     private List<Barricade.TYPES>   availableBarricadeTypes;
 	
+    
+    
+    
+    
+    /**
+     * ゲームスピード
+     */
+    private int							gameSpeed;
+    
+    
 
 	/**
 	 * インスタンスつくるよ！
@@ -120,5 +130,14 @@ public class Level
     public void setMaxBarricadeCount(int maxBarricadeCount) {
         this.maxBarricadeCount = maxBarricadeCount;
     }
+    
+    public void setGameSpeed(int gameSpeed)
+	{
+		this.gameSpeed = gameSpeed;
+	}
+    public int getGameSpeed()
+	{
+		return gameSpeed;
+	}
 	
 }

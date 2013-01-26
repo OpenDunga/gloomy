@@ -23,6 +23,10 @@ public class Stage {
 	{
     	setLevel(currentLevelNum);
     	snake = new SnakeModel(this);
+    	
+    	int defaultMoveWait = getCurrentLevel().getGameSpeed();
+    	snake.setDefaultMoveWait(defaultMoveWait);
+    	snake.setMoveWait(defaultMoveWait);
 	}
     
     public Level getCurrentLevel() {

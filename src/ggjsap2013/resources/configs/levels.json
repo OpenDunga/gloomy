@@ -11,6 +11,13 @@
 		"maxBarricadeCount":1,
 		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
 		
+		"barricades":{
+			"STONE": 1
+		},
+		
+		
+		
+		"gameSpeed":20
 	},
 	{
 		"index":1,
@@ -24,6 +31,7 @@
 		"maxBarricadeCount":1,
 		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
 		
+		"gameSpeed":18
 	},
 	{
 		"index":2,
@@ -36,6 +44,8 @@
 
 		"maxBarricadeCount":1,
 		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
+
+		"gameSpeed":16
 	}
 	
 ]

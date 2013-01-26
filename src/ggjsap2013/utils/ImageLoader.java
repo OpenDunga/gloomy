@@ -24,6 +24,8 @@ public class ImageLoader {
         loadCharaChips();
         
         loadAnimalCharaChips();
+        
+        loadEffectChips();
     }
     
     private static void loadCharaChips() throws IOException {
@@ -52,6 +54,18 @@ public class ImageLoader {
         Images.put("animal_" + id + "_s", prefix + "animals/" + name + "_s.png");
         Images.put("animal_" + id + "_e", prefix + "animals/" + name + "_e.png");
         Images.put("animal_" + id + "_w", prefix + "animals/" + name + "_w.png");
+    }
+    
+    private static void loadEffectChips() throws IOException
+    {
+    	loadEffetcChip(1);
+    }
+    
+    private static void loadEffetcChip(int id) throws IOException
+    {
+        Images.put("effect_" + id + "_0", prefix + "effects/effect" + id + "_0.png");
+        Images.put("effect_" + id + "_1", prefix + "effects/effect" + id + "_1.png");
+        Images.put("effect_" + id + "_2", prefix + "effects/effect" + id + "_2.png");
     }
 
 }

@@ -26,7 +26,10 @@ public class SnakeNode extends GameNode {
     private final Stage stage;
     private final SnakeModel model;
     private static final int CHIP_SIZE = Gloomy.CHIP_SIZE;
+    
     private int currentMoveWait = 0;
+    
+    private int currentEffectCount = 0;
 
     public SnakeNode(Stage stage) {
         this.stage = stage;
@@ -54,11 +57,7 @@ public class SnakeNode extends GameNode {
                     CHIP_SIZE, CHIP_SIZE);
         } else {
         	
-        	if (model.isCollisionDamageZero()) {
-            	g.setColor(Color.red);
-        	} else {
-            	g.setColor(Color.blue);
-        	}
+        	g.setColor(Color.blue);
             Point headPoint = history.get(0).getPoint();
             g.drawRect(
                     headPoint.x*CHIP_SIZE, headPoint.y*CHIP_SIZE, 
@@ -87,6 +86,9 @@ public class SnakeNode extends GameNode {
             GameImage i = getCharaImage(b, d);
             int heightGap = CHIP_SIZE - i.get(0).getHeight();
             g.drawGameImage(i, p.x*CHIP_SIZE, p.y*CHIP_SIZE + heightGap);
+            
+            drawEffect(b, p, g);
+            
             break;
         default:
             if (model.isNoDamage()) {
@@ -96,6 +98,7 @@ public class SnakeNode extends GameNode {
             }
         }
     }
+    
     
     private String createImageName(SnakeBody b, Direction d) {
         String bodyType = "chara";
@@ -154,6 +157,31 @@ public class SnakeNode extends GameNode {
         String imageName = createImageName(b, d);
         return Images.get(imageName);
     }
+    
+    
+    private void drawEffect(SnakeBody b, Point p, NodeGraphics g)
+    {
+    	boolean isRendered = false;
+    	if (model.isNoDamage() || model.isCollisionDamageZero()) {
+    		
+    		int n = currentEffectCount / 50 % 3;
+    		GameImage image = Images.get("effect_1_" + n);
+            int heightGap = CHIP_SIZE - image.get(0).getHeight();
+            g.drawGameImage(image, p.x*CHIP_SIZE, p.y*CHIP_SIZE + heightGap);
+            
+            isRendered = true;
+    	}
+    	
+    	
+    	if (isRendered) {
+    		currentEffectCount++;
+    	} else {
+    		currentEffectCount = 0;
+    	}
+    	
+    	
+    }
+
 
     @Override
     protected void updateNode() {

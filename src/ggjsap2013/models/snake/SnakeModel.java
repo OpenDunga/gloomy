@@ -19,11 +19,6 @@ public class SnakeModel {
 
 	
 	/**
-	 * 通常状態時の移動速度(1/5秒に1マス)
-	 */
-	public static final int		DEFAULT_MOVE_WAIT			= 10;
-	
-	/**
 	 * ゆっくり状態の移動速度(1秒に1マス)
 	 */
 	public static final int		SLOW_MOVE_WAIT				= 50;
@@ -38,7 +33,19 @@ public class SnakeModel {
     private final Stage stage;
     private final BodyList bodies;
     private final MovedHistories movedHistories = new MovedHistories();
+
+    
+    /**
+     * 通常状態の移動速度
+     */
+    private int defaultMoveWait = 10;
+    
+    /**
+     * 現在の移動速度
+     */
     private int moveWait = 10;
+    
+    
     private Direction direction = Direction.SOUTH;
     
     
@@ -150,6 +157,16 @@ public class SnakeModel {
         return bodies;
     }
 
+    public int getDefaultMoveWait()
+	{
+		return defaultMoveWait;
+	}
+    
+    public void setDefaultMoveWait(int defaultMoveWait)
+	{
+		this.defaultMoveWait = defaultMoveWait;
+	}
+    
     public int getMoveWait() {
         return moveWait;
     }
@@ -279,7 +296,7 @@ public class SnakeModel {
         		/* スキル終了処理 */
         		switch (currentSkill.getType()) {
         			case SLOW:
-        				setMoveWait(DEFAULT_MOVE_WAIT);
+        				setMoveWait(defaultMoveWait);
         				break;
         		}
         		
