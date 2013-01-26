@@ -1,5 +1,6 @@
 package ggjsap2013.controllers.io;
 
+import ggjsap2013.models.Stage;
 import ggjsap2013.models.level.Level;
 
 import java.io.IOException;
@@ -12,17 +13,17 @@ import net.arnx.jsonic.JSON;
 
 
 /**
- * ステージの設定値的な情報を読み込むクラスですよ
+ * レベルの設定値的な情報を読み込むクラスですよ
  * 
  * @author Casamorica
  *
  */
-public class StageInformationReader extends ConfigurationReader
+public class LevelReader extends ConfigurationReader
 {
 	/**
 	 * インスタンス作ります
 	 */
-	public StageInformationReader()
+	public LevelReader()
 	{
 	}
 	
@@ -30,24 +31,24 @@ public class StageInformationReader extends ConfigurationReader
 	/**
 	 * 読み込みます。
 	 * 
-	 * @return {@link Level}の{@link List}
+	 * @return {@link Stage}の{@link List}
 	 */
 	public List<Level> read()
 	{
-		ArrayList<Level> stageList = new ArrayList<Level>();
+		ArrayList<Level> levelList = new ArrayList<Level>();
 		
 		try {
-			Level[] stageArray = JSON.decode(readConfiguration("stages.json"), Level[].class);
+			Level[] levelArray = JSON.decode(readConfiguration("levels.json"), Level[].class);
 			
-			if (stageArray != null) {
-				for (Level stage: stageArray) {
-					if (stage != null) {
-						stageList.add(stage);
+			if (levelArray != null) {
+				for (Level level: levelArray) {
+					if (level != null) {
+						levelList.add(level);
 					}
 				}
 			}
 			
-			Collections.sort(stageList,
+			Collections.sort(levelList,
 				new Comparator<Level>() {
 					@Override
 					public int compare(Level s1, Level s2)
@@ -62,12 +63,12 @@ public class StageInformationReader extends ConfigurationReader
 		} finally {
 		}
 		
-		return stageList;
+		return levelList;
 	}
 	
 	public static void main(String[] args)
 	{
-		StageInformationReader reader = new StageInformationReader();
+		LevelReader reader = new LevelReader();
 		reader.read();
 	}
 	

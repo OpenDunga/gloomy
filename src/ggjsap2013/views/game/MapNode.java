@@ -18,8 +18,6 @@ public class MapNode extends GameNode {
     
     public MapNode(MapModel map) {
         this.map = map;
-        map.getArray()[2][2] = new Item(TYPES.A);
-        map.getArray()[6][3] = new Item(TYPES.B);
     }
     
     @Override

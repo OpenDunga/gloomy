@@ -114,7 +114,7 @@ public class Barricade implements Block
 	@Override
 	public String toString()
 	{
-		return "X-" + type;
+		return "X-" + type.shortName;
 	}
 	
 	

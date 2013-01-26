@@ -31,7 +31,7 @@ public abstract class ConfigurationReader
 	 * @return
 	 * @throws IOException
 	 */
-	public String readConfiguration(String fileName)
+	protected String readConfiguration(String fileName)
 		throws IOException
 	{
 		String configFileContent = "";

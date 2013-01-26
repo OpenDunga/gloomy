@@ -1,13 +1,28 @@
 package ggjsap2013.models.map;
 
+import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.item.Item;
 import ggjsap2013.models.map.item.Item.TYPES;
 
 public class MapModel {
+	
     private final Block[][] map;
     
-    public MapModel(int width, int height) {
+    private final Level		currentLevel;
+    
+    public MapModel(int width, int height, Level level) {
         map = new Block[height][width];
+        currentLevel = level;
+        
+       init();
+    }
+    
+    /**
+     * レベル情報に基づいてマップモデル初期化するよ！
+     * 
+     */
+    public void init()
+    {
     }
 
     public Block[][] getArray() {
