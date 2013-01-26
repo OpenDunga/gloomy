@@ -13,6 +13,7 @@ public class Stage {
     private final MapModel map;
     private final SnakeModel snake;
     private final Score score = new Score();
+    private boolean isGameOver = false;
     
     public Stage()
 	{
@@ -24,9 +25,7 @@ public class Stage {
     	LevelMapReader levelMapReader = new LevelMapReader();
     	map = levelMapReader.read(currentStageIndex, levelInfoList.get(currentStageIndex));
     	
-    	snake = new SnakeModel(getMap());
-        
- 	
+    	snake = new SnakeModel(this);
 	}
     
     
@@ -41,5 +40,17 @@ public class Stage {
     
     public Score getScore() {
         return score;
+    }
+
+
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
+
+
+    public void setGameOver(boolean isGameOver) {
+        this.isGameOver = isGameOver;
     }
 }

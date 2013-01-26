@@ -1,6 +1,7 @@
 package ggjsap2013.views.game;
 
 import ggjsap2013.Gloomy;
+import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.map.barricades.Barricade;
@@ -13,10 +14,12 @@ import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 public class MapNode extends GameNode {
+    private final Stage stage;
     private final MapModel map;
     
-    public MapNode(MapModel map) {
-        this.map = map;
+    public MapNode(Stage stage) {
+        this.stage = stage;
+        this.map = stage.getMap();
     }
     
     @Override
