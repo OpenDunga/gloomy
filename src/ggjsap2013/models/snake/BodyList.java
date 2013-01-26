@@ -38,7 +38,7 @@ public class BodyList {
     /**
      * 先頭を後ろに回す
      */
-    public void changeForword() {
+    public void changeForward() {
         SnakeBody head = list.pollFirst();
         list.add(head);
     }
