@@ -28,7 +28,16 @@ public class SnakeModel {
         gotoPoint.y += dy;
         gotoPoint = getLoopedPoint(gotoPoint);
         this.getMovedPoints().push(gotoPoint);
-        intersectBlock();
+        try {
+            intersectBlock();
+            boolean isSelfEat = 
+                    movedPoints.isIntersect(bodies.size(), movedPoints.get(0));
+            if(isSelfEat) throw new GameOverException();
+        } catch (GameOverException e) {
+            // TODO ゲームオーバー処理
+            stage.setGameOver(true);
+            System.out.println("GameOver!");
+        }
     }
     
     /**
@@ -73,19 +82,12 @@ public class SnakeModel {
     /**
      * ブロックと交差したときの処理.
      */
-    public void intersectBlock() {
+    public void intersectBlock() throws GameOverException {
         Point p = movedPoints.get(0);
         Block b = map.getArray()[p.y][p.x];
         if(b != null) {
             map.getArray()[p.y][p.x] = null;
-            try {
-                b.intersects(this, map, stage);
-                
-            } catch (GameOverException e) {
-                // TODO ゲームオーバー処理
-                stage.setGameOver(true);
-                System.out.println("GameOver!");
-            }
+            b.intersects(this, map, stage);
         }
     }
 

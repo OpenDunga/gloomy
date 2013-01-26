@@ -13,6 +13,22 @@ public class MovedPoints {
     private int limitLength = 100;
     
     /**
+     * 指定座標がしっぽとぶつかっているかの判定.
+     * ヘビの長さと判定するポイントを指定し、交差していればtrue
+     * @return
+     */
+    public boolean isIntersect(int length, Point p) {
+        if(length <= 1) return false;
+        for(int i=1; i<length; i++) {
+            if(list.size() <= i) break;
+            if(list.get(i).equals(p)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
      * リストの先頭に座標を追加する.
      */
     public void push(Point p) {

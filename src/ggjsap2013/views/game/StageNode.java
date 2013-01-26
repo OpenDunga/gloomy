@@ -12,6 +12,7 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
 public class StageNode extends GameNode {
     private final Stage stage = new Stage();
     private boolean isEnd = false;
+    
     public StageNode() {
         this.add(new MapNode(getStage()));
         this.add(new SnakeNode(getStage()));
