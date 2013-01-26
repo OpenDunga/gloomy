@@ -72,7 +72,7 @@ public class PointItem implements Item
 				break;
 		}
 		
-		map.createPointItemBlock();
+		map.createPointItemBlock(stage.getCurrentLevel());
 	}
 	
 	@Override

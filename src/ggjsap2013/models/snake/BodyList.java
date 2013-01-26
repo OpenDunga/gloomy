@@ -31,7 +31,6 @@ public class BodyList {
             list.addFirst(body);
         }
     }
-
     
     /**
      * 指定のSnakeBodyのリストで初期化する.

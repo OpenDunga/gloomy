@@ -58,7 +58,7 @@ public class CharacterItem implements Item
 				snake.getBodies().addBody(new SnakeBody(BodyType.C));
 				break;
 		}
-		map.createCharacterItemBlock();
+		map.createCharacterItemBlock(stage.getCurrentLevel());
 	}
 	
 	@Override

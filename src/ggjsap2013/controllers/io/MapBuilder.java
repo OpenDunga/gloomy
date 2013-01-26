@@ -1,0 +1,27 @@
+package ggjsap2013.controllers.io;
+
+import ggjsap2013.Gloomy;
+import ggjsap2013.models.level.Level;
+import ggjsap2013.models.map.MapModel;
+
+public class MapBuilder {
+    
+    public static MapModel create(Level level) {
+        MapModel map = new MapModel(Gloomy.STAGE_WIDTH, Gloomy.STAGE_HEIGHT);
+        init(level, map);
+        return map;
+    }
+    
+    /**
+     * レベル情報に基づいてマップモデル初期化するよ！
+     */
+    private static void init(Level level, MapModel map)
+    {
+        for (int i=0; i<level.getMaxPointItemCount(); i++) {
+            map.createPointItemBlock(level);
+        }
+        for (int i=0; i<level.getMaxCharacterItemCount(); i++) {
+            map.createCharacterItemBlock(level);
+        }
+    }
+}

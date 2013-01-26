@@ -1,32 +1,43 @@
 package ggjsap2013.models;
 
-import ggjsap2013.controllers.io.LevelMapReader;
+import java.util.List;
+
+import ggjsap2013.Gloomy;
 import ggjsap2013.controllers.io.LevelReader;
+import ggjsap2013.controllers.io.MapBuilder;
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.score.Score;
 import ggjsap2013.models.snake.SnakeModel;
 
-import java.util.List;
-
 public class Stage {
-    private final MapModel map;
     private final SnakeModel snake;
     private final Score score = new Score();
+    private final MapModel map = new MapModel(Gloomy.STAGE_WIDTH, Gloomy.STAGE_HEIGHT);
     private boolean isGameOver = false;
+    private LevelReader levelReader = new LevelReader();
+    private List<Level> levelInfoList = levelReader.read();
+    private int currentStageIndex = 0;
     
     public Stage()
 	{
-    	int currentStageIndex = 0;	//TODO ステージインデックスちゃんとかえること！
-    	
-    	LevelReader levelReader = new LevelReader();
-    	List<Level> levelInfoList = levelReader.read();
-    	
-    	LevelMapReader levelMapReader = new LevelMapReader();
-    	map = levelMapReader.read(currentStageIndex, levelInfoList.get(currentStageIndex));
-    	
+    	setLevel(currentStageIndex);
     	snake = new SnakeModel(this);
 	}
+    
+    public Level getCurrentLevel() {
+        return levelInfoList.get(currentStageIndex);
+    }
+    
+    public void nextLevel() {
+        currentStageIndex++;
+        setLevel(currentStageIndex);
+    }
+    
+    public void setLevel(int level) {
+        MapModel levelMap = MapBuilder.create(levelInfoList.get(level));
+        map.mergeMap(levelMap.getArray());
+    }
     
     public MapModel getMap() {
         return map;

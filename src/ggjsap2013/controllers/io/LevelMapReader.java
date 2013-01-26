@@ -71,8 +71,4 @@ public class LevelMapReader extends ConfigurationReader
 		return mapModel;
 	}
 	
-	public static void main(String[] args)
-	{
-	}
-	
 }
