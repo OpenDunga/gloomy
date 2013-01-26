@@ -20,10 +20,11 @@ public class BodyList {
     public void killHead()
     	throws GameOverException
     {
+    	list.removeFirst();
+    	
     	if (list.size() == 0) {
     		throw new GameOverException();
     	}
-    	list.removeFirst();
     }
     
     public int size() {
