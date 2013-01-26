@@ -13,6 +13,8 @@ import ggjsap2013.models.snake.SnakeModel.Direction;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
@@ -30,11 +32,13 @@ public class SnakeNode extends GameNode {
         this.stage = stage;
         this.model = stage.getSnake();
         this.setKeyWait(30);
+        List<SnakeBody> bodies = new ArrayList<SnakeBody>();
         for(int i=0; i<2; i++) {
-            model.getBodies().addBody(new SnakeBody(BodyType.A));
-            model.getBodies().addBody(new SnakeBody(BodyType.B));
-            model.getBodies().addBody(new SnakeBody(BodyType.C));
+            bodies.add(new SnakeBody(BodyType.A));
+            bodies.add(new SnakeBody(BodyType.B));
+            bodies.add(new SnakeBody(BodyType.C));
         }
+        model.getBodies().init(bodies);
     }
 
     @Override
@@ -67,6 +71,7 @@ public class SnakeNode extends GameNode {
     private void drawBody(SnakeBody b, Point p, Direction d, NodeGraphics g) {
         switch(b.getType()) {
         case A:
+        case B:
         case ahiru:
         case kuma:
         case lion:
@@ -91,6 +96,9 @@ public class SnakeNode extends GameNode {
         switch(b.getType()) {
         case A:
             imageID = 1;
+            break;
+        case B:
+            imageID = 2;
             break;
         case ahiru:
             imageID = 1;

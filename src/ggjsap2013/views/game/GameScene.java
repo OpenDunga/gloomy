@@ -24,33 +24,15 @@ public class GameScene extends GameNode {
     public void gameOver() {
         this.add(new GameOverNode(this));
     }
-    
-    
-    
-    
+    @Override
+    protected void drawNode(NodeGraphics g) {}
 
     @Override
-    protected void drawNode(NodeGraphics g) {
-        // TODO Auto-generated method stub
-        
-    }
+    protected void listenKeys(boolean[] keys) {}
 
     @Override
-    protected void listenKeys(boolean[] keys) {
-        // TODO Auto-generated method stub
-        
-    }
+    protected void listenMouse(MouseInfo info) {}
 
     @Override
-    protected void listenMouse(MouseInfo info) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    protected void updateNode() {
-        // TODO Auto-generated method stub
-        
-    }
-
+    protected void updateNode() {}
 }

@@ -18,7 +18,7 @@ public class SnakeModel {
     public enum Direction {NORTH, EAST, SOUTH, WEST}
     private final MapModel map;
     private final Stage stage;
-    private final BodyList bodies = new BodyList();
+    private final BodyList bodies;
     private final MovedHistories movedHistories = new MovedHistories();
     private int moveWait = 10;
     private Direction direction = Direction.SOUTH;
@@ -29,6 +29,7 @@ public class SnakeModel {
     
     public SnakeModel(Stage stage) {
         this.stage = stage;
+        this.bodies = new BodyList(stage);
         this.map = stage.getMap();
         movedHistories.push(new Point(), Direction.SOUTH);
     }

@@ -28,8 +28,10 @@ public class InfomationNode extends GameNode
 	{
 		int scoreValue = stage.getScore().getScore();
 		int lengthValue = stage.getSnake().getBodies().size();
+		int charaCountValue = stage.getScore().getCharaCount();
 		g.drawText("score: " + scoreValue, 10, 10);
 		g.drawText("length: " + lengthValue, 10, 40);
+		g.drawText("charaCount: " + charaCountValue, 10, 70);
 	}
 
 	@Override

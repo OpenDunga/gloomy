@@ -21,12 +21,20 @@ public class ImageLoader {
         Images.put("bottommap", bottomMap);
         
         //キャラチップ
-        Images.put("chara_1_n", prefix + "charachips/alice_n.png");
-        Images.put("chara_1_s", prefix + "charachips/alice_s.png");
-        Images.put("chara_1_e", prefix + "charachips/alice_e.png");
-        Images.put("chara_1_w", prefix + "charachips/alice_w.png");
+        loadCharaChips();
         
         loadAnimalCharaChips();
+    }
+    
+    private static void loadCharaChips() throws IOException {
+        loadCharaChip(1, "alice");
+        loadCharaChip(2, "marm");
+    }
+    private static void loadCharaChip(int id, String name) throws IOException {
+        Images.put("chara_" + id + "_n", prefix + "charachips/" + name + "_n.png");
+        Images.put("chara_" + id + "_s", prefix + "charachips/" + name + "_s.png");
+        Images.put("chara_" + id + "_e", prefix + "charachips/" + name + "_e.png");
+        Images.put("chara_" + id + "_w", prefix + "charachips/" + name + "_w.png");
     }
     
     private static void loadAnimalCharaChips() throws IOException {

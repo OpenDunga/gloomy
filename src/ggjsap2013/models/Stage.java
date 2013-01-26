@@ -28,8 +28,6 @@ public class Stage {
     	snake = new SnakeModel(this);
 	}
     
-    
-    
     public MapModel getMap() {
         return map;
     }
@@ -42,13 +40,9 @@ public class Stage {
         return score;
     }
 
-
-
     public boolean isGameOver() {
         return isGameOver;
     }
-
-
 
     public void setGameOver(boolean isGameOver) {
         this.isGameOver = isGameOver;
