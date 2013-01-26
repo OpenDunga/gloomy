@@ -9,8 +9,8 @@ import ggjsap2013.models.map.MapModel;
  */
 public class MapBuilder {
     
-    public static MapModel create(int levelNum, Level level) {
-        MapModel map = new LevelMapReader().readLevelMap(levelNum, level);
+    public static MapModel create(Level level) {
+        MapModel map = new LevelMapReader().readLevelMap(level.getIndex(), level);
         addRandomBlocks(level, map);
         return map;
     }

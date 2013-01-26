@@ -11,7 +11,7 @@ public class Level
 	/**
 	 * レベル番号
 	 */
-	private final int				   index;
+	private int				            index;
 	
 	
 	
