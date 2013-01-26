@@ -52,15 +52,21 @@ public class MapModel {
      */
     public void createRandomBlock() 
     {
-//        int putX = (int)(map[0].length * Math.random());
-//        int putY = (int)(map.length * Math.random());
-        
-    	int putX = RandomUtil.nextInt(map[0].length);
-    	int putY = RandomUtil.nextInt(map.length);
     	
-    	List<Item.TYPES> typeList = currentLevel.getAvailableItemTypes();
-    	Item.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
-    	
-        map[putY][putX] = new Item(itemType);
+    	while (true) {
+        	int putX = RandomUtil.nextInt(map[0].length);
+        	int putY = RandomUtil.nextInt(map.length);
+        	
+        	if (map[putY][putX] != null) {
+        		continue;
+        	}
+        	
+        	
+        	List<Item.TYPES> typeList = currentLevel.getAvailableItemTypes();
+        	Item.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
+        	
+            map[putY][putX] = new Item(itemType);
+            break;
+    	}
     }
 }
