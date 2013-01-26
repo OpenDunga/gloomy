@@ -50,7 +50,7 @@ public class StageReader extends ConfigurationReader
 			for (int y=0; y<height; y++) {
 				for (int x=0; x<width; x++) {
 					try {
-						TYPES type = Barricade.TYPES.valueOf(stageArray[y][x]);
+						TYPES type = Barricade.getType(stageArray[y][x]);
 						Barricade barricade = new Barricade(type);
 						mapModel.setBlock(x, y, barricade);
 					} catch (Exception e) {

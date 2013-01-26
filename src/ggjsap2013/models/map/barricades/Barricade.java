@@ -1,5 +1,6 @@
 package ggjsap2013.models.map.barricades;
 
+import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.SnakeModel;
@@ -13,9 +14,32 @@ import ggjsap2013.models.snake.SnakeModel;
 public class Barricade implements Block
 {
 	public static enum TYPES {
-		A,
-		B,
-		C
+		STONE("S"),
+		ROCK("R"),
+		BOMB("B"),
+		WALL("W"),
+		BACHI_BACHI("8");
+		
+		private String shortName;
+		private TYPES(String shortName)
+		{
+			this.shortName = shortName;
+		}
+	}
+	
+	public static TYPES getType(String shortName)
+	{
+		TYPES type = null;
+		for (TYPES t : TYPES.values()) {
+			if (t.shortName.equals(shortName)) {
+				type = t;
+			}
+		}
+		if (type == null) {
+			throw new IllegalArgumentException();
+		}
+		
+		return type;
 	}
 	
 	
@@ -50,15 +74,37 @@ public class Barricade implements Block
 
 	@Override
 	public void intersects(SnakeModel snake, MapModel map)
+		throws GameOverException
 	{
 		switch (type) {
-			case A:
+			case STONE:
+				/* 一人減るよ */
 				snake.getBodies().killHead();
 				break;
-			case B:
+				
+			case ROCK:
+				/* 二人減るよ */
+				snake.getBodies().killHead();
 				snake.getBodies().killHead();
 				break;
-			case C:
+				
+			case BOMB:
+				/* 四人減るよ */
+				snake.getBodies().killHead();
+				snake.getBodies().killHead();
+				snake.getBodies().killHead();
+				snake.getBodies().killHead();
+				break;
+				
+			case WALL:
+				/* 一人減るよ */
+				snake.getBodies().killHead();
+				break;
+				
+			case BACHI_BACHI:
+				/* 三人減るよ */
+				snake.getBodies().killHead();
+				snake.getBodies().killHead();
 				snake.getBodies().killHead();
 				break;
 		}
