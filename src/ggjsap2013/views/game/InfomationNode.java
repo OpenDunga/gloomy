@@ -1,4 +1,4 @@
-package ggjsap2013.views;
+package ggjsap2013.views.game;
 
 import ggjsap2013.models.Stage;
 import jp.tohhy.gamepanel.GameNode;
@@ -6,20 +6,19 @@ import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 /**
- * スコア表示用のノードです
+ * スコアや長さの情報表示用のノードです
  * 
  * @author Casamorica
  *
  */
-public class ScoreNode extends GameNode
+public class InfomationNode extends GameNode
 {
-	
 	private final Stage stage;
 	
 	/**
 	 * インスタンス作るよ
 	 */
-	public ScoreNode(Stage stage)
+	public InfomationNode(Stage stage)
 	{
 		this.stage = stage;
 	}
@@ -28,8 +27,9 @@ public class ScoreNode extends GameNode
 	protected void drawNode(NodeGraphics g)
 	{
 		int scoreValue = stage.getScore().getScore();
-		
-		g.drawText("" + scoreValue, 10, 10);
+		int lengthValue = stage.getSnake().getBodies().size();
+		g.drawText("score: " + scoreValue, 10, 10);
+		g.drawText("length: " + lengthValue, 10, 40);
 	}
 
 	@Override

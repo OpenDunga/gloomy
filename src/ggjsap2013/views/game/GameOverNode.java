@@ -1,4 +1,4 @@
-package ggjsap2013.views;
+package ggjsap2013.views.game;
 
 import java.awt.Color;
 import java.awt.Font;

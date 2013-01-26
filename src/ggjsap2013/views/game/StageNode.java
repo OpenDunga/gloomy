@@ -1,8 +1,6 @@
-package ggjsap2013.views;
+package ggjsap2013.views.game;
 
 import ggjsap2013.models.Stage;
-import ggjsap2013.views.game.MapNode;
-import ggjsap2013.views.game.SnakeNode;
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.utils.MouseInfo;
@@ -12,11 +10,11 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  * @author tohhy
  */
 public class StageNode extends GameNode {
-    private final Stage model = new Stage();
+    private final Stage stage = new Stage();
     private boolean isEnd = false;
     public StageNode() {
-        this.add(new MapNode(model));
-        this.add(new SnakeNode(model));
+        this.add(new MapNode(getStage()));
+        this.add(new SnakeNode(getStage()));
         this.setPosition(230, 20);
     }
 
@@ -26,7 +24,7 @@ public class StageNode extends GameNode {
     @Override
     protected void updateNode() {
         if(isEnd) return;
-        if(model.isGameOver()) {
+        if(getStage().isGameOver()) {
             this.add(new GameOverNode());
             isEnd = true;
         }
@@ -38,4 +36,7 @@ public class StageNode extends GameNode {
     @Override
     protected void listenMouse(MouseInfo info) {}
 
+    public Stage getStage() {
+        return stage;
+    }
 }
