@@ -51,7 +51,24 @@ public class Barricade implements Block
 	@Override
 	public void intersects(SnakeModel snake, MapModel map)
 	{
-		//TODO ぶつかると先頭のキャラが消滅
+		switch (type) {
+			case A:
+				snake.getBodies().killHead();
+				break;
+			case B:
+				snake.getBodies().killHead();
+				break;
+			case C:
+				snake.getBodies().killHead();
+				break;
+		}
+	}
+	
+	
+	@Override
+	public String toString()
+	{
+		return "X-" + type;
 	}
 	
 	

@@ -10,6 +10,15 @@ public class BodyList {
         list.addFirst(body);
     }
     
+    /**
+     * ヘビの頭を切り落とすよ
+     * 
+     */
+    public void killHead()
+    {
+    	list.removeFirst();
+    }
+    
     public int size() {
         return list.size();
     }

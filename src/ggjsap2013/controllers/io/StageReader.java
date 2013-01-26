@@ -40,9 +40,9 @@ public class StageReader extends ConfigurationReader
 			
 			int width = 0;
 			int height = 0;
-			height = stageArray.length;
-			for (int i=0; i<height; i++) {
-				width = Math.max(width, stageArray[i].length);
+			width = stageArray.length;
+			for (int i=0; i<width; i++) {
+				height = Math.max(height, stageArray[i].length);
 			}
 			
 			mapModel = new MapModel(width, height);
@@ -50,7 +50,7 @@ public class StageReader extends ConfigurationReader
 			for (int y=0; y<height; y++) {
 				for (int x=0; x<width; x++) {
 					try {
-						TYPES type = Barricade.TYPES.valueOf(stageArray[x][y]);
+						TYPES type = Barricade.TYPES.valueOf(stageArray[y][x]);
 						Barricade barricade = new Barricade(type);
 						mapModel.setBlock(x, y, barricade);
 					} catch (Exception e) {
