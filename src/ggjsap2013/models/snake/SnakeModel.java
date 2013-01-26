@@ -11,9 +11,26 @@ import java.awt.Point;
 
 public class SnakeModel {
 	
+	/**
+	 * 無敵状態の制限時間(1秒)
+	 */
 	public static final int		NO_DAMAGE_SKILL_LIMIT		= 50;
+	
+	/**
+	 * ゆっくり状態の制限時間(10秒)
+	 */
 	public static final int		SLOW_SKILL_LIMIT			= 500;
 	
+	
+	/**
+	 * 通常状態時の移動速度(1/5秒に1マス)
+	 */
+	public static final int		DEFAULT_MOVE_WAIT			= 10;
+	
+	/**
+	 * ゆっくり状態の移動速度(1秒に1マス)
+	 */
+	public static final int		SLOW_MOVE_WAIT				= 50;
 	
     public enum Direction {NORTH, EAST, SOUTH, WEST}
     private final MapModel map;
@@ -165,6 +182,11 @@ public class SnakeModel {
     }
     
     
+    /**
+     * 指定されたスキルを発動します
+     * 
+     * @param skill
+     */
     public void invokiSkill(Skill skill)
     {
     	/* 現在スキル未発動のときのみ */
@@ -177,27 +199,70 @@ public class SnakeModel {
     				break;
     			case SLOW:
     				skillCount = SLOW_SKILL_LIMIT;
+    				setMoveWait(SLOW_MOVE_WAIT);
     				break;
     		}
     	}
     }
     
+    /**
+     * 1フレームごとにスキルの制限時間を減らしていきます
+     */
     public void decreaseSkillCount()
     {
-    	skillCount--;
-    	if (skillCount <= 0) {
-    		skillCount = 0;
-    		currentSkill = null;
+    	if (skillCount > 0) {
+        	skillCount--;
+        	if (skillCount <= 0) {
+        		/* スキル終了処理 */
+        		switch (currentSkill.getType()) {
+        			case SLOW:
+        				setMoveWait(DEFAULT_MOVE_WAIT);
+        				break;
+        		}
+        		
+        		skillCount = 0;
+        		currentSkill = null;
+        	}
     	}
     }
     
     
+    /**
+     * スキル発動中かどうかを返しますよ
+     * 
+     * @return
+     */
+    public boolean isSkillInvoked()
+    {
+    	return currentSkill != null;
+    }
     
+    /**
+     * 無敵状態が発動中かどうかを返しますよ
+     * 
+     * @return
+     */
     public boolean isNoDamage()
     {
     	if (currentSkill == null) {
     		return false;
     	} else if (currentSkill.getType() == TYPES.DAMAGE_ZERO) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
+    /**
+     * ゆっくり状態が発動中かどうかを返しますよ
+     * 
+     * @return
+     */
+    public boolean isSlow()
+    {
+    	if (currentSkill == null) {
+    		return false;
+    	} else if (currentSkill.getType() == TYPES.SLOW) {
     		return true;
     	} else {
     		return false;
