@@ -1,18 +1,32 @@
 [
 	{
 		"index":0,
-		"maxItemCount":2,
-		"availableItemTypes":["CANDY"]
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["CANDY"],
+
+		"maxCharacterItemCount":1,
+		"availableCharacterItemTypes":["A"]
+		
 	},
 	{
 		"index":1,
-		"maxItemCount":5
-		"availableItemTypes":["CANDY", "DONUT"]
+		
+		"maxPointItemCount":5
+		"availablePointItemTypes":["CANDY", "DONUT"]
+
+		"maxCharacterItemCount":2,
+		"availableCharacterItemTypes":["B", "C"]
+		
 	},
 	{
 		"index":2,
-		"maxItemCount":1,
-		"availableItemTypes":["DONUT", "RIBON", "CAKE"]
+		
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["DONUT", "RIBON", "CAKE"]
+		
+		"maxCharacterItemCount":10,
+		"availableCharacterItemTypes":["C"]
 	}
 	
 ]

@@ -2,7 +2,6 @@ package ggjsap2013.models.map.item;
 
 import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.map.MapModel;
-import ggjsap2013.models.map.item.PointItem.TYPES;
 import ggjsap2013.models.snake.BodyType;
 import ggjsap2013.models.snake.SnakeBody;
 import ggjsap2013.models.snake.SnakeModel;
@@ -58,8 +57,12 @@ public class CharacterItem implements Item
 				snake.getBodies().addBody(new SnakeBody(BodyType.C));
 				break;
 		}
-
+		map.createCharacterItemBlock();
 	}
 	
-	
+	@Override
+	public String toString()
+	{
+		return type + "さん";
+	}
 }

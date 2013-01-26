@@ -1,6 +1,7 @@
 package ggjsap2013.models.map;
 
 import ggjsap2013.models.level.Level;
+import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 import ggjsap2013.utils.RandomUtil;
 
@@ -23,8 +24,11 @@ public class MapModel {
      */
     public void init()
     {
-    	for (int i=0; i<currentLevel.getMaxItemCount(); i++) {
-    		createRandomBlock();
+    	for (int i=0; i<currentLevel.getMaxPointItemCount(); i++) {
+    		createPointItemBlock();
+    	}
+    	for (int i=0; i<currentLevel.getMaxCharacterItemCount(); i++) {
+    		createCharacterItemBlock();
     	}
     }
 
@@ -46,9 +50,9 @@ public class MapModel {
     }
     
     /**
-     * ステージ情報を読み取り、ランダムな位置に新規ブロックを生成する.
+     * ステージ情報を読み取り、ランダムな位置に新規ポイントアイテムブロックを生成する.
      */
-    public void createRandomBlock() 
+    public void createPointItemBlock() 
     {
     	
     	while (true) {
@@ -59,10 +63,33 @@ public class MapModel {
         		continue;
         	}
         	
-        	List<PointItem.TYPES> typeList = currentLevel.getAvailableItemTypes();
+        	List<PointItem.TYPES> typeList = currentLevel.getAvailablePointItemTypes();
         	PointItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
         	
             map[putY][putX] = new PointItem(itemType);
+            break;
+    	}
+    }
+    
+
+    /**
+     * ステージ情報を読み取り、ランダムな位置に新規キャラアイテムブロックを生成する.
+     */
+    public void createCharacterItemBlock() 
+    {
+    	
+    	while (true) {
+        	int putX = RandomUtil.nextInt(map[0].length);
+        	int putY = RandomUtil.nextInt(map.length);
+        	
+        	if (map[putY][putX] != null) {
+        		continue;
+        	}
+        	
+        	List<CharacterItem.TYPES> typeList = currentLevel.getAvailableCharacterItemTypes();
+        	CharacterItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
+        	
+            map[putY][putX] = new CharacterItem(itemType);
             break;
     	}
     }

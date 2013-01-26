@@ -1,5 +1,6 @@
 package ggjsap2013.models.level;
 
+import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 
 import java.util.List;
@@ -11,21 +12,37 @@ public class Level
 	 * ステージの順番
 	 * 
 	 */
-	private int					index;
+	private int							index;
+	
+	
 	
 	/**
 	 * マップ中に出てくるポイントアイテムの最大数だよ
 	 */
-	private int					maxPointItemCount;
+	private int							maxPointItemCount;
 	
 
 	/**
-	 * マップ中に出てくる可能性のあるアイテムの種類ですよー
+	 * マップ中に出てくる可能性のあるポイントアイテムの種類ですよー
 	 */
-	private List<PointItem.TYPES>	availableItemTypes;
+	private List<PointItem.TYPES>		availablePointItemTypes;
 	
+
+	/**
+	 * マップ中に出てくるキャラアイテムの最大数だよ
+	 */
+	private int							maxCharacterItemCount;
 	
+
+	/**
+	 * マップ中に出てくる可能性のあるキャラアイテムの種類ですよー
+	 */
+	private List<CharacterItem.TYPES>	availableCharacterItemTypes;
 	
+
+	/**
+	 * インスタンスつくるよ！
+	 */
 	public Level()
 	{
 	}
@@ -50,12 +67,33 @@ public class Level
 	}
 	
 	
-	public void setAvailableItemTypes(List<PointItem.TYPES> availableItemTypes)
+	public void setAvailablePointItemTypes(List<PointItem.TYPES> availablePointItemTypes)
 	{
-		this.availableItemTypes = availableItemTypes;
+		this.availablePointItemTypes = availablePointItemTypes;
 	}
-	public List<PointItem.TYPES> getAvailableItemTypes()
+	public List<PointItem.TYPES> getAvailablePointItemTypes()
 	{
-		return availableItemTypes;
+		return availablePointItemTypes;
 	}
+	
+	
+	public void setMaxCharacterItemCount(int maxCharacterItemCount)
+	{
+		this.maxCharacterItemCount = maxCharacterItemCount;
+	}
+	public int getMaxCharacterItemCount()
+	{
+		return maxCharacterItemCount;
+	}
+	
+	public void setAvailableCharacterItemTypes(
+			List<CharacterItem.TYPES> availableCharacterItemTypes)
+	{
+		this.availableCharacterItemTypes = availableCharacterItemTypes;
+	}
+	public List<CharacterItem.TYPES> getAvailableCharacterItemTypes()
+	{
+		return availableCharacterItemTypes;
+	}
+	
 }

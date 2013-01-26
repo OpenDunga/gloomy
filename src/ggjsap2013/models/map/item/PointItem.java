@@ -61,7 +61,7 @@ public class PointItem implements Item
 				break;
 		}
 		
-		map.createRandomBlock();
+		map.createPointItemBlock();
 	}
 	
 	@Override
