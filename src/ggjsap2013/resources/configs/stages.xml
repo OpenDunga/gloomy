@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Stages>
+	<Stage index="0">
+		<!-- 画面に出てくる最大アイテム数？ -->
+		<ItemCount>2</ItemCount>
+		<!-- ステージに出てくるアイテムの種類リスト -->
+		<AvailableItemTypes>
+			<ItemType type="A" />
+			<ItemType type="B" />
+			<ItemType type="C" />
+		</AvailableItemTypes>
+	</Stage>
+	
+	<Stage index="1">
+		<ItemCount>5</ItemCount>
+		<AvailableItemTypes>
+			<ItemType type="B" />
+			<ItemType type="C" />
+		</AvailableItemTypes>
+	</Stage>
+	
+	<Stage index="2">
+		<ItemCount>1</ItemCount>
+		<AvailableItemTypes>
+			<ItemType type="C" />
+		</AvailableItemTypes>
+	</Stage>
+	
+</Stages>
+
