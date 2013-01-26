@@ -16,6 +16,8 @@ import java.awt.event.KeyEvent;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.images.GameImage;
+import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 public class SnakeNode extends GameNode {
@@ -41,10 +43,9 @@ public class SnakeNode extends GameNode {
         MovedPoints points = model.getMovedPoints();
         BodyList bodies = model.getBodies();
         if(length <= 0) {
-            //長さゼロはゲームオーバー、描画を想定しない
+            //長さゼロはゲームオーバー
             g.setColor(Color.red);
-            g.fillRect(
-                    points.get(0).x*CHIP_SIZE, points.get(0).y*CHIP_SIZE, 
+            g.fillRect(points.get(0).x*CHIP_SIZE, points.get(0).y*CHIP_SIZE, 
                     CHIP_SIZE, CHIP_SIZE);
         } else {
             g.setColor(Color.blue);
@@ -55,15 +56,30 @@ public class SnakeNode extends GameNode {
                 g.drawRect(
                         p.x*CHIP_SIZE, p.y*CHIP_SIZE, 
                         CHIP_SIZE, CHIP_SIZE);
-                
-                if (model.isNoDamage()) {
-                    g.drawText("**" + b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
-                } else {
-                    g.drawText(b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
-                }
+                drawBody(b, p, g);
                 g.setColor(Color.red);
             }
         }
+    }
+    
+    private void drawBody(SnakeBody b, Point p, NodeGraphics g) {
+        switch(b.getType()) {
+        case A:
+            g.drawGameImage(getCharaImage(b), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+            break;
+        default:
+            if (model.isNoDamage()) {
+                g.drawText("**" + b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+            } else {
+                g.drawText(b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
+            }
+        }
+    }
+    
+    private GameImage getCharaImage(SnakeBody b) {
+        GameImage i = Images.get("chara_1_w");
+
+        return i;
     }
 
     @Override
