@@ -1,5 +1,6 @@
 package ggjsap2013.models.level;
 
+import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 
@@ -38,6 +39,16 @@ public class Level
 	 */
 	private List<CharacterItem.TYPES>	availableCharacterItemTypes;
 	
+	/**
+     * マップ中に出てくる障害物の最大数だよ
+     */
+    private int                         maxBarricadeCount;
+	
+	/**
+     * マップ中に出てくる可能性のある障害物の種類ですよー
+     */
+    private List<Barricade.TYPES>   availableBarricadeTypes;
+	
 
 	/**
 	 * インスタンスつくるよ！
@@ -62,6 +73,15 @@ public class Level
 	{
 		return maxPointItemCount;
 	}
+	
+	public void setAvailableBarricadeTypes(List<Barricade.TYPES> availableBarricadeTypes)
+    {
+        this.availableBarricadeTypes = availableBarricadeTypes;
+    }
+    public List<Barricade.TYPES> getAvailableBarricadeTypes()
+    {
+        return availableBarricadeTypes;
+    }
 	
 	
 	public void setAvailablePointItemTypes(List<PointItem.TYPES> availablePointItemTypes)
@@ -92,5 +112,13 @@ public class Level
 	{
 		return availableCharacterItemTypes;
 	}
+
+    public int getMaxBarricadeCount() {
+        return maxBarricadeCount;
+    }
+
+    public void setMaxBarricadeCount(int maxBarricadeCount) {
+        this.maxBarricadeCount = maxBarricadeCount;
+    }
 	
 }

@@ -6,27 +6,36 @@
 		"availablePointItemTypes":["CANDY"],
 
 		"maxCharacterItemCount":1,
-		"availableCharacterItemTypes":["A", "B", "C"]
+		"availableCharacterItemTypes":["A", "B", "C"],
+
+		"maxBarricadeCount":1,
+		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
 		
 	},
 	{
 		"index":1,
 		
-		"maxPointItemCount":5
-		"availablePointItemTypes":["CANDY", "DONUT"]
+		"maxPointItemCount":5,
+		"availablePointItemTypes":["CANDY", "DONUT"],
 
 		"maxCharacterItemCount":2,
-		"availableCharacterItemTypes":["B", "C"]
+		"availableCharacterItemTypes":["B", "C"],
+
+		"maxBarricadeCount":1,
+		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
 		
 	},
 	{
 		"index":2,
 		
 		"maxPointItemCount":1,
-		"availablePointItemTypes":["DONUT", "RIBON", "CAKE"]
+		"availablePointItemTypes":["DONUT", "RIBON", "CAKE"],
 		
 		"maxCharacterItemCount":10,
-		"availableCharacterItemTypes":["C"]
+		"availableCharacterItemTypes":["C"],
+
+		"maxBarricadeCount":1,
+		"availableBarricadeTypes":["STONE", "ROCK", "BOMB"]
 	}
 	
 ]

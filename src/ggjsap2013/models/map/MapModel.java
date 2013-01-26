@@ -16,6 +16,28 @@ public class MapModel {
         map = new Block[height][width];
     }
     
+    
+    /**
+     * ステージ情報を読み取り、ランダムな位置に新規障害物ブロックを生成する.
+     */
+    public void createBarricadeBlock(Level currentLevel) 
+    {
+        while (true) {
+            int putX = RandomUtil.nextInt(map[0].length);
+            int putY = RandomUtil.nextInt(map.length);
+            
+            if (map[putY][putX] != null) {
+                continue;
+            }
+            
+            List<Barricade.TYPES> typeList = currentLevel.getAvailableBarricadeTypes();
+            Barricade.TYPES barricadeType = typeList.get(RandomUtil.nextInt(typeList.size()));
+            
+            map[putY][putX] = new Barricade(barricadeType);
+            break;
+        }
+    }
+    
     /**
      * ステージ情報を読み取り、ランダムな位置に新規ポイントアイテムブロックを生成する.
      */
