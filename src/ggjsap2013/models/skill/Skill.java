@@ -27,6 +27,10 @@ public class Skill
 	 */
 	public static final int		SLOW_SKILL_LIMIT			= 500;
 	
+	/**
+	 * 障害物破壊の制限時間(10秒)
+	 */
+	public static final int		BREAK_SKILL_LIMIT			= 500;
 	
 	/**
 	 * ポイント２倍の制限時間(10秒)
@@ -34,6 +38,11 @@ public class Skill
 	 */
 	public static final int		POINT_DOUBLE_SKILL_LIMIT	= 500;
 	
+	/**
+	 * メンバーポイント獲得の制限時間(10秒)
+	 * 
+	 */
+	public static final int		FRIEND_POINT_SKILL_LIMIT	= 500;
 	
 	
 	public static enum TYPES {
@@ -88,6 +97,7 @@ public class Skill
 					break;
 					
 				case BREAK:
+					snake.invokeSkill(this);
 					map.breakOneMovingBarricade();
 					snake.getBodies().killHead();
 					break;
@@ -98,6 +108,7 @@ public class Skill
 					break;
 					
 				case FRIEND_POINT:
+					snake.invokeSkill(this);
 					int size = snake.getBodies().size();
 					stage.getScore().addScore(size * 1000);
 					snake.getBodies().killHead();

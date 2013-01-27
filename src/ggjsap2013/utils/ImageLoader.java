@@ -1,9 +1,7 @@
 package ggjsap2013.utils;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import jp.tohhy.gamepanel.images.ImageBuilder;
 import jp.tohhy.gamepanel.images.Images;
 
 public class ImageLoader {
@@ -37,6 +35,7 @@ public class ImageLoader {
         loadCharaChip(2, "marm");
         loadCharaChip(3, "akaz");
         loadCharaChip(4, "sira");
+        loadCharaChip(5, "tinkerbell");
     }
     private static void loadCharaChip(int id, String name) throws IOException {
         Images.put("chara_" + id + "_n", prefix + "charachips/" + name + "_n.png");
@@ -62,14 +61,23 @@ public class ImageLoader {
     
     private static void loadEffectChips() throws IOException
     {
-    	loadEffetcChip(1);
+    	loadEffetcChip("white");
+    	loadEffetcChip("blue");
+    	loadEffetcChip("green");
+    	loadEffetcChip("red");
+    	loadEffetcChip("yellow");
     }
     
-    private static void loadEffetcChip(int id) throws IOException
+    private static void loadEffetcChip(String name) throws IOException
     {
-        Images.put("effect_" + id + "_0", prefix + "effects/effect" + id + "_0.png");
-        Images.put("effect_" + id + "_1", prefix + "effects/effect" + id + "_1.png");
-        Images.put("effect_" + id + "_2", prefix + "effects/effect" + id + "_2.png");
+        Images.put(getEffectImageKey(name, 0), prefix + "effects/effect_" + name + "_0.png");
+        Images.put(getEffectImageKey(name, 1), prefix + "effects/effect_" + name + "_1.png");
+        Images.put(getEffectImageKey(name, 2), prefix + "effects/effect_" + name + "_2.png");
     }
 
+    
+    public static String getEffectImageKey(String name, int index)
+    {
+    	return "effect_" + name + "_" + index;
+    }
 }

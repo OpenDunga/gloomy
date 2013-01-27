@@ -9,6 +9,7 @@ import ggjsap2013.models.snake.MovedHistories;
 import ggjsap2013.models.snake.SnakeBody;
 import ggjsap2013.models.snake.SnakeModel;
 import ggjsap2013.models.snake.SnakeModel.Direction;
+import ggjsap2013.utils.ImageLoader;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -94,6 +95,7 @@ public class SnakeNode extends GameNode {
         case B:
         case C:
         case D:
+        case E:
         case ahiru:
         case kuma:
         case lion:
@@ -129,6 +131,9 @@ public class SnakeNode extends GameNode {
             break;
         case D:
             imageID = 4;
+            break;
+        case E:
+            imageID = 5;
             break;
         case ahiru:
             imageID = 1;
@@ -176,14 +181,38 @@ public class SnakeNode extends GameNode {
     private boolean drawEffect(SnakeBody b, Point p, NodeGraphics g)
     {
     	boolean isRendered = false;
+    	String effectName = "";
+    	
     	if (model.isNoDamage() || model.isCollisionDamageZero()) {
+    		effectName = "white";
+            isRendered = true;
+            
+    	} else if (model.isSlow()) {
+    		effectName = "yellow";
+            isRendered = true;
     		
+    	} else if (model.isBreaking()) {
+    		effectName = "red";
+    		isRendered = true;
+    		
+    	} else if (model.isPointDouble()) {
+    		effectName = "green";
+    		isRendered = true;
+    		
+    	} else if (model.isFriendPoint()) {
+    		effectName = "blue";
+    		isRendered = true;
+    			
+    	}
+    	
+    	
+    	
+    	if (isRendered) {
     		int n = currentEffectCount / 10 % 3;
-    		GameImage image = Images.get("effect_1_" + n);
+    		GameImage image = Images.get(ImageLoader.getEffectImageKey(effectName, n));
             int heightGap = CHIP_SIZE - image.get(0).getHeight();
             g.drawGameImage(image, p.x*CHIP_SIZE, p.y*CHIP_SIZE + heightGap);
             
-            isRendered = true;
     	}
     	
     	return isRendered;

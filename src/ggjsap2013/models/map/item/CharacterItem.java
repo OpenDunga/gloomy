@@ -21,7 +21,9 @@ public class CharacterItem implements Item
 	public static enum TYPES {
 		A,
 		B,
-		C
+		C,
+		D,
+		E
 	}
 	
 	
@@ -56,6 +58,12 @@ public class CharacterItem implements Item
 				break;
 			case C:
 				snake.getBodies().addBody(new SnakeBody(BodyType.C));
+				break;
+			case D:
+				snake.getBodies().addBody(new SnakeBody(BodyType.D));
+				break;
+			case E:
+				snake.getBodies().addBody(new SnakeBody(BodyType.E));
 				break;
 		}
 		map.createCharacterItemBlock(stage.getCurrentLevel());
