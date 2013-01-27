@@ -5,11 +5,13 @@
 		"maxPointItemCount":2,
 		"availablePointItemTypes":["CANDY"],
 
-		"maxCharacterItemCount":1,
-		"availableCharacterItemTypes":["A", "B", "C"],
+		"maxCharacterItemCount":10,
+		"availableCharacterItemTypes":["D", "E", "C"],
 
-		"barricades":{
-			"STONE": 1
+		"barricades":{ 
+			"STONE": 1,
+			"ROCK": 2,
+			"BOMB": 3
 		},
 		
 		

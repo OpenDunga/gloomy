@@ -200,7 +200,7 @@ public class Barricade implements Block
 	public void move(MapModel mapModel, int currentX, int currentY)
 	{
 		if (isMovable()) {
-			//TODO:
+			//TODO: 障害物移動時に隊列めり込まないように
 			
 			int x = currentX;
 			int y = currentY;

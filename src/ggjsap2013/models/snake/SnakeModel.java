@@ -277,10 +277,16 @@ public class SnakeModel {
     				setMoveWait(SLOW_MOVE_WAIT);
     				break;
     				
+    			case BREAK:
+    				skillCount = Skill.BREAK_SKILL_LIMIT;
+    				break;
+    				
     			case POINT_DOUBLE:
     				skillCount = Skill.POINT_DOUBLE_SKILL_LIMIT;
     				break;
     				
+    			case FRIEND_POINT:
+    				skillCount = Skill.FRIEND_POINT_SKILL_LIMIT;
     		}
     	}
     }
@@ -351,6 +357,24 @@ public class SnakeModel {
     
     
     /**
+     * 障害物破壊のスキルが発動中かどうかを返します
+     * 
+     * @return
+     */
+    public boolean isBreaking()
+    {
+    	if (currentSkill == null) {
+    		return false;
+    	} else if (currentSkill.getType() == TYPES.BREAK) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    	
+    }
+    
+    
+    /**
      * ポイント２倍状態が発動中かどうかを返します
      * 
      * @return
@@ -366,4 +390,20 @@ public class SnakeModel {
     	}
     }
 
+    /**
+     * メンバーポイント獲得のスキル発動中かどうかを返しますよ
+     * 
+     * @return
+     */
+    public boolean isFriendPoint()
+    {
+    	if (currentSkill == null) {
+    		return false;
+    	} else if (currentSkill.getType() == TYPES.FRIEND_POINT) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
 }
