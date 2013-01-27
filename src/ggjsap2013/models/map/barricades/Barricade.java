@@ -115,13 +115,13 @@ public class Barricade implements Block
 				break;
 				
 			case ROCK:
-				/* 二人減るよ */
-			    killHeads(snake, 2);
+				/* 三人減るよ */
+			    killHeads(snake, 3);
 				break;
 				
 			case BOMB:
-				/* 四人減るよ */
-			    killHeads(snake, 4);
+				/* 五人減るよ */
+			    killHeads(snake, 5);
 				break;
 				
 			case BACHI_BACHI:
