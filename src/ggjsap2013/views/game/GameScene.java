@@ -1,7 +1,5 @@
 package ggjsap2013.views.game;
 
-import java.awt.event.KeyEvent;
-
 import ggjsap2013.models.Stage;
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
@@ -26,7 +24,6 @@ public class GameScene extends GameNode {
     
     public void reset() {
         removeAllChild();
-        this.pause(false);
         stageNode = new StageNode(this);
         this.stage = stageNode.getModel();
         this.add(stageNode);
@@ -34,6 +31,8 @@ public class GameScene extends GameNode {
         this.add(score);
         BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/ggj1-1.wav");
         BGMPlayer.getInstance().play();
+        this.pause(true);
+        this.add(new StartCountNode(this));
     }
     
     @Override
@@ -51,6 +50,7 @@ public class GameScene extends GameNode {
         isGamePaused = isPaused;
         //このノードはポーズする
         pause(isPaused);
+        stage.setPaused(isPaused);
         stageNode.remove(pauseNode);
         if(isPaused) {
             BGMPlayer.getInstance().setVolume(0.5);
