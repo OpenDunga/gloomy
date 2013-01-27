@@ -8,23 +8,19 @@ import java.awt.event.KeyEvent;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
-import jp.tohhy.gamepanel.nodes.transition.Fade;
 import jp.tohhy.gamepanel.sounds.BGMPlayer;
+import jp.tohhy.gamepanel.sounds.SEPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 public class GameOverNode extends GameNode {
     private final GameScene scene;
-    private final Color bgColor = new Color(255,255,255,100);
-    
-    //1~6
-    private int page = 1;
+    private final Color bgColor = new Color(255,255,255,150);
 
     public GameOverNode(GameScene scene) {
         this.scene = scene;
         this.setKeyWait(30);
         BGMPlayer.getInstance().stop();
-        BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/finish.wav");
-        BGMPlayer.getInstance().play();
+        SEPlayer.play("ggjsap2013/resources/sounds/finish.wav");
     }
     
     @Override
@@ -32,9 +28,9 @@ public class GameOverNode extends GameNode {
         g.setColor(bgColor);
         g.fillRect(0, 0, Gloomy.CHIP_SIZE * Gloomy.STAGE_WIDTH, Gloomy.CHIP_SIZE * Gloomy.STAGE_HEIGHT);
         g.setColor(Color.black);
-        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
-        g.drawText("Game Over!", 220, 200);
-        g.drawText("Press space to go to Result", 150, 250);
+        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 26));
+        g.drawText("Game Over!", 210, 200);
+        g.drawText("Press space to go to Result", 120, 270);
     }
 
     @Override
