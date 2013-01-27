@@ -1,6 +1,7 @@
 !.classpath
 !.project
 *.jar
+*.ser
 bin/
 lib/
 
