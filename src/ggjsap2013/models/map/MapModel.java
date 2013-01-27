@@ -5,6 +5,7 @@ import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
+import ggjsap2013.models.snake.BodyType;
 import ggjsap2013.utils.RandomUtil;
 
 import java.awt.Point;
@@ -88,11 +89,21 @@ public class MapModel {
             
             Point snakeHeadPos = stage.getSnake().getHeadPosition();
             if (snakeHeadPos.x == putX && snakeHeadPos.y == putY) {
-           	 continue;
+            	continue;
             }
             
             List<CharacterItem.TYPES> typeList = currentLevel.getAvailableCharacterItemTypes();
             CharacterItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
+            
+            
+            /* 隊列に既にヒロインキャラが含まれていた場合、ランダムで動物アイテムを配置しますよ */
+            if (CharacterItem.isHeroineType(itemType)) {
+                BodyType bodyType = CharacterItem.getBodyTypeFromItemType(itemType);
+                boolean b = stage.getSnake().contains(bodyType);
+                if (b) {
+                	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
+                }
+            }
             
             map[putY][putX] = new CharacterItem(itemType);
             break;

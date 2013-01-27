@@ -9,6 +9,8 @@ import ggjsap2013.models.skill.Skill;
 import ggjsap2013.models.skill.Skill.TYPES;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SnakeModel {
 	
@@ -76,6 +78,15 @@ public class SnakeModel {
         this.stage = stage;
         this.bodies = new BodyList(stage);
         this.map = stage.getMap();
+        
+        List<SnakeBody> bodies = new ArrayList<SnakeBody>();
+        for(int i=0; i<2; i++) {
+            bodies.add(new SnakeBody(BodyType.Alice));
+            bodies.add(new SnakeBody(BodyType.Mermaid));
+            bodies.add(new SnakeBody(BodyType.Akazukin));
+        }
+        getBodies().init(bodies);
+
         movedHistories.push(new Point(5, 5), Direction.SOUTH);
     }
     
@@ -167,6 +178,27 @@ public class SnakeModel {
     public Point getHeadPosition()
     {
     	return movedHistories.get(0).getPoint();
+    }
+    
+    
+    /**
+     * 指定された種類のキャラを含むかどうかを返します
+     * 
+     * @param type
+     * @return
+     */
+    public boolean contains(BodyType type)
+    {
+    	boolean isContains = false;
+    	for (int i=0; i<bodies.size(); i++) {
+    		SnakeBody body = bodies.get(i);
+    		if (body.getType() == type) {
+    			isContains = true;
+    			break;
+    		}
+    	}
+    	
+    	return isContains;
     }
 
     public int getDefaultMoveWait()

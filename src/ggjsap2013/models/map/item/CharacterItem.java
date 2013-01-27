@@ -20,11 +20,67 @@ public class CharacterItem implements Item
 	
 
 	public static enum TYPES {
-		A,
-		B,
-		C,
-		D,
-		E
+		Alice,
+		Mermaid,
+		Akazukin,
+		Shirayuki,
+		TinkerBell,
+		Ahiru,
+	    Kuma,
+	    Lion,
+	    Panda,
+	    Usagi;
+	}
+	
+    public static TYPES[] ANIMALS = {TYPES.Ahiru, TYPES.Kuma, TYPES.Lion, TYPES.Panda, TYPES.Usagi};
+
+	
+	public static BodyType getBodyTypeFromItemType(TYPES itemType)
+	{
+		switch (itemType) {
+			case Alice:
+				return BodyType.Alice;
+			case Mermaid:
+				return BodyType.Mermaid;
+			case Akazukin:
+				return BodyType.Akazukin;
+			case Shirayuki:
+				return BodyType.Shirayuki;
+			case TinkerBell:
+				return BodyType.TinkerBell;
+				
+			case Ahiru:
+				return BodyType.ahiru;
+			case Kuma:
+				return BodyType.kuma;
+			case Lion:
+				return BodyType.lion;
+			case Panda:
+				return BodyType.panda;
+			case Usagi:
+				return BodyType.usagi;
+		}
+		return null;
+	}
+	
+	public static boolean isHeroineType(TYPES itemType)
+	{
+		switch (itemType) {
+			case Alice:
+			case Mermaid:
+			case Akazukin:
+			case Shirayuki:
+			case TinkerBell:
+				return true;
+				
+			case Ahiru:
+			case Kuma:
+			case Lion:
+			case Panda:
+			case Usagi:
+				return false;
+		}
+		return false;
 	}
 	
 	
@@ -53,21 +109,37 @@ public class CharacterItem implements Item
 	    //サウンド再生
         SEPlayer.play("ggjsap2013/resources/se/item2.wav");
 		switch (getType()) {
-			case A:
+			case Alice:
 				snake.getBodies().addBody(new SnakeBody(BodyType.Alice));
 				break;
-			case B:
+			case Mermaid:
 				snake.getBodies().addBody(new SnakeBody(BodyType.Mermaid));
 				break;
-			case C:
+			case Akazukin:
 				snake.getBodies().addBody(new SnakeBody(BodyType.Akazukin));
 				break;
-			case D:
+			case Shirayuki:
 				snake.getBodies().addBody(new SnakeBody(BodyType.Shirayuki));
 				break;
-			case E:
+			case TinkerBell:
 				snake.getBodies().addBody(new SnakeBody(BodyType.TinkerBell));
 				break;
+				
+			case Ahiru:
+				snake.getBodies().addBody(new SnakeBody(BodyType.ahiru));
+				break;
+			case Kuma:
+				snake.getBodies().addBody(new SnakeBody(BodyType.kuma));
+				break;
+			case Lion:
+				snake.getBodies().addBody(new SnakeBody(BodyType.lion));
+				break;
+			case Panda:
+				snake.getBodies().addBody(new SnakeBody(BodyType.panda));
+				break;
+			case Usagi:
+				snake.getBodies().addBody(new SnakeBody(BodyType.usagi));
+				break;	
 		}
 		map.createCharacterItemBlock(stage, stage.getCurrentLevel());
 	}
