@@ -26,9 +26,9 @@ public class BodyList {
         stage.getScore().charaCountUp();
         //隊列にキャラ追加
         if(hasBody(body.getType())) {
-            list.addFirst(createRandomAnimal());
+            list.addLast(createRandomAnimal());
         } else {
-            list.addFirst(body);
+            list.addLast(body);
         }
     }
     

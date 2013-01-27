@@ -1,5 +1,6 @@
 package ggjsap2013.models.map.barricades;
 
+import jp.tohhy.gamepanel.sounds.SEPlayer;
 import ggjsap2013.Gloomy;
 import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
@@ -103,6 +104,9 @@ public class Barricade implements Block
 		if (snake.isCollisionDamageZero()) {
 			return;
 		}
+		
+		//サウンド再生
+		SEPlayer.play("ggjsap2013/resources/se/damage.wav");
 		
 		switch (type) {
 			case STONE:

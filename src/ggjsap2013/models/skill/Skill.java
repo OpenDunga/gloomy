@@ -1,5 +1,6 @@
 package ggjsap2013.models.skill;
 
+import jp.tohhy.gamepanel.sounds.SEPlayer;
 import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.MapModel;
@@ -127,6 +128,8 @@ public class Skill
 		
 		if (isInvoked) {
 			try {
+			    //サウンド再生
+		        SEPlayer.play("ggjsap2013/resources/se/skill.wav");
 				snake.getBodies().killHead();
 			} catch (GameOverException e) {
 	            stage.gameOver();
