@@ -2,7 +2,6 @@ package ggjsap2013.models.score;
 
 import ggjsap2013.utils.SerializationUtils;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 

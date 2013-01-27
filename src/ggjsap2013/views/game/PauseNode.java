@@ -8,14 +8,15 @@ import java.awt.event.KeyEvent;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
-import jp.tohhy.gamepanel.sounds.BGMPlayer;
+import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 public class PauseNode extends GameNode {
+    private static final int LENGTH = 6;
     private final GameScene scene;
-    private final Color bgColor = new Color(0,0,0,100);
+    private final Color bgColor = new Color(0,0,0,150);
     
-    //1~7
+    //1~6
     private int page = 1;
 
     public PauseNode(GameScene scene) {
@@ -29,8 +30,7 @@ public class PauseNode extends GameNode {
         g.fillRect(0, 0, Gloomy.CHIP_SIZE * Gloomy.STAGE_WIDTH, Gloomy.CHIP_SIZE * Gloomy.STAGE_HEIGHT);
         g.setColor(Color.white);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
-        g.drawText("Pause!", 230, 220);
-        g.drawText("Press Space to restart.", 150, 270);
+        g.drawGameImage(Images.get("help_" + page));
     }
 
     @Override
@@ -38,6 +38,22 @@ public class PauseNode extends GameNode {
         if(keys[KeyEvent.VK_SPACE]) {
             scene.gamePause(false);
         }
+        if(keys[KeyEvent.VK_LEFT]) {
+            prevPage();
+        } else if(keys[KeyEvent.VK_RIGHT]) {
+            nextPage();
+        }
+    }
+    
+    private void nextPage() {
+        if(page == LENGTH) return; 
+        page++;
+    }
+    
+    private void prevPage() {
+        if(page == 1) return;
+        page--;
+        
     }
 
     @Override
