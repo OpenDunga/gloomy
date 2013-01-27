@@ -3,7 +3,7 @@
 		"index":0,
 		
 		"maxPointItemCount":4,
-		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "CANDY", "CANDY", "CANDY", "DONUT"],
+		"availablePointItemTypes":["TRUMPET"],
 
 		"maxCharacterItemCount":1,
 		"availableCharacterItemTypes":["Alice"],
@@ -50,7 +50,7 @@
 		"index":2,
 		
 		"maxPointItemCount":1,
-		"availablePointItemTypes":["DONUT", "RIBON", "CAKE"],
+		"availablePointItemTypes":["TRUMPET"],
 		
 		"maxCharacterItemCount":10,
 		"availableCharacterItemTypes":["Alice", "Mermaid", "Akazukin", "Shirayuki", "TinkerBell"],

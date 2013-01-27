@@ -108,6 +108,9 @@ public class CharacterItem implements Item
 	{
 	    //サウンド再生
         SEPlayer.play("ggjsap2013/resources/se/item2.wav");
+        
+		stage.getScore().addScore(snake.getLength() * 10);
+        
 		switch (getType()) {
 			case Alice:
 				snake.getBodies().addBody(new SnakeBody(BodyType.Alice));
