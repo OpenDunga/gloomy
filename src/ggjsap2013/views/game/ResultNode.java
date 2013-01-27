@@ -2,6 +2,7 @@ package ggjsap2013.views.game;
 
 import ggjsap2013.models.score.RankingModel;
 import ggjsap2013.models.score.Record;
+import ggjsap2013.views.title.Title;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,6 +11,7 @@ import java.awt.event.KeyEvent;
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.images.Images;
+import jp.tohhy.gamepanel.nodes.transition.Fade;
 import jp.tohhy.gamepanel.sounds.BGMPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
@@ -21,7 +23,6 @@ public class ResultNode extends GameNode {
     
     public ResultNode(GameScene scene) {
         this.scene = scene;
-        BGMPlayer.getInstance().stop();
         BGMPlayer.getInstance().stop();
         BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/result.wav");
         BGMPlayer.getInstance().play();
@@ -65,8 +66,8 @@ public class ResultNode extends GameNode {
     protected void listenKeys(boolean[] keys) {
         if(keys[KeyEvent.VK_SPACE]) {
             ranking.addRecord(new Record(input.getName(), scene.getStage().getScore().getScore()));
-            scene.reset();
             ranking.save();
+            scene.getParent().add(new Fade(scene, new Title()).fadeOut(50).setAutoFadeIn(50, 100));
         }
     }
 

@@ -57,7 +57,7 @@ public class InfomationNode extends GameNode
 	{
 	    int scoreValue = stage.getScore().getScore();
 	    g.drawText("SCORE", 15, 15);
-	    g.drawText("" + scoreValue, 10, 40);
+	    g.drawText("" + scoreValue, 15, 40);
 	}
 	
 	/**

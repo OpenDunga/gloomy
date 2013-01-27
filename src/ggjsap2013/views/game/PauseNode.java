@@ -29,9 +29,6 @@ public class PauseNode extends GameNode {
         g.fillRect(0, 0, Gloomy.CHIP_SIZE * Gloomy.STAGE_WIDTH, Gloomy.CHIP_SIZE * Gloomy.STAGE_HEIGHT);
         g.setColor(Color.white);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
-
-//        g.drawText("Pause!", 230, 220);
-//        g.drawText("Press Space to restart.", 150, 270);
     }
 
     @Override

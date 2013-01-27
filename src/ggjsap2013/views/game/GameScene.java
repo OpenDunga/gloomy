@@ -62,7 +62,7 @@ public class GameScene extends GameNode {
     }
     
     public void gameOver() {
-        this.add(new ResultNode(this));
+        stageNode.add(new GameOverNode(this));
         this.pause(true);
     }
     
