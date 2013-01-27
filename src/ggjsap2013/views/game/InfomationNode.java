@@ -30,8 +30,9 @@ public class InfomationNode extends GameNode
 	@Override
 	protected void drawNode(NodeGraphics g)
 	{
-		
+	    drawAreaBackGround(g);
 		g.setColor(Color.black);
+        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 18));
 		drawScore(g);
 		drawSnakeInfo(g);
 	}
@@ -39,9 +40,9 @@ public class InfomationNode extends GameNode
 	private void drawAreaBackGround(NodeGraphics g) 
 	{
 	    g.setColor(bgColor);
-	    g.drawRect(0, 0, 0, 0);
-	    g.drawRect(0, 0, 0, 0);
-	    g.drawRect(0, 0, 0, 0);
+	    g.fillRect(10, 10, 210, 90);
+	    g.fillRect(10, 110, 210, 335);
+	    g.fillRect(10, 455, 210, 135);
 	}
 	
 	/**
@@ -50,9 +51,9 @@ public class InfomationNode extends GameNode
 	 */
 	private void drawScore(NodeGraphics g) 
 	{
-	    g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
 	    int scoreValue = stage.getScore().getScore();
-	    g.drawText("score: " + scoreValue, 10, 10);
+	    g.drawText("SCORE", 10, 10);
+	    g.drawText("" + scoreValue, 10, 40);
 	}
 	
 	/**
@@ -74,9 +75,9 @@ public class InfomationNode extends GameNode
         int charaCountValue = stage.getScore().getCharaCount();
         int levelValue = stage.getCurrentLevelNum();
         
-        g.drawText("length: " + lengthValue, 10, 40);
-        g.drawText("charaCount: " + charaCountValue, 10, 70);
-        g.drawText("level: " + levelValue, 10, 110);
+        g.drawText("length: " + lengthValue, 10, 460);
+        g.drawText("charaCount: " + charaCountValue, 10, 490);
+        g.drawText("level: " + levelValue, 10, 520);
     }
 
 	@Override
