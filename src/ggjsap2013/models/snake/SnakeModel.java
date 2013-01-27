@@ -208,6 +208,7 @@ public class SnakeModel {
     public void setDefaultMoveWait(int defaultMoveWait)
 	{
 		this.defaultMoveWait = defaultMoveWait;
+		this.moveWait = defaultMoveWait;
 	}
     
     public int getMoveWait() {
