@@ -3,6 +3,7 @@ package ggjsap2013.views.title;
 import ggjsap2013.views.game.GameScene;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
@@ -30,8 +31,9 @@ public class Title extends GameNode {
         g.setColor(Color.blue);
         g.drawRect(selector);
         g.setColor(Color.black);
-        g.drawText("start", 345, 420);
-        g.drawText("exit", 345, 500);
+        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
+        g.drawText("Start", 360, 425);
+        g.drawText("Exit", 365, 505);
     }
 
     boolean isTransition = false;
