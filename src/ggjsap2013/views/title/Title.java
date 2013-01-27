@@ -28,6 +28,7 @@ public class Title extends GameNode {
 
     public void drawNode(NodeGraphics g) {
         g.drawGameImage(Images.get("title_back"));
+        g.drawGameImage(Images.get("title_logo"));
         g.setColor(Color.black);
         g.fillRect(220, 500, 350, 50);
         g.setColor(Color.white);

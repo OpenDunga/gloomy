@@ -20,13 +20,14 @@ public class ResultNode extends GameNode {
     private final Color bgColor = new Color(255,255,255,100);
     private final NameInputNode input = new NameInputNode();
     private final RankingModel ranking = RankingModel.getInstance();
+    private int keyWait = 100;
+    private boolean isEnd = false;
     
     public ResultNode(GameScene scene) {
         this.scene = scene;
         BGMPlayer.getInstance().stop();
         BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/result.wav");
         BGMPlayer.getInstance().play();
-        //デバッグ中
         this.add(input);
     }
 
@@ -35,14 +36,16 @@ public class ResultNode extends GameNode {
         g.drawGameImage(Images.get("game_back"));
         g.setColor(bgColor);
         g.fillRect(0, 0, 800, 600);
+        g.drawGameImage(Images.get("result_logo"), 0, 0);
         drawRanking(g);
         g.setColor(Color.black);
-        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 40));
-        g.drawText("Game Over", 290, 20);
+//        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 40));
+//        g.drawText("Game Over", 290, 20);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
         g.drawText("Your score: " + scene.getStage().getScore().getScore(), 200, 450);
         g.drawText("Enter your name: ", 200, 500);
         g.drawText("Press SPACE to restart.", 290, 550);
+        if(keyWait > 0) keyWait--;
     }
     
     private void drawRanking(NodeGraphics g) {
@@ -64,9 +67,12 @@ public class ResultNode extends GameNode {
 
     @Override
     protected void listenKeys(boolean[] keys) {
+        if(keyWait > 0) return;
+        if(isEnd) return;
         if(keys[KeyEvent.VK_SPACE]) {
             ranking.addRecord(new Record(input.getName(), scene.getStage().getScore().getScore()));
             ranking.save();
+            isEnd = true;
             scene.getParent().add(new Fade(scene, new Title()).fadeOut(50).setAutoFadeIn(50, 100));
         }
     }

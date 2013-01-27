@@ -13,6 +13,9 @@ public class ImageLoader {
         Images.put("game_back", prefix + "system/game_back.png");
         Images.put("field_back", prefix + "system/field_back.png");
         
+        Images.put("title_logo", prefix + "system/title_logo.png");
+        Images.put("result_logo", prefix + "system/result_logo.png");
+        
         loadCharaChips();
         
         loadAnimalCharaChips();
