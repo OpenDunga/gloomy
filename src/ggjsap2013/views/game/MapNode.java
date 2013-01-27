@@ -8,6 +8,7 @@ import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.barricades.Wall;
 import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
+import ggjsap2013.utils.ImageLoader;
 
 import java.awt.Color;
 
@@ -43,8 +44,8 @@ public class MapNode extends GameNode {
                         g.setColor(Color.BLUE);
                         g.drawText(b.toString(), j*size, i*size);
                 	} else if (b instanceof Barricade) {
-                        g.setColor(Color.red);
-                        g.drawText(b.toString(), j*size, i*size);
+                		Barricade barricade = (Barricade)b;
+                        g.drawGameImage(getBarricadeImage(barricade.getType()), j*size, i*size);
                 	} else if (b instanceof Wall) {
                 	    g.setColor(Color.lightGray);
                         g.fillRect(j*size, i*size, Gloomy.CHIP_SIZE, Gloomy.CHIP_SIZE);
@@ -68,6 +69,28 @@ public class MapNode extends GameNode {
             return Images.get("item_5");
         case TRUMPET:
             return Images.get("item_6");
+        }
+        return null;
+    }
+    
+    private GameImage getBarricadeImage(Barricade.TYPES type) {
+        switch(type) {
+	        case STONE:
+	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
+	        case ROCK:
+	            return Images.get(ImageLoader.getBarricadeImageKey("rock"));
+	        case BOMB:
+	            return Images.get(ImageLoader.getBarricadeImageKey("bomb"));
+	        case BACHI_BACHI:
+	            return Images.get("stone");
+	        case SOLDIER:
+	            return Images.get("stone");
+	        case KING:
+	            return Images.get("stone");
+	        case JOKER:
+	            return Images.get("stone");
+	        case DARK_WINDOW:
+	            return Images.get("stone");
         }
         return null;
     }

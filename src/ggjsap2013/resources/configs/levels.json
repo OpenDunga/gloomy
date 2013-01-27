@@ -9,7 +9,9 @@
 		"availableCharacterItemTypes":["D", "E", "C"],
 
 		"barricades":{ 
-			"STONE": 1
+			"STONE": 1,
+			"ROCK": 2,
+			"BOMB": 3
 		},
 		
 		

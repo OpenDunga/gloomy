@@ -21,6 +21,8 @@ public class ImageLoader {
         loadItemChips();
         
         loadEffectChips();
+        
+        loadBarricadeChips();
     }
     
     private static void loadItemChips() throws IOException {
@@ -79,5 +81,24 @@ public class ImageLoader {
     public static String getEffectImageKey(String name, int index)
     {
     	return "effect_" + name + "_" + index;
+    }
+    
+    
+    private static void loadBarricadeChips() throws IOException
+    {
+    	loadBarricadeChip("stone");
+    	loadBarricadeChip("rock");
+    	loadBarricadeChip("bomb");
+    }
+    
+    private static void loadBarricadeChip(String name) throws IOException
+    {
+        Images.put(getBarricadeImageKey(name), prefix + "barricades/" + name + ".png");
+    }
+
+    
+    public static String getBarricadeImageKey(String name)
+    {
+    	return "barricade_" + name;
     }
 }
