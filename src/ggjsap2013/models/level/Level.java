@@ -64,6 +64,13 @@ public class Level
     private int							gameSpeed;
     
     
+    
+    /**
+     * レベルクリア条件
+     */
+    private int							levelClearCount;
+    
+    
 
 	/**
 	 * インスタンスつくるよ！
@@ -152,6 +159,15 @@ public class Level
     public int getGameSpeed()
 	{
 		return gameSpeed;
+	}
+    
+    public void setLevelClearCount(int levelClearCount)
+	{
+		this.levelClearCount = levelClearCount;
+	}
+    public int getLevelClearCount()
+	{
+		return levelClearCount;
 	}
 	
 }
