@@ -119,7 +119,7 @@ public class Skill
 				isInvoked = snake.invokeSkill(this);
 				if (isInvoked) {
 					int size = snake.getBodies().size();
-					stage.getScore().addScore(size * 1000);
+					stage.getScore().addScore(size * 500);
 				}
 				break;
 			

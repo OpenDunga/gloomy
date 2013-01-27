@@ -23,7 +23,7 @@
 		
 		"availableCharacterItemTypes":["A", "A", "A"],
 
-		"maxCharacterItemCount":1,
+		"maxCharacterItemCount":0,
 		
 		"levelClearCount":4,
 		
@@ -42,7 +42,7 @@
 		
 		"availableCharacterItemTypes":["H"],
 
-		"maxCharacterItemCount":1,
+		"maxCharacterItemCount":0,
 		
 		"levelClearCount":5,
 		
@@ -61,7 +61,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":1,
+		"maxCharacterItemCount":0,
 		
 		"levelClearCount":11,
 		
@@ -81,7 +81,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":1,
+		"maxCharacterItemCount":0,
 		
 		"levelClearCount":17,
 		
@@ -101,7 +101,7 @@
 		
 		"availableCharacterItemTypes":["H","A","A","A","A","A"],
 
-		"maxCharacterItemCount":1,
+		"maxCharacterItemCount":0,
 		
 		"levelClearCount":23,
 		
@@ -121,7 +121,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":28,
 		
@@ -142,7 +142,7 @@
 		
 		"availableCharacterItemTypes":["H", "A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":35,
 		
@@ -163,7 +163,7 @@
 		
 		"availableCharacterItemTypes":["H", "A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":41,
 		
@@ -184,7 +184,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":47,
 		
@@ -205,7 +205,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":53,
 		
@@ -226,7 +226,7 @@
 		
 		"availableCharacterItemTypes":["H","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":60,
 		
@@ -247,7 +247,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":66,
 		
@@ -269,7 +269,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":72,
 		
@@ -291,7 +291,7 @@
 		
 		"availableCharacterItemTypes":["H","H","H","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":79,
 		
@@ -314,7 +314,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":1,
+		"maxCharacterItemCount":0,
 		
 		"levelClearCount":85,
 		
@@ -336,7 +336,7 @@
 		
 		"availableCharacterItemTypes":["H","A","A","A","A"],
 
-		"maxCharacterItemCount":1,
+		"maxCharacterItemCount":0,
 		
 		"levelClearCount":90,
 		
@@ -358,7 +358,7 @@
 		
 		"availableCharacterItemTypes":["H","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":1,
+		"maxCharacterItemCount":0,
 		
 		"levelClearCount":97,
 		
@@ -380,7 +380,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":106,
 		
@@ -403,7 +403,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":115,
 		
@@ -425,7 +425,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":124,
 		
@@ -447,7 +447,7 @@
 		
 		"availableCharacterItemTypes":["H", "A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":134,
 		
@@ -470,7 +470,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":143,
 		
@@ -493,7 +493,7 @@
 		
 		"availableCharacterItemTypes":["H", "A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":153,
 		
@@ -516,7 +516,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":162,
 		
@@ -538,7 +538,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":171,
 		
@@ -560,7 +560,7 @@
 		
 		"availableCharacterItemTypes":["H", "A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":2,
+		"maxCharacterItemCount":1,
 		
 		"levelClearCount":181,
 		
@@ -582,7 +582,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":193,
 		
@@ -605,7 +605,7 @@
 		
 		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":205,
 		
@@ -629,7 +629,7 @@
 		
 		"availableCharacterItemTypes":["H", "H", "H", "A","A","A","A","A","A","A","A","A","A","A","A","A","A","A"],
 
-		"maxCharacterItemCount":3,
+		"maxCharacterItemCount":2,
 		
 		"levelClearCount":200000000,
 		

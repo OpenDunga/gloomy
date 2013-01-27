@@ -3,12 +3,15 @@ package ggjsap2013.views.game;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.skill.Skill;
 import ggjsap2013.models.snake.SnakeBody;
+import ggjsap2013.models.snake.SnakeModel.Direction;
 
 import java.awt.Color;
 import java.awt.Font;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.images.GameImage;
+import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 /**
@@ -19,6 +22,9 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  */
 public class InfomationNode extends GameNode
 {
+	private final Font	defultFont = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
+	private final Font	boldFont = new Font(Font.SANS_SERIF, Font.BOLD, 20);
+	
     private final Color bgColor = new Color(255, 255, 255, 150);
 	private final Stage stage;
 	
@@ -56,8 +62,11 @@ public class InfomationNode extends GameNode
 	private void drawScore(NodeGraphics g) 
 	{
 	    int scoreValue = stage.getScore().getScore();
-	    g.drawText("SCORE", 15, 15);
-	    g.drawText("" + scoreValue, 15, 40);
+        g.setFont(boldFont);
+	    g.drawText("SCORE", 35, 15);
+        g.setFont(defultFont);
+        
+	    g.drawText(String.format("%9d", scoreValue),120, 55);
 	}
 	
 	/**
@@ -69,9 +78,22 @@ public class InfomationNode extends GameNode
         SnakeBody body = getCurrentBody();
         if(body != null) {
             Skill skill = body.getSkill();
-            g.drawText(body.getType().getName(), 15, 110);
-            if(skill != null)
-                g.drawText(skill.getType().getDescription(), 15, 150);
+//            g.drawText(body.getType().getName(), 15, 110);
+            
+            GameImage image = Images.get(SnakeNode.createImageName(body, Direction.SOUTH));
+            
+            
+            g.drawGameImage(image, 20, 120);
+            g.setFont(boldFont);
+            g.drawText(body.getType().getName(), 70, 130);
+            
+            g.setFont(boldFont);
+            g.drawText("スキル", 20, 200);
+            g.setFont(defultFont);
+            
+            if(skill != null) {
+                g.drawText(skill.getType().getDescription(),50, 240);
+            }
         }
     }
     
@@ -90,9 +112,9 @@ public class InfomationNode extends GameNode
         int levelValue = stage.getCurrentLevelNum();
         int levelUpValue = stage.getCurrentLevel().getLevelClearCount();
         
-        g.drawText("length: " + lengthValue, 15, 460);
-        g.drawText("charaCount: " + charaCountValue + "/" + levelUpValue, 15, 490);
-        g.drawText("level: " + (levelValue+1), 15, 520);
+        g.drawText("length: " + lengthValue, 25, 470);
+        g.drawText("charaCount: " + charaCountValue + "/" + levelUpValue, 25, 500);
+        g.drawText("level: " + (levelValue+1), 25, 530);
     }
 
 	@Override

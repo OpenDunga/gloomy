@@ -79,6 +79,8 @@ public class MapModel {
      */
     public void createCharacterItemBlock(Stage stage, Level currentLevel) 
     {
+    	
+    	
         while (true) {
             int putX = RandomUtil.nextInt(map[0].length);
             int putY = RandomUtil.nextInt(map.length);
