@@ -15,6 +15,7 @@ public class Stage {
     private final Score score = new Score(this);
     private final MapModel map = new MapModel(Gloomy.STAGE_WIDTH, Gloomy.STAGE_HEIGHT);
     private boolean isGameOver = false;
+    private boolean isPaused = false;
     private LevelReader levelReader = new LevelReader();
     private List<Level> levelInfoList = levelReader.read();
     private int currentLevelNum = 0;
@@ -72,5 +73,13 @@ public class Stage {
 
     public void setCurrentLevelNum(int currentLevelNum) {
         this.currentLevelNum = currentLevelNum;
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+    public void setPaused(boolean isPaused) {
+        this.isPaused = isPaused;
     }
 }

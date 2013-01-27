@@ -1,5 +1,7 @@
 package ggjsap2013.views.game;
 
+import java.awt.event.KeyEvent;
+
 import ggjsap2013.models.Stage;
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
@@ -13,18 +15,22 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  */
 public class GameScene extends GameNode {
     private Stage stage;
+    private StageNode stageNode;
+    private final PauseNode pauseNode;
+    private boolean isGamePaused = false;
     
     public GameScene() {
         reset();
+        this.pauseNode = new PauseNode(this);
     }
     
     public void reset() {
         removeAllChild();
         this.pause(false);
-        StageNode stage = new StageNode(this);
-        this.stage = stage.getStage();
-        this.add(stage);
-        InfomationNode score = new InfomationNode(stage.getStage());
+        stageNode = new StageNode(this);
+        this.stage = stageNode.getModel();
+        this.add(stageNode);
+        InfomationNode score = new InfomationNode(stageNode.getModel());
         this.add(score);
         BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/ggj1-1.wav");
         BGMPlayer.getInstance().play();
@@ -34,6 +40,23 @@ public class GameScene extends GameNode {
     protected void updateNode() {
         if(stage.isGameOver()) {
             gameOver();
+        }
+        if(stage.isPaused()) {
+            if(!isGamePaused)
+                gamePause(true);
+        }
+    }
+    
+    public void gamePause(boolean isPaused) {
+        isGamePaused = isPaused;
+        //このノードはポーズする
+        pause(isPaused);
+        stageNode.remove(pauseNode);
+        if(isPaused) {
+            BGMPlayer.getInstance().setVolume(0.5);
+            stageNode.add(pauseNode);
+        } else {
+            BGMPlayer.getInstance().setVolume(1.0);
         }
     }
     

@@ -204,6 +204,17 @@ public class SnakeNode extends GameNode {
 
     @Override
     protected void listenKeys(boolean[] keys) {
+            if(keys[KeyEvent.VK_C]) {
+                if(!stage.isPaused()) {
+                    stage.setPaused(true);
+                } else {
+                    stage.setPaused(false);
+                }
+            }
+            
+            //ポーズ中の時はポーズ解除以外のキーは無効
+            if(stage.isPaused()) return;
+            
             //カーソルキーで上下左右に移動
             if(keys[KeyEvent.VK_LEFT]) {
                 model.setDirection(Direction.WEST);
@@ -220,9 +231,6 @@ public class SnakeNode extends GameNode {
             }
             if(keys[KeyEvent.VK_X]) {
                 model.getBodies().changeBackward();
-            }
-            if(keys[KeyEvent.VK_C]) {
-                //TODO ポーズ、ヘルプ表示
             }
             if(keys[KeyEvent.VK_SPACE]) {
             	/* ボディーが２以上のときだけスキル発動 */

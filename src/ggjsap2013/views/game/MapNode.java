@@ -32,8 +32,10 @@ public class MapNode extends GameNode {
         
         for(int i=0; i<map.getArray().length; i++) {
             for(int j=0; j<map.getArray()[i].length; j++) {
-                g.setColor(Color.orange);
-                g.drawRect(j*size, i*size, size, size);
+                //デバッグ用のマス目
+//                g.setColor(Color.orange);
+//                g.drawRect(j*size, i*size, size, size);
+                
                 Block b = map.getArray()[i][j];
                 if(b != null) {
                 	if (b instanceof PointItem) {
