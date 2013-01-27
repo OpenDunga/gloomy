@@ -20,27 +20,28 @@ public class GameScene extends GameNode {
     public GameScene() {
         reset();
         this.pauseNode = new PauseNode(this);
+        this.setKeyWait(20);
     }
     
     public void reset() {
         removeAllChild();
         stageNode = new StageNode(this);
-        this.stage = stageNode.getModel();
+        this.setStage(stageNode.getModel());
         this.add(stageNode);
         InfomationNode score = new InfomationNode(stageNode.getModel());
         this.add(score);
         BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/ggj1-1.wav");
         BGMPlayer.getInstance().play();
         this.pause(true);
-        this.add(new StartCountNode(this));
+        stageNode.add(new StartCountNode(this));
     }
     
     @Override
     protected void updateNode() {
-        if(stage.isGameOver()) {
+        if(getStage().isGameOver()) {
             gameOver();
         }
-        if(stage.isPaused()) {
+        if(getStage().isPaused()) {
             if(!isGamePaused)
                 gamePause(true);
         }
@@ -50,7 +51,6 @@ public class GameScene extends GameNode {
         isGamePaused = isPaused;
         //このノードはポーズする
         pause(isPaused);
-        stage.setPaused(isPaused);
         stageNode.remove(pauseNode);
         if(isPaused) {
             BGMPlayer.getInstance().setVolume(0.5);
@@ -75,6 +75,14 @@ public class GameScene extends GameNode {
 
     @Override
     protected void listenMouse(MouseInfo info) {}
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
 
 }

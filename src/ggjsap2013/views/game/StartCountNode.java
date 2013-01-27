@@ -1,5 +1,7 @@
 package ggjsap2013.views.game;
 
+import ggjsap2013.Gloomy;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -19,15 +21,15 @@ public class StartCountNode extends GameNode {
     @Override
     protected void drawNode(NodeGraphics g) {
         g.setColor(bgColor);
-        g.fillRect(0, 0, 800, 600);
+        g.fillRect(0, 0, Gloomy.CHIP_SIZE * Gloomy.STAGE_WIDTH, Gloomy.CHIP_SIZE * Gloomy.STAGE_HEIGHT);
         g.setColor(Color.black);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         if(passedFrames < 50) {
-            g.drawText("3", 330, 220);
+            g.drawText("3", 250, 220);
         } else if(passedFrames < 75) {
-            g.drawText("2", 330, 220);
+            g.drawText("2", 250, 220);
         } else {
-            g.drawText("1", 330, 220);
+            g.drawText("1", 250, 220);
         }
         passedFrames++;
         if(passedFrames > 100) {
@@ -48,6 +50,7 @@ public class StartCountNode extends GameNode {
     private void start() {
         scene.pause(false);
         scene.gamePause(false);
+        scene.getStage().setPaused(false);
         this.dispose();
     }
 
