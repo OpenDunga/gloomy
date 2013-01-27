@@ -93,6 +93,10 @@ public class ImageLoader {
     	loadBarricadeChip("toy_n");
     	loadBarricadeChip("toy_w");
     	loadBarricadeChip("toy_e");
+    	loadBarricadeChip("king_s");
+    	loadBarricadeChip("king_n");
+    	loadBarricadeChip("king_w");
+    	loadBarricadeChip("king_e");
     }
     
     private static void loadBarricadeChip(String name) throws IOException

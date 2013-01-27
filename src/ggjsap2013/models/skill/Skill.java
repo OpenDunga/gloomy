@@ -93,7 +93,7 @@ public class Skill
 	 * @param map
 	 * @param stage
 	 */
-	public void invoke(SnakeModel snake, MapModel map, Stage stage)
+	public void invoke(SnakeModel snake, MapModel map, Stage stage, boolean killHead)
 	{
 		boolean isInvoked = false;
 		
@@ -126,7 +126,7 @@ public class Skill
 		}
 		
 		
-		if (isInvoked) {
+		if (isInvoked && killHead) {
 			try {
 			    //サウンド再生
 		        SEPlayer.play("ggjsap2013/resources/se/skill.wav");

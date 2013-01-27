@@ -2,24 +2,25 @@
 	{
 		"index":0,
 		
-		"maxPointItemCount":2,
-		"availablePointItemTypes":["CANDY"],
+		"maxPointItemCount":4,
+		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "CANDY", "CANDY", "CANDY", "DONUT"],
 
-		"maxCharacterItemCount":10,
-		"availableCharacterItemTypes":["D", "E", "C", "B"],
+		"maxCharacterItemCount":1,
+		"availableCharacterItemTypes":["Alice"],
 
 		"barricades":{ 
 			"STONE": 1,
 			"ROCK": 2,
 			"BOMB": 3,
-			"SOLDIER": 5
+			"SOLDIER": 1,
+			"KING": 2
 		},
 		
 		
 		
 		"gameSpeed":20,
 		
-		"levelClearCount":5,
+		"levelClearCount":100,
 		
 		"mapType":1
 	},
@@ -30,7 +31,7 @@
 		"availablePointItemTypes":["CANDY", "DONUT"],
 
 		"maxCharacterItemCount":2,
-		"availableCharacterItemTypes":["B", "C"],
+		"availableCharacterItemTypes":["Alice", "Mermaid", "Akazukin", "Shirayuki", "TinkerBell"],
 
 		"barricades":{
 			"STONE": 1,
@@ -52,7 +53,7 @@
 		"availablePointItemTypes":["DONUT", "RIBON", "CAKE"],
 		
 		"maxCharacterItemCount":10,
-		"availableCharacterItemTypes":["C"],
+		"availableCharacterItemTypes":["Alice", "Mermaid", "Akazukin", "Shirayuki", "TinkerBell"],
 
 
 		"barricades":{

@@ -156,7 +156,7 @@ public class Barricade implements Block
 		}
 		
 		/* ランダムな位置に同じ障害物配置するよ */
-		map.createBarricadeBlock(stage.getCurrentLevel(), type);
+		map.createBarricadeBlock(stage, stage.getCurrentLevel(), type);
 		
 	}
 	

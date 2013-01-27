@@ -19,17 +19,19 @@ public class BodyList {
 
     /**
      * Bodyを追加.もしそのBodyがすでに隊列にいればランダムに動物を追加する.
+     * →仕様変更で常に追加でおｋ
      * @param body
      */
     public void addBody(SnakeBody body) {
         //キャラカウントを加算
         stage.getScore().charaCountUp();
         //隊列にキャラ追加
-        if(hasBody(body.getType())) {
-            list.addLast(createRandomAnimal());
-        } else {
-            list.addLast(body);
-        }
+//        if(hasBody(body.getType())) {
+//            list.addLast(createRandomAnimal());
+//        } else {
+//            list.addLast(body);
+//        }
+        list.addLast(body);
     }
     
     /**

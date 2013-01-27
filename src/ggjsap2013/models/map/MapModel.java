@@ -1,9 +1,11 @@
 package ggjsap2013.models.map;
 
+import ggjsap2013.models.Stage;
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
+import ggjsap2013.models.snake.BodyType;
 import ggjsap2013.utils.RandomUtil;
 
 import java.awt.Point;
@@ -24,7 +26,7 @@ public class MapModel {
      * @param currentLevel
      * @param type
      */
-    public void createBarricadeBlock(Level currentLevel, Barricade.TYPES type)
+    public void createBarricadeBlock(Stage stage, Level currentLevel, Barricade.TYPES type)
     {
     	 while (true) {
              int putX = RandomUtil.nextInt(map[0].length);
@@ -32,6 +34,11 @@ public class MapModel {
              
              if (map[putY][putX] != null) {
                  continue;
+             }
+             
+             Point snakeHeadPos = stage.getSnake().getHeadPosition();
+             if (snakeHeadPos.x == putX && snakeHeadPos.y == putY) {
+            	 continue;
              }
              
              map[putY][putX] = new Barricade(type);
@@ -43,7 +50,7 @@ public class MapModel {
     /**
      * ステージ情報を読み取り、ランダムな位置に新規ポイントアイテムブロックを生成する.
      */
-    public void createPointItemBlock(Level currentLevel) 
+    public void createPointItemBlock(Stage stage, Level currentLevel) 
     {
         while (true) {
             int putX = RandomUtil.nextInt(map[0].length);
@@ -52,6 +59,12 @@ public class MapModel {
             if (map[putY][putX] != null) {
                 continue;
             }
+            
+            Point snakeHeadPos = stage.getSnake().getHeadPosition();
+            if (snakeHeadPos.x == putX && snakeHeadPos.y == putY) {
+           	 continue;
+            }
+ 
             
             List<PointItem.TYPES> typeList = currentLevel.getAvailablePointItemTypes();
             PointItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
@@ -64,7 +77,7 @@ public class MapModel {
     /**
      * ステージ情報を読み取り、ランダムな位置に新規キャラアイテムブロックを生成する.
      */
-    public void createCharacterItemBlock(Level currentLevel) 
+    public void createCharacterItemBlock(Stage stage, Level currentLevel) 
     {
         while (true) {
             int putX = RandomUtil.nextInt(map[0].length);
@@ -74,8 +87,23 @@ public class MapModel {
                 continue;
             }
             
+            Point snakeHeadPos = stage.getSnake().getHeadPosition();
+            if (snakeHeadPos.x == putX && snakeHeadPos.y == putY) {
+            	continue;
+            }
+            
             List<CharacterItem.TYPES> typeList = currentLevel.getAvailableCharacterItemTypes();
             CharacterItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
+            
+            
+            /* 隊列に既にヒロインキャラが含まれていた場合、ランダムで動物アイテムを配置しますよ */
+            if (CharacterItem.isHeroineType(itemType)) {
+                BodyType bodyType = CharacterItem.getBodyTypeFromItemType(itemType);
+                boolean b = stage.getSnake().contains(bodyType);
+                if (b) {
+                	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
+                }
+            }
             
             map[putY][putX] = new CharacterItem(itemType);
             break;

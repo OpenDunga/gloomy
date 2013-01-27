@@ -4,7 +4,6 @@ import ggjsap2013.Gloomy;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.skill.Skill;
 import ggjsap2013.models.snake.BodyList;
-import ggjsap2013.models.snake.BodyType;
 import ggjsap2013.models.snake.MovedHistories;
 import ggjsap2013.models.snake.SnakeBody;
 import ggjsap2013.models.snake.SnakeModel;
@@ -14,8 +13,6 @@ import ggjsap2013.utils.ImageLoader;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
@@ -36,13 +33,6 @@ public class SnakeNode extends GameNode {
         this.stage = stage;
         this.model = stage.getSnake();
         this.setKeyWait(30);
-        List<SnakeBody> bodies = new ArrayList<SnakeBody>();
-        for(int i=0; i<2; i++) {
-            bodies.add(new SnakeBody(BodyType.Alice));
-            bodies.add(new SnakeBody(BodyType.Mermaid));
-            bodies.add(new SnakeBody(BodyType.Akazukin));
-        }
-        model.getBodies().init(bodies);
     }
 
     @Override
@@ -202,7 +192,7 @@ public class SnakeNode extends GameNode {
         model.decreaseCollisionDamageZeroCount();
         
         
-        if (model.isSkillInvoked()) {
+        if (model.isSkillInvoked() || model.isCollisionDamageZero()) {
         	currentEffectCount++;
         } else {
         	currentEffectCount = 0;
@@ -245,7 +235,7 @@ public class SnakeNode extends GameNode {
             		/* 先頭のキャラがスキル使用可能かとるよー */
                     Skill skill = model.getBodies().getHead().getSkill();
                     if (skill != null) {
-                    	skill.invoke(model, stage.getMap(), stage);
+                    	skill.invoke(model, stage.getMap(), stage, true);
                     }
             	}
             }

@@ -88,7 +88,7 @@ public class PointItem implements Item
 			stage.getScore().addScore(addScore);
 		}
 
-		map.createPointItemBlock(stage.getCurrentLevel());
+		map.createPointItemBlock(stage, stage.getCurrentLevel());
 	}
 	
 	@Override

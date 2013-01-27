@@ -99,8 +99,16 @@ public class MapNode extends GameNode {
 	        	}
 	        	
 	        case KING:
-	        	//TODO:画像差し替え
-	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
+	        	switch (b.getCurrentDirection()) {
+	        		case NORTH:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("king_n"));
+	        		case SOUTH:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("king_s"));
+	        		case WEST:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("king_w"));
+	        		case EAST:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("king_e"));
+	        	}
 	        case JOKER:
 	        	//TODO:画像差し替え
 	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
