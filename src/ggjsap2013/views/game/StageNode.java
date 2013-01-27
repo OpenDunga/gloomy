@@ -1,10 +1,6 @@
 package ggjsap2013.views.game;
 
-import ggjsap2013.Gloomy;
 import ggjsap2013.models.Stage;
-
-import java.awt.Color;
-
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.utils.MouseInfo;

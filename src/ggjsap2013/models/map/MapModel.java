@@ -98,9 +98,30 @@ public class MapModel {
             CharacterItem.TYPES itemType = null;
             if (typeString.equals("H")) {
             	itemType = CharacterItem.HEROINES[RandomUtil.nextInt(CharacterItem.HEROINES.length)];
+            	
+                /* 既にマップ上に同じキャラアイテムが存在するか */
+            	boolean hasSameItem = false;
+                for(int i=0; i<map.length; i++) {
+                    for(int j=0;j<map[0].length; j++) {
+                    	Block b = map[i][j];
+                    	if (b != null && b instanceof CharacterItem) {
+                    		CharacterItem charItem = (CharacterItem)b;
+                    		if (charItem.getType() == itemType) {
+                    			hasSameItem = true;
+                    			break;
+                    		}
+                    	}
+                    }
+                }
+                
+                if (hasSameItem) {
+                	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
+                }
+            	
             } else {
-            	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.HEROINES.length)];
+            	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
             }
+            
             
             
             /* 隊列に既にヒロインキャラが含まれていた場合、ランダムで動物アイテムを配置しますよ */
