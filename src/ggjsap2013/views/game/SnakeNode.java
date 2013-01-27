@@ -202,7 +202,7 @@ public class SnakeNode extends GameNode {
         model.decreaseCollisionDamageZeroCount();
         
         
-        if (model.isSkillInvoked()) {
+        if (model.isSkillInvoked() || model.isCollisionDamageZero()) {
         	currentEffectCount++;
         } else {
         	currentEffectCount = 0;
