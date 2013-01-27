@@ -77,8 +77,8 @@ public class PointItem implements Item
 				addScore = 10000;
 				break;
 			case TRUMPET:
-			    /* メンバー数*1000点 */
-			    addScore = 1000 * snake.getLength();
+			    /* メンバー数*300点 */
+			    addScore = 300 * snake.getLength();
                 break;
 		}
 
