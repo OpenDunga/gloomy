@@ -19,29 +19,6 @@ public class MapModel {
     
     
     /**
-     * ステージ情報を読み取り、ランダムな位置に新規障害物ブロックを生成する.
-     */
-    @Deprecated
-    public void createBarricadeBlock(Level currentLevel) 
-    {
-        while (true) {
-            int putX = RandomUtil.nextInt(map[0].length);
-            int putY = RandomUtil.nextInt(map.length);
-            
-            if (map[putY][putX] != null) {
-                continue;
-            }
-            
-//            List<Barricade.TYPES> typeList = currentLevel.getAvailableBarricadeTypes();
-//            Barricade.TYPES barricadeType = typeList.get(RandomUtil.nextInt(typeList.size()));
-//            
-//            map[putY][putX] = new Barricade(barricadeType);
-            break;
-        }
-    }
-    
-    
-    /**
      * 指定された障害物をランダムな位置に配置します
      * 
      * @param currentLevel

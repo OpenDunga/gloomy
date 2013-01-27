@@ -38,13 +38,10 @@ public class MapNode extends GameNode {
                 if(b != null) {
                 	if (b instanceof PointItem) {
                 	    PointItem pointItem = (PointItem) b;
-                        g.setColor(Color.BLACK);
                         g.drawGameImage(getPointItemImage(pointItem.getType()), j*size, i*size);
-                        
                 	} else if (b instanceof CharacterItem) {
                         g.setColor(Color.BLUE);
                         g.drawText(b.toString(), j*size, i*size);
-                		
                 	} else if (b instanceof Barricade) {
                         g.setColor(Color.red);
                         g.drawText(b.toString(), j*size, i*size);

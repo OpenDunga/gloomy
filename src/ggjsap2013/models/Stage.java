@@ -36,6 +36,7 @@ public class Stage {
     public void nextLevel() {
         currentLevelNum++;
         setLevel(currentLevelNum);
+        snake.invokeCollisionDamageZero();
     }
     
     public void setLevel(int level) {
@@ -60,8 +61,9 @@ public class Stage {
         return isGameOver;
     }
 
-    public void setGameOver(boolean isGameOver) {
-        this.isGameOver = isGameOver;
+    public void gameOver() {
+        this.isGameOver = true;
+        System.out.println("GameOver!");
     }
 
     public int getCurrentLevelNum() {

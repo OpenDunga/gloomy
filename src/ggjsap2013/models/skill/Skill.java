@@ -106,8 +106,7 @@ public class Skill
 			}
 		} catch (GameOverException e) {
             // TODO ゲームオーバー処理
-            stage.setGameOver(true);
-            System.out.println("GameOver!");
+            stage.gameOver();
 
 		}
 	}

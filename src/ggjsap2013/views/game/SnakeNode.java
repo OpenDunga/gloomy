@@ -192,9 +192,6 @@ public class SnakeNode extends GameNode {
 
     @Override
     protected void updateNode() {
-        if(stage.isGameOver()) {
-            this.freeze(true);
-        }
         currentMoveWait++;
         if(model.getMoveWait() <= currentMoveWait) {
             currentMoveWait = 0;
