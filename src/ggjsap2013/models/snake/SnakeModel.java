@@ -163,6 +163,11 @@ public class SnakeModel {
     public BodyList getBodies() {
         return bodies;
     }
+    
+    public Point getHeadPosition()
+    {
+    	return movedHistories.get(0).getPoint();
+    }
 
     public int getDefaultMoveWait()
 	{

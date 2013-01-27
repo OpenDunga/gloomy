@@ -66,7 +66,7 @@ public class CharacterItem implements Item
 				snake.getBodies().addBody(new SnakeBody(BodyType.TinkerBell));
 				break;
 		}
-		map.createCharacterItemBlock(stage.getCurrentLevel());
+		map.createCharacterItemBlock(stage, stage.getCurrentLevel());
 	}
 	
 	@Override

@@ -23,8 +23,9 @@ public class Stage {
     
     public Stage()
 	{
-    	setLevel(currentLevelNum);
+    	//TODO: 要チェック
     	snake = new SnakeModel(this);
+    	setLevel(currentLevelNum);
     	
     	int defaultMoveWait = getCurrentLevel().getGameSpeed();
     	snake.setDefaultMoveWait(defaultMoveWait);
@@ -38,11 +39,11 @@ public class Stage {
     public void nextLevel() {
         currentLevelNum++;
         setLevel(currentLevelNum);
-        (new Skill(Skill.TYPES.DAMAGE_ZERO)).invoke(snake, map, this);
+        (new Skill(Skill.TYPES.DAMAGE_ZERO)).invoke(snake, map, this, false);
     }
     
     public void setLevel(int level) {
-        MapModel levelMap = MapBuilder.create(levelInfoList.get(level));
+        MapModel levelMap = MapBuilder.create(this, levelInfoList.get(level));
         map.clear();
         map.mergeMap(levelMap.getArray());
     }

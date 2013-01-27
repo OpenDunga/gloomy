@@ -245,7 +245,7 @@ public class SnakeNode extends GameNode {
             		/* 先頭のキャラがスキル使用可能かとるよー */
                     Skill skill = model.getBodies().getHead().getSkill();
                     if (skill != null) {
-                    	skill.invoke(model, stage.getMap(), stage);
+                    	skill.invoke(model, stage.getMap(), stage, true);
                     }
             	}
             }
