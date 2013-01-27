@@ -104,6 +104,13 @@ public class ImageLoader {
     	loadBarricadeChip("king_n");
     	loadBarricadeChip("king_w");
     	loadBarricadeChip("king_e");
+    	loadBarricadeChip("joker_s");
+    	loadBarricadeChip("joker_n");
+    	loadBarricadeChip("joker_w");
+    	loadBarricadeChip("joker_e");
+    	
+        Images.put("wall", prefix + "barricades/wall.png");
+    	
     }
     
     private static void loadBarricadeChip(String name) throws IOException

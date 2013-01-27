@@ -45,14 +45,20 @@ public class MapNode extends GameNode {
                 	    PointItem pointItem = (PointItem) b;
                         g.drawGameImage(getPointItemImage(pointItem.getType()), j*size, i*size);
                 	} else if (b instanceof CharacterItem) {
-                        g.setColor(Color.BLUE);
-                        g.drawText(b.toString(), j*size, i*size);
+                		CharacterItem c = (CharacterItem)b;
+                		GameImage image = getCharacterItemImage(c);
+                        int posGap = Gloomy.CHIP_SIZE - image.get(0).getHeight();
+                        int heightGap = posGap;
+                        g.setColor(Color.BLACK);
+                        g.drawRect(j*size, i*size + posGap, size, size - heightGap);
+                        g.drawGameImage(image, j*size, i*size + posGap);
                 	} else if (b instanceof Barricade) {
                 		Barricade barricade = (Barricade)b;
                         g.drawGameImage(getBarricadeImage(barricade, barricade.getType()), j*size, i*size);
                 	} else if (b instanceof Wall) {
-                	    g.setColor(Color.lightGray);
-                        g.fillRect(j*size, i*size, Gloomy.CHIP_SIZE, Gloomy.CHIP_SIZE);
+//                	    g.setColor(Color.lightGray);
+//                        g.fillRect(j*size, i*size, Gloomy.CHIP_SIZE, Gloomy.CHIP_SIZE);
+                        g.drawGameImage(Images.get("wall"), j*size, i*size);
                 	}
                 }
             }
@@ -73,6 +79,33 @@ public class MapNode extends GameNode {
             return Images.get("item_5");
         case TRUMPET:
             return Images.get("item_6");
+        }
+        return null;
+    }
+    
+    private GameImage getCharacterItemImage(CharacterItem item) {
+        switch(item.getType()) {
+        	case Alice:
+	            return Images.get("chara_1_s");
+			case Mermaid:
+	            return Images.get("chara_2_s");
+			case Akazukin:
+	            return Images.get("chara_3_s");
+			case Shirayuki:
+	            return Images.get("chara_4_s");
+			case TinkerBell:
+	            return Images.get("chara_5_s");
+				
+			case Ahiru:
+	            return Images.get("animal_1_s");
+			case Kuma:
+	            return Images.get("animal_2_s");
+			case Lion:
+	            return Images.get("animal_3_s");
+			case Panda:
+	            return Images.get("animal_4_s");
+			case Usagi:
+	            return Images.get("animal_5_s");
         }
         return null;
     }
@@ -112,8 +145,16 @@ public class MapNode extends GameNode {
 	    	            return Images.get(ImageLoader.getBarricadeImageKey("king_e"));
 	        	}
 	        case JOKER:
-	        	//TODO:画像差し替え
-	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
+	        	switch (b.getCurrentDirection()) {
+	        		case NORTH:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("joker_n"));
+	        		case SOUTH:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("joker_s"));
+	        		case WEST:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("joker_w"));
+	        		case EAST:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("joker_e"));
+	        	}
 	        case DARK_WINDOW:
 	        	//TODO:画像差し替え
 	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));

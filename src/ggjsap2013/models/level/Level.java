@@ -34,23 +34,10 @@ public class Level
 	 */
 	private int							maxCharacterItemCount;
 	
-
 	/**
-	 * マップ中に出てくる可能性のあるキャラアイテムの種類ですよー
+	 * ヒロイン/動物アイテムの出現率
 	 */
-	private List<CharacterItem.TYPES>	availableCharacterItemTypes;
-	
-	
-	
-//	/**
-//     * マップ中に出てくる障害物の最大数だよ
-//     */
-//    private int                         maxBarricadeCount;
-//	
-//	/**
-//     * マップ中に出てくる可能性のある障害物の種類ですよー
-//     */
-//    private List<Barricade.TYPES>   availableBarricadeTypes;
+	private List<String>				availableCharacterItemTypes;
 	
     
     
@@ -131,24 +118,15 @@ public class Level
 	{
 		return maxCharacterItemCount;
 	}
-	
 	public void setAvailableCharacterItemTypes(
-			List<CharacterItem.TYPES> availableCharacterItemTypes)
+			List<String> availableCharacterItemTypes)
 	{
 		this.availableCharacterItemTypes = availableCharacterItemTypes;
 	}
-	public List<CharacterItem.TYPES> getAvailableCharacterItemTypes()
+	public List<String> getAvailableCharacterItemTypes()
 	{
 		return availableCharacterItemTypes;
 	}
-
-//    public int getMaxBarricadeCount() {
-//        return maxBarricadeCount;
-//    }
-//
-//    public void setMaxBarricadeCount(int maxBarricadeCount) {
-//        this.maxBarricadeCount = maxBarricadeCount;
-//    }
     
     public void setBarricades(Map<Barricade.TYPES, Integer> barricades)
 	{
