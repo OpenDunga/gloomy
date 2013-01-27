@@ -47,7 +47,7 @@ public class MapNode extends GameNode {
                         g.drawText(b.toString(), j*size, i*size);
                 	} else if (b instanceof Barricade) {
                 		Barricade barricade = (Barricade)b;
-                        g.drawGameImage(getBarricadeImage(barricade.getType()), j*size, i*size);
+                        g.drawGameImage(getBarricadeImage(barricade, barricade.getType()), j*size, i*size);
                 	} else if (b instanceof Wall) {
                 	    g.setColor(Color.lightGray);
                         g.fillRect(j*size, i*size, Gloomy.CHIP_SIZE, Gloomy.CHIP_SIZE);
@@ -75,7 +75,7 @@ public class MapNode extends GameNode {
         return null;
     }
     
-    private GameImage getBarricadeImage(Barricade.TYPES type) {
+    private GameImage getBarricadeImage(Barricade b, Barricade.TYPES type) {
         switch(type) {
 	        case STONE:
 	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
@@ -87,8 +87,17 @@ public class MapNode extends GameNode {
 	        	//TODO:画像差し替え
 	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
 	        case SOLDIER:
-	        	//TODO:画像差し替え
-	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
+	        	switch (b.getCurrentDirection()) {
+	        		case NORTH:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("toy_n"));
+	        		case SOUTH:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("toy_s"));
+	        		case WEST:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("toy_w"));
+	        		case EAST:
+	    	            return Images.get(ImageLoader.getBarricadeImageKey("toy_e"));
+	        	}
+	        	
 	        case KING:
 	        	//TODO:画像差し替え
 	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
@@ -120,7 +129,7 @@ public class MapNode extends GameNode {
             		
                     if(b.getMoveWait() <= b.getCurrentMove()) {
                         b.setCurrentMove(0);
-                        b.move(map, j, i);
+                        b.move(stage.getSnake(), map, j, i);
                     }
 
             	}

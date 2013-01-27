@@ -6,6 +6,7 @@ import ggjsap2013.controllers.io.MapBuilder;
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.score.Score;
+import ggjsap2013.models.skill.Skill;
 import ggjsap2013.models.snake.SnakeModel;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class Stage {
     public void nextLevel() {
         currentLevelNum++;
         setLevel(currentLevelNum);
-        snake.invokeCollisionDamageZero();
+        (new Skill(Skill.TYPES.DAMAGE_ZERO)).invoke(snake, map, this);
     }
     
     public void setLevel(int level) {

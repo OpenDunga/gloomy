@@ -84,40 +84,43 @@ public class Skill
 	 */
 	public void invoke(SnakeModel snake, MapModel map, Stage stage)
 	{
-		try {
-			switch (type) {
-				case DAMAGE_ZERO:
-					snake.invokeSkill(this);
-					snake.getBodies().killHead();
-					break;
-					
-				case SLOW:
-					snake.invokeSkill(this);
-					snake.getBodies().killHead();
-					break;
-					
-				case BREAK:
-					snake.invokeSkill(this);
-					map.breakOneMovingBarricade();
-					snake.getBodies().killHead();
-					break;
-					
-				case POINT_DOUBLE:
-					snake.invokeSkill(this);
-					snake.getBodies().killHead();
-					break;
-					
-				case FRIEND_POINT:
-					snake.invokeSkill(this);
+		boolean isInvoked = false;
+		
+		switch (type) {
+			case DAMAGE_ZERO:
+				isInvoked = snake.invokeSkill(this);
+				break;
+				
+			case SLOW:
+				isInvoked = snake.invokeSkill(this);
+				break;
+				
+			case BREAK:
+				isInvoked = snake.invokeSkill(this);
+				map.breakOneMovingBarricade();
+				break;
+				
+			case POINT_DOUBLE:
+				isInvoked = snake.invokeSkill(this);
+				break;
+				
+			case FRIEND_POINT:
+				isInvoked = snake.invokeSkill(this);
+				if (isInvoked) {
 					int size = snake.getBodies().size();
 					stage.getScore().addScore(size * 1000);
-					snake.getBodies().killHead();
-					break;
-				
+				}
+				break;
+			
+		}
+		
+		
+		if (isInvoked) {
+			try {
+				snake.getBodies().killHead();
+			} catch (GameOverException e) {
+	            stage.gameOver();
 			}
-		} catch (GameOverException e) {
-            stage.gameOver();
-
 		}
 	}
 }

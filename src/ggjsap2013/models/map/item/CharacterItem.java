@@ -92,7 +92,7 @@ public class CharacterItem implements Item
 	}
 	
 	@Override
-	public void move(MapModel mapModel, int currentX, int currentY)
+	public void move(SnakeModel snakeModel, MapModel mapModel, int currentX, int currentY)
 	{
 	}
 	

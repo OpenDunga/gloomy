@@ -6,6 +6,7 @@ import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.SnakeModel;
+import ggjsap2013.models.snake.SnakeModel.Direction;
 import ggjsap2013.utils.RandomUtil;
 
 /**
@@ -59,6 +60,8 @@ public class Barricade implements Block
 	
 	private int		currentMove;
 	
+	private Direction	currentDirection;
+	
 	
 	/**
 	 * 種類を与えてインスタンス作るよ
@@ -69,6 +72,7 @@ public class Barricade implements Block
 	{
 		this.type = type;
 		currentMove = 0;
+		currentDirection = Direction.SOUTH;
 	}
 
 	
@@ -80,6 +84,16 @@ public class Barricade implements Block
 	public TYPES getType()
 	{
 		return type;
+	}
+	
+	
+	public void setCurrentDirection(Direction currentDirection)
+	{
+		this.currentDirection = currentDirection;
+	}
+	public Direction getCurrentDirection()
+	{
+		return currentDirection;
 	}
 
 	@Override
@@ -152,7 +166,7 @@ public class Barricade implements Block
 	public int getMoveWait()
 	{
 		if (isMovable()) {
-			return 30;	//TODO:待ち時間てきとー
+			return 30;
 		} else {
 			return 0;
 		}
@@ -197,34 +211,43 @@ public class Barricade implements Block
 	}
 	
 	@Override
-	public void move(MapModel mapModel, int currentX, int currentY)
+	public void move(SnakeModel snakeModel, MapModel mapModel, int currentX, int currentY)
 	{
 		if (isMovable()) {
-			//TODO: 障害物移動時に隊列めり込まないように
-			
 			int x = currentX;
 			int y = currentY;
+			Direction direction = Direction.SOUTH;
 			
 			switch (RandomUtil.nextInt(4)) {
 				case 0:
 					x++;
+					direction = Direction.EAST;
 					break;
 				case 1:
 					x--;
+					direction = Direction.WEST;
 					break;
 				case 2:
 					y++;
+					direction = Direction.SOUTH;
 					break;
 				case 3:
 					y--;
+					direction = Direction.NORTH;
 					break;
 			}
 			
 			if (0 <= x && x < Gloomy.STAGE_WIDTH) {
 				if (0 <= y && y < Gloomy.STAGE_HEIGHT) {
+					/* 障害物とかない場合のみ動くよー */
 					if (mapModel.getArray()[y][x] == null) {
-						mapModel.getArray()[currentY][currentX] = null;
-						mapModel.getArray()[y][x] = this;
+						/* ヘビの隊列に重ならない場合のみ動くよー */
+						if (snakeModel.getHistories().contains(snakeModel.getLength(), x, y) == false) {
+							mapModel.getArray()[currentY][currentX] = null;
+							mapModel.getArray()[y][x] = this;
+							
+							this.setCurrentDirection(direction);
+						}
 					}
 				}
 			}

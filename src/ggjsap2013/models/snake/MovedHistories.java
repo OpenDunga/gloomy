@@ -56,4 +56,28 @@ public class MovedHistories {
     public HistoryModel get(int i) {
         return list.get(i);
     }
+    
+    /**
+     * 指定された座標にヘビが存在するか取得しますよ
+     * 
+     * @param x
+     * @param y
+     * @return
+     */
+    public boolean contains(int snakeLength, int x, int y)
+    {
+    	boolean isContains = false;
+    	
+    	for (int i=0; i<snakeLength; i++) {
+    		if (i >= list.size()) {
+    			break;
+    		}
+    		Point p = (list.get(i)).getPoint();
+    		if (p.x == x && p.y == y) {
+    			isContains = true;
+    		}
+    	}
+    	
+    	return isContains;
+    }
 }

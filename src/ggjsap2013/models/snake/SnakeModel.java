@@ -4,6 +4,7 @@ import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
 import ggjsap2013.models.map.MapModel;
+import ggjsap2013.models.map.barricades.Wall;
 import ggjsap2013.models.skill.Skill;
 import ggjsap2013.models.skill.Skill.TYPES;
 
@@ -47,6 +48,7 @@ public class SnakeModel {
     
     
     private Direction direction = Direction.SOUTH;
+    private Direction nextDirection = Direction.SOUTH;
     
     
     /**
@@ -117,6 +119,8 @@ public class SnakeModel {
      * 現在の方向へ１マス進行する.
      */
     public void move() {
+    	setDirection(nextDirection);
+    	
         switch(direction) {
         case SOUTH:
             move(0, 1);
@@ -140,7 +144,10 @@ public class SnakeModel {
         Point p = movedHistories.get(0).getPoint();
         Block b = map.getArray()[p.y][p.x];
         if(b != null) {
-            map.getArray()[p.y][p.x] = null;
+        	/* 壁じゃない場合のみブロックを消す */
+        	if (b instanceof Wall == false) {
+                map.getArray()[p.y][p.x] = null;
+        	}
             b.intersects(this, map, stage);
         }
     }
@@ -217,6 +224,11 @@ public class SnakeModel {
     	}
     }
     
+    public void setNextDirection(Direction nextDirection)
+	{
+		this.nextDirection = nextDirection;
+	}
+    
     
     /**
      * 障害物衝突後の無敵状態を発動しますよー
@@ -260,9 +272,12 @@ public class SnakeModel {
      * 指定されたスキルを発動します
      * 
      * @param skill
+     * @return 
      */
-    public void invokeSkill(Skill skill)
+    public boolean invokeSkill(Skill skill)
     {
+    	boolean isInvoked = false;
+    	
     	/* 現在スキル未発動のときのみ */
     	if (currentSkill == null) {
     		currentSkill = skill;
@@ -270,25 +285,37 @@ public class SnakeModel {
     		switch (skill.getType()) {
     			case DAMAGE_ZERO:
     				skillCount = Skill.NO_DAMAGE_SKILL_LIMIT;
+    				isInvoked = true;
     				break;
     				
     			case SLOW:
     				skillCount = Skill.SLOW_SKILL_LIMIT;
     				setMoveWait(SLOW_MOVE_WAIT);
+    				isInvoked = true;
     				break;
     				
     			case BREAK:
     				skillCount = Skill.BREAK_SKILL_LIMIT;
+    				isInvoked = true;
     				break;
     				
     			case POINT_DOUBLE:
     				skillCount = Skill.POINT_DOUBLE_SKILL_LIMIT;
+    				isInvoked = true;
     				break;
     				
     			case FRIEND_POINT:
     				skillCount = Skill.FRIEND_POINT_SKILL_LIMIT;
+    				isInvoked = true;
+    				break;
+    				
+    			default:
+    				isInvoked = false;
+    				break;
     		}
     	}
+    	
+    	return isInvoked;
     }
     
     /**
