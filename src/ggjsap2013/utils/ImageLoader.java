@@ -11,7 +11,7 @@ public class ImageLoader {
         Images.put("logo", prefix + "kawaz.jpg");
         Images.put("title_back", prefix + "system/title_back.png");
         Images.put("game_back", prefix + "system/game_back.png");
-        Images.put("field_back", prefix + "system/field_back.jpg");
+        Images.put("field_back", prefix + "system/field_back.png");
         
         loadCharaChips();
         
@@ -28,7 +28,7 @@ public class ImageLoader {
     
     private static void loadHelpImages() throws IOException {
         for(int i=1; i<=6; i++) {
-            Images.put("help_" + i, prefix + "helps/help_" + i + ".png");
+            Images.put("help_" + i, prefix + "helps/help" + i + ".png");
         }
     }
     

@@ -31,12 +31,11 @@ public class Title extends GameNode {
 
     public void drawNode(NodeGraphics g) {
         g.drawGameImage(Images.get("title_back"));
-        g.setColor(Color.blue);
-        g.drawRect(selector);
         g.setColor(Color.black);
+        g.fillRect(220, 500, 350, 50);
+        g.setColor(Color.white);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
-        g.drawText("Start", 360, 425);
-        g.drawText("Exit", 365, 505);
+        g.drawText("Press Space to Start", 250, 505);
     }
 
     boolean isTransition = false;
@@ -45,17 +44,8 @@ public class Title extends GameNode {
         if(isTransition)
             return;
         if(keys[KeyEvent.VK_SPACE]) {
-            execMenu(selectID);
-        } else if(keys[KeyEvent.VK_UP]) {
-            selectID--;
-            if(selectID < 1)
-                selectID = 2;
-        } else if(keys[KeyEvent.VK_DOWN]) {
-            selectID++;
-            if(selectID > 2)
-                selectID = 1;
+            execMenu(1);
         }
-        setSelector(selectID);
     }
 
     @Override
