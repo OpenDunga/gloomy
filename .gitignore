@@ -3,4 +3,4 @@
 *.jar
 bin/
 lib/
-
+*.ser
