@@ -1,5 +1,6 @@
 package ggjsap2013.models.map.item;
 
+import jp.tohhy.gamepanel.sounds.SEPlayer;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.SnakeModel;
@@ -46,6 +47,8 @@ public class PointItem implements Item
 	@Override
 	public void intersects(SnakeModel snake, MapModel map, Stage stage)
 	{
+	    //サウンド再生
+        SEPlayer.play("ggjsap2013/resources/se/item.wav");
 		int addScore = 0;
 		
 		switch (getType()) {

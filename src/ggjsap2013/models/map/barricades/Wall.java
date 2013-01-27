@@ -1,5 +1,6 @@
 package ggjsap2013.models.map.barricades;
 
+import jp.tohhy.gamepanel.sounds.SEPlayer;
 import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.Block;
@@ -15,6 +16,8 @@ public class Wall implements Block {
     	if (snake.isCollisionDamageZero() || snake.isNoDamage()) {
     		
     	} else {
+    	    //サウンド再生
+            SEPlayer.play("ggjsap2013/resources/se/damage.wav");
             killHeads(snake, 255);
     	}
     }

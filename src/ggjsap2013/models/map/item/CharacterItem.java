@@ -1,5 +1,6 @@
 package ggjsap2013.models.map.item;
 
+import jp.tohhy.gamepanel.sounds.SEPlayer;
 import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
 import ggjsap2013.models.map.MapModel;
@@ -49,6 +50,8 @@ public class CharacterItem implements Item
 	public void intersects(SnakeModel snake, MapModel map, Stage stage)
 			throws GameOverException
 	{
+	    //サウンド再生
+        SEPlayer.play("ggjsap2013/resources/se/item2.wav");
 		switch (getType()) {
 			case A:
 				snake.getBodies().addBody(new SnakeBody(BodyType.Alice));

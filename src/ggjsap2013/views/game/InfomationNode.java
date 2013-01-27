@@ -88,9 +88,10 @@ public class InfomationNode extends GameNode
         int lengthValue = stage.getSnake().getBodies().size();
         int charaCountValue = stage.getScore().getCharaCount();
         int levelValue = stage.getCurrentLevelNum();
+        int levelUpValue = stage.getCurrentLevel().getLevelClearCount();
         
         g.drawText("length: " + lengthValue, 15, 460);
-        g.drawText("charaCount: " + charaCountValue, 15, 490);
+        g.drawText("charaCount: " + charaCountValue + "/" + levelUpValue, 15, 490);
         g.drawText("level: " + levelValue, 15, 520);
     }
 
