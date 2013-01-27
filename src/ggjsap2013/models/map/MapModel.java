@@ -92,8 +92,15 @@ public class MapModel {
             	continue;
             }
             
-            List<CharacterItem.TYPES> typeList = currentLevel.getAvailableCharacterItemTypes();
-            CharacterItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
+            List<String> typeList = currentLevel.getAvailableCharacterItemTypes();
+            String typeString = typeList.get(RandomUtil.nextInt(typeList.size()));
+            
+            CharacterItem.TYPES itemType = null;
+            if (typeString.equals("H")) {
+            	itemType = CharacterItem.HEROINES[RandomUtil.nextInt(CharacterItem.HEROINES.length)];
+            } else {
+            	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.HEROINES.length)];
+            }
             
             
             /* 隊列に既にヒロインキャラが含まれていた場合、ランダムで動物アイテムを配置しますよ */

@@ -2,74 +2,649 @@
 	{
 		"index":0,
 		
-		"maxPointItemCount":4,
-		"availablePointItemTypes":["TRUMPET"],
+		"availableCharacterItemTypes":["A"],
 
 		"maxCharacterItemCount":1,
-		"availableCharacterItemTypes":["Alice"],
+		
+		"levelClearCount":1,
 
+		"mapType":1,
+		
 		"barricades":{ 
-			"STONE": 1,
-			"ROCK": 2,
-			"BOMB": 3,
-			"SOLDIER": 1,
-			"KING": 2
 		},
-		
-		
 		
 		"gameSpeed":20,
 		
-		"levelClearCount":100,
-		
-		"mapType":1
+		"maxPointItemCount":1,	
+		"availablePointItemTypes":["CANDY"]
 	},
 	{
 		"index":1,
 		
-		"maxPointItemCount":5,
-		"availablePointItemTypes":["CANDY", "DONUT"],
+		"availableCharacterItemTypes":["A", "A", "A"],
 
-		"maxCharacterItemCount":2,
-		"availableCharacterItemTypes":["Alice", "Mermaid", "Akazukin", "Shirayuki", "TinkerBell"],
-
-		"barricades":{
-			"STONE": 1,
-			"ROCK": 2
+		"maxCharacterItemCount":1,
+		
+		"levelClearCount":4,
+		
+		"mapType":0,
+		
+		"barricades":{ 
 		},
-
-		"gameSpeed":18,
 		
-		"levelClearCount":15,
+		"gameSpeed":20,
 		
-		
-		"mapType":1
-	
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "DONUT"]
 	},
 	{
 		"index":2,
 		
-		"maxPointItemCount":1,
-		"availablePointItemTypes":["TRUMPET"],
+		"availableCharacterItemTypes":["H"],
+
+		"maxCharacterItemCount":1,
 		
-		"maxCharacterItemCount":10,
-		"availableCharacterItemTypes":["Alice", "Mermaid", "Akazukin", "Shirayuki", "TinkerBell"],
-
-
-		"barricades":{
-			"STONE": 2,
-			"ROCK": 2,
-			"BOMB": 2,
-			"SOLDIER": 2
-		},
-
-
-		"gameSpeed":16,
+		"levelClearCount":5,
 		
-		"levelClearCount":2147483647,
-	
 		"mapType":0
 
+		"barricades":{ 
+		},
+		
+		"gameSpeed":20,
+		
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "CANDY", "DONUT"]
+	},
+	{
+		"index":3,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":1,
+		
+		"levelClearCount":11,
+		
+		"mapType":0
+
+		"barricades":{
+			"STONE":4
+		},
+		
+		"gameSpeed":20,
+		
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "CANDY", "CANDY", "DONUT", "DONUT"]
+	},
+	{
+		"index":4,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":1,
+		
+		"levelClearCount":17,
+		
+		"mapType":0
+
+		"barricades":{
+			"STONE":6
+		},
+		
+		"gameSpeed":20,
+		
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "DONUT"]
+	},
+	{
+		"index":5,
+		
+		"availableCharacterItemTypes":["H","A","A","A","A","A"],
+
+		"maxCharacterItemCount":1,
+		
+		"levelClearCount":23,
+		
+		"mapType":0
+
+		"barricades":{
+			"STONE":9
+		},
+		
+		"gameSpeed":20,
+		
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "DONUT", "DONUT"]
+	},
+	{
+		"index":6,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":28,
+		
+		"mapType":0
+
+		"barricades":{
+			"STONE":5,
+			"ROCK":2
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "DONUT", "DONUT"]
+	},
+	{
+		"index":7,
+		
+		"availableCharacterItemTypes":["H", "A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":35,
+		
+		"mapType":0
+
+		"barricades":{
+			"STONE":4,
+			"ROCK":4
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["CANDY", "CANDY", "DONUT"]
+	},
+	{
+		"index":8,
+		
+		"availableCharacterItemTypes":["H", "A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":41,
+		
+		"mapType":0
+
+		"barricades":{
+			"STONE":6,
+			"ROCK":4
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":1,
+		"availablePointItemTypes":["CANDY", "CANDY", "CANDY", "CANDY", "DONUT", "DONUT"]
+	},
+	{
+		"index":9,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":47,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":5,
+			"ROCK":1
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["CANDY", "CANDY", "DONUT", "DONUT", "DONUT", "RIBON"]
+	},
+	{
+		"index":10,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":53,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":7,
+			"ROCK":1
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["CANDY", "CANDY", "DONUT", "DONUT", "DONUT", "RIBON"]
+	},
+	{
+		"index":11,
+		
+		"availableCharacterItemTypes":["H","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":60,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":7,
+			"ROCK":3
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["CANDY", "DONUT", "DONUT", "DONUT", "DONUT", "RIBON"]
+	},
+	{
+		"index":12,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":66,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":1,
+			"ROCK":1,
+			"SOLDIER":3
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["DONUT", "DONUT", "DONUT", "DONUT", "RIBON"]
+	},
+	{
+		"index":13,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":72,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":3,
+			"ROCK":2,
+			"SOLDIER":3
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["DONUT", "DONUT", "DONUT", "RIBON"]
+	},
+	{
+		"index":14,
+		
+		"availableCharacterItemTypes":["H","H","H","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":79,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":4,
+			"ROCK":1,
+			"SOLDIER":2,
+			"KING":1
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["DONUT", "DONUT", "DONUT", "RIBON", "RIBON"]
+	},
+	{
+		"index":15,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":1,
+		
+		"levelClearCount":85,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":7,
+			"ROCK":3,
+			"BOMB":1
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["DONUT", "DONUT", "DONUT", "RIBON", "RIBON"]
+	},
+	{
+		"index":16,
+		
+		"availableCharacterItemTypes":["H","A","A","A","A"],
+
+		"maxCharacterItemCount":1,
+		
+		"levelClearCount":90,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":3,
+			"ROCK":4,
+			"BOMB":2
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["DONUT", "DONUT", "RIBON"]
+	},
+	{
+		"index":17,
+		
+		"availableCharacterItemTypes":["H","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":1,
+		
+		"levelClearCount":97,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":3,
+			"ROCK":4,
+			"BOMB":4
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":2,
+		"availablePointItemTypes":["DONUT", "DONUT", "RIBON"]
+	},
+	{
+		"index":18,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":106,
+		
+		"mapType":0
+
+		"barricades":{
+			"STONE":4,
+			"ROCK":3,
+			"BOMB":3,
+			"KING":1
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["DONUT", "DONUT", "RIBON", "RIBON", "RIBON", "CAKE"]
+	},
+	{
+		"index":19,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":115,
+		
+		"mapType":0
+
+		"barricades":{
+			"ROCK":4,
+			"BOMB":4,
+			"KING":1
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["DONUT", "DONUT", "RIBON", "RIBON", "RIBON", "CAKE"]
+	},
+	{
+		"index":20,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":124,
+		
+		"mapType":0
+
+		"barricades":{
+			"BOMB":3,
+			"SOLDIER":2,
+			"KING":2
+		},
+		
+		"gameSpeed":16,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["DONUT", "DONUT", "DONUT", "RIBON", "RIBON", "RIBON", "RIBON", "RIBON", "RIBON", "RIBON", "CAKE", "CAKE", "TRUMPET"]
+	},
+	{
+		"index":21,
+		
+		"availableCharacterItemTypes":["H", "A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":134,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":4,
+			"ROCK":3,
+			"BOMB":3,
+			"JOKER":1
+		},
+		
+		"gameSpeed":14,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["RIBON", "RIBON", "RIBON", "RIBON", "RIBON", "RIBON", "CAKE", "CAKE", "CAKE", "TRUMPET"]
+	},
+	{
+		"index":22,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":143,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":4,
+			"ROCK":3,
+			"BOMB":4,
+			"JOKER":1
+		},
+		
+		"gameSpeed":14,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["RIBON", "RIBON", "RIBON", "RIBON", "RIBON", "RIBON", "CAKE", "CAKE", "CAKE", "CAKE", "TRUMPET"]
+	},
+	{
+		"index":23,
+		
+		"availableCharacterItemTypes":["H", "A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":153,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":4,
+			"ROCK":3,
+			"BOMB":4,
+			"JOKER":2
+		},
+		
+		"gameSpeed":14,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["RIBON", "RIBON", "CAKE", "CAKE", "CAKE", "JEWEL", "TRUMPET"]
+	},
+	{
+		"index":24,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":162,
+		
+		"mapType":1
+
+		"barricades":{
+			"ROCK":4,
+			"BOMB":2,
+			"KING":2
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["RIBON", "CAKE", "CAKE", "CAKE", "CAKE", "JEWEL", "TRUMPET"]
+	},
+	{
+		"index":25,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":171,
+		
+		"mapType":1
+
+		"barricades":{
+			"ROCK":4,
+			"BOMB":3,
+			"KING":2
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["CAKE", "CAKE", "CAKE", "CAKE", "JEWEL", "JEWEL", "TRUMPET"]
+	},
+	{
+		"index":26,
+		
+		"availableCharacterItemTypes":["H", "A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":2,
+		
+		"levelClearCount":181,
+		
+		"mapType":1
+
+		"barricades":{
+			"ROCK":3,
+			"BOMB":4,
+			"KING":2
+		},
+		
+		"gameSpeed":18,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["CAKE", "CAKE", "CAKE", "CAKE", "CAKE", "JEWEL", "JEWEL", "JEWEL", "TRUMPET", "TRUMPET"]
+	},
+	{
+		"index":27,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":193,
+		
+		"mapType":1
+
+		"barricades":{
+			"ROCK":3,
+			"BOMB":5,
+			"SOLDIER":3,
+			"JOKER":2
+		},
+		
+		"gameSpeed":14,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["CAKE", "CAKE", "CAKE", "CAKE", "JEWEL", "JEWEL", "JEWEL", "TRUMPET", "TRUMPET"]
+	},
+	{
+		"index":28,
+		
+		"availableCharacterItemTypes":["A","A","A","A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":205,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":2,
+			"ROCK":3,
+			"BOMB":5,
+			"SOLDIER":3,
+			"JOKER":2
+		},
+		
+		"gameSpeed":14,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["CAKE", "CAKE","JEWEL", "TRUMPET"]
+	},
+	{
+		"index":28,
+		
+		"availableCharacterItemTypes":["H", "H", "H", "A","A","A","A","A","A","A","A","A","A","A","A","A","A","A"],
+
+		"maxCharacterItemCount":3,
+		
+		"levelClearCount":200000000,
+		
+		"mapType":1
+
+		"barricades":{
+			"STONE":6,
+			"ROCK":4,
+			"BOMB":8,
+			"JOKER":3
+		},
+		
+		"gameSpeed":14,
+		
+		"maxPointItemCount":3,
+		"availablePointItemTypes":["CAKE","JEWEL", "TRUMPET"]
 	}
-	
 ]

@@ -32,6 +32,7 @@ public class CharacterItem implements Item
 	    Usagi;
 	}
 	
+    public static TYPES[] HEROINES = {TYPES.Alice, TYPES.Mermaid, TYPES.Akazukin, TYPES.Shirayuki, TYPES.TinkerBell};
     public static TYPES[] ANIMALS = {TYPES.Ahiru, TYPES.Kuma, TYPES.Lion, TYPES.Panda, TYPES.Usagi};
 
 	
