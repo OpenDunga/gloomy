@@ -15,13 +15,16 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  */
 public class StageNode extends GameNode {
     private final GameScene scene;
-    private final Stage stage = new Stage();
+    private final Stage model = new Stage();
+    private final MapNode map = new MapNode(model);
+    private final SnakeNode snake = new SnakeNode(model);
+    
     private final Color bgColor = new Color(255, 255, 255, 150);
     
     public StageNode(GameScene scene) {
         this.scene = scene;
-        this.add(new MapNode(getStage()));
-        this.add(new SnakeNode(getStage()));
+        this.add(getMap());
+        this.add(getSnake());
         this.setPosition(230, 20);
     }
 
@@ -42,7 +45,15 @@ public class StageNode extends GameNode {
     @Override
     protected void listenMouse(MouseInfo info) {}
 
-    public Stage getStage() {
-        return stage;
+    public Stage getModel() {
+        return model;
+    }
+
+    public SnakeNode getSnake() {
+        return snake;
+    }
+
+    public MapNode getMap() {
+        return map;
     }
 }
