@@ -9,7 +9,8 @@ public class ImageLoader {
     
     public static void load() throws IOException {
         Images.put("logo", prefix + "kawaz.jpg");
-        Images.put("game_back", prefix + "system/game_back.jpg");
+        Images.put("title_back", prefix + "system/title_back.png");
+        Images.put("game_back", prefix + "system/game_back.png");
         Images.put("field_back", prefix + "system/field_back.jpg");
         
         loadCharaChips();
@@ -20,7 +21,15 @@ public class ImageLoader {
         
         loadEffectChips();
         
+        loadHelpImages();
+        
         loadBarricadeChips();
+    }
+    
+    private static void loadHelpImages() throws IOException {
+        for(int i=1; i<=6; i++) {
+            Images.put("help_" + i, prefix + "helps/help_" + i + ".png");
+        }
     }
     
     private static void loadItemChips() throws IOException {

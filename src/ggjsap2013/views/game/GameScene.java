@@ -30,7 +30,8 @@ public class GameScene extends GameNode {
         this.add(stageNode);
         InfomationNode score = new InfomationNode(stageNode.getModel());
         this.add(score);
-        BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/ggj1-1.wav");
+        BGMPlayer.getInstance().stop();
+        BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/main.wav");
         BGMPlayer.getInstance().play();
         this.pause(true);
         stageNode.add(new StartCountNode(this));

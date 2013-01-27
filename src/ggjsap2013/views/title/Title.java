@@ -11,6 +11,7 @@ import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.nodes.transition.Fade;
+import jp.tohhy.gamepanel.sounds.BGMPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
 /**
@@ -24,10 +25,12 @@ public class Title extends GameNode {
     public Title() {
         this.add(new Fade(null, null).fadeIn(200));
         this.setKeyWait(20);
+        BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/title.wav");
+        BGMPlayer.getInstance().play();
     }
 
     public void drawNode(NodeGraphics g) {
-        g.drawGameImage(Images.get("game_back"));
+        g.drawGameImage(Images.get("title_back"));
         g.setColor(Color.blue);
         g.drawRect(selector);
         g.setColor(Color.black);

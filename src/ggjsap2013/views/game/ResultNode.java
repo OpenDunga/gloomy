@@ -22,6 +22,9 @@ public class ResultNode extends GameNode {
     public ResultNode(GameScene scene) {
         this.scene = scene;
         BGMPlayer.getInstance().stop();
+        BGMPlayer.getInstance().stop();
+        BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/result.wav");
+        BGMPlayer.getInstance().play();
         //デバッグ中
         this.add(input);
     }
