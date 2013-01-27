@@ -1,9 +1,12 @@
 package ggjsap2013.views.game;
 
+import ggjsap2013.models.Stage;
+import ggjsap2013.models.skill.Skill;
+import ggjsap2013.models.snake.SnakeBody;
+
 import java.awt.Color;
 import java.awt.Font;
 
-import ggjsap2013.models.Stage;
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.utils.MouseInfo;
@@ -30,18 +33,20 @@ public class InfomationNode extends GameNode
 	@Override
 	protected void drawNode(NodeGraphics g)
 	{
-		
+	    drawAreaBackGround(g);
 		g.setColor(Color.black);
+        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
 		drawScore(g);
+		drawHeadInfo(g);
 		drawSnakeInfo(g);
 	}
 	
 	private void drawAreaBackGround(NodeGraphics g) 
 	{
 	    g.setColor(bgColor);
-	    g.drawRect(0, 0, 0, 0);
-	    g.drawRect(0, 0, 0, 0);
-	    g.drawRect(0, 0, 0, 0);
+	    g.fillRect(10, 10, 210, 90);
+	    g.fillRect(10, 110, 210, 335);
+	    g.fillRect(10, 455, 210, 135);
 	}
 	
 	/**
@@ -50,9 +55,9 @@ public class InfomationNode extends GameNode
 	 */
 	private void drawScore(NodeGraphics g) 
 	{
-	    g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
 	    int scoreValue = stage.getScore().getScore();
-	    g.drawText("score: " + scoreValue, 10, 10);
+	    g.drawText("SCORE", 15, 15);
+	    g.drawText("" + scoreValue, 10, 40);
 	}
 	
 	/**
@@ -61,7 +66,17 @@ public class InfomationNode extends GameNode
      */
     private void drawHeadInfo(NodeGraphics g) 
     {
-        
+        SnakeBody body = getCurrentBody();
+        if(body != null) {
+            Skill skill = body.getSkill();
+            g.drawText(body.getType().getName(), 15, 110);
+            if(skill != null)
+                g.drawText(skill.getType().getDescription(), 15, 150);
+        }
+    }
+    
+    private SnakeBody getCurrentBody() {
+        return stage.getSnake().getBodies().getHead();
     }
     
     /**
@@ -74,9 +89,9 @@ public class InfomationNode extends GameNode
         int charaCountValue = stage.getScore().getCharaCount();
         int levelValue = stage.getCurrentLevelNum();
         
-        g.drawText("length: " + lengthValue, 10, 40);
-        g.drawText("charaCount: " + charaCountValue, 10, 70);
-        g.drawText("level: " + levelValue, 10, 110);
+        g.drawText("length: " + lengthValue, 15, 460);
+        g.drawText("charaCount: " + charaCountValue, 15, 490);
+        g.drawText("level: " + levelValue, 15, 520);
     }
 
 	@Override

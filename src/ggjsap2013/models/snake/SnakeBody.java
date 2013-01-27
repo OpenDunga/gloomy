@@ -13,23 +13,23 @@ public class SnakeBody {
         
         if (type.isCharacter()) {
         	switch (type) {
-        		case A:
+        		case Alice:
         			this.skill = new Skill(Skill.TYPES.DAMAGE_ZERO);
         			break;
         			
-        		case B:
+        		case Mermaid:
         			this.skill = new Skill(Skill.TYPES.SLOW);
         			break;
         			
-        		case C:
+        		case Akazukin:
         			this.skill = new Skill(Skill.TYPES.BREAK);
         			break;
         			
-        		case D:
+        		case Shirayuki:
         			this.skill = new Skill(Skill.TYPES.POINT_DOUBLE);
         			break;
         			
-        		case E:
+        		case TinkerBell:
         			this.skill = new Skill(Skill.TYPES.FRIEND_POINT);
         			break;
         			

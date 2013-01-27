@@ -30,12 +30,12 @@ public class PauseNode extends GameNode {
         g.setColor(Color.white);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
         g.drawText("Pause!", 230, 220);
-        g.drawText("Press C to restart.", 150, 270);
+        g.drawText("Press Space to restart.", 150, 270);
     }
 
     @Override
     protected void listenKeys(boolean[] keys) {
-        if(keys[KeyEvent.VK_SPACE] || keys[KeyEvent.VK_C]) {
+        if(keys[KeyEvent.VK_SPACE]) {
             scene.gamePause(false);
         }
     }

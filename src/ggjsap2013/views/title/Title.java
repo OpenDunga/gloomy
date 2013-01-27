@@ -25,10 +25,11 @@ public class Title extends GameNode {
     }
 
     public void drawNode(NodeGraphics g) {
-        if(getPanel() != null) {
-            g.setColor(Color.blue);
-            g.drawRect(selector);
-        }
+        g.setColor(Color.blue);
+        g.drawRect(selector);
+        g.drawText("start", 345, 340);
+        g.drawText("ranking", 345, 420);
+        g.drawText("exit", 345, 500);
     }
 
     boolean isTransition = false;
@@ -36,7 +37,7 @@ public class Title extends GameNode {
     protected void listenKeys(boolean[] keys) {
         if(isTransition)
             return;
-        if(keys[KeyEvent.VK_ENTER]) {
+        if(keys[KeyEvent.VK_SPACE]) {
             execMenu(selectID);
         } else if(keys[KeyEvent.VK_UP]) {
             selectID--;
