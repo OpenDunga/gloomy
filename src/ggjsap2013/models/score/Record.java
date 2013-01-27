@@ -24,4 +24,9 @@ public class Record implements Serializable, Comparable<Record> {
     public int compareTo(Record o) {
         return this.score - o.getScore();
     }
+    
+    @Override
+    public String toString() {
+        return name + "　" + score;
+    }
 }

@@ -13,13 +13,13 @@ import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.sounds.BGMPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
-public class GameOverNode extends GameNode {
+public class ResultNode extends GameNode {
     private final GameScene scene;
     private final Color bgColor = new Color(255,255,255,100);
     private final NameInputNode input = new NameInputNode();
     private final RankingModel ranking = RankingModel.getInstance();
     
-    public GameOverNode(GameScene scene) {
+    public ResultNode(GameScene scene) {
         this.scene = scene;
         BGMPlayer.getInstance().stop();
         //デバッグ中
@@ -31,14 +31,31 @@ public class GameOverNode extends GameNode {
         g.drawGameImage(Images.get("game_back"));
         g.setColor(bgColor);
         g.fillRect(0, 0, 800, 600);
-        g.setColor(Color.white);
-        g.fillRect(200, 80, 400, 350);
+        drawRanking(g);
         g.setColor(Color.black);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 40));
         g.drawText("Game Over", 290, 20);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        g.drawText("Your score: " + scene.getStage().getScore().getScore(), 200, 450);
         g.drawText("Enter your name: ", 200, 500);
         g.drawText("Press SPACE to restart.", 290, 550);
+    }
+    
+    private void drawRanking(NodeGraphics g) {
+        int x = 200;
+        int y = 80;
+        g.setColor(Color.white);
+        g.fillRect(x, y, 400, 350);
+        g.setColor(Color.black);
+        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24));
+        int rows = 8;
+        if(ranking.getRows() < rows) rows = ranking.getRows();
+        for(int i=0; i < rows; i++) {
+            int drawY = y+20 + (i * 40);
+            g.drawText("" + (i+1) + ". ", x+20, drawY);
+            g.drawText(ranking.getRecord(i).getName(), x+50, drawY);
+            g.drawText("" + ranking.getRecord(i).getScore(), x+130, drawY);
+        }
     }
 
     @Override

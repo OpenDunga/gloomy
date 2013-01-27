@@ -18,6 +18,8 @@ public class RankingModel {
         this.list = list;
     }
     
+    public Record getRecord(int index) {return list.get(index);}
+    
     public static RankingModel getInstance() {
         if(instance == null) {
             if(SerializationUtils.isSaveDataExists()) {
@@ -27,6 +29,10 @@ public class RankingModel {
             }
         }
         return instance;
+    }
+    
+    public int getRows() {
+        return list.size();
     }
     
     public void addRecord(Record record) {

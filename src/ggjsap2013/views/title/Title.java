@@ -29,8 +29,8 @@ public class Title extends GameNode {
         g.drawGameImage(Images.get("game_back"));
         g.setColor(Color.blue);
         g.drawRect(selector);
-        g.drawText("start", 345, 340);
-        g.drawText("ranking", 345, 420);
+        g.setColor(Color.black);
+        g.drawText("start", 345, 420);
         g.drawText("exit", 345, 500);
     }
 
@@ -44,10 +44,10 @@ public class Title extends GameNode {
         } else if(keys[KeyEvent.VK_UP]) {
             selectID--;
             if(selectID < 1)
-                selectID = 3;
+                selectID = 2;
         } else if(keys[KeyEvent.VK_DOWN]) {
             selectID++;
-            if(selectID > 3)
+            if(selectID > 2)
                 selectID = 1;
         }
         setSelector(selectID);
@@ -63,8 +63,6 @@ public class Title extends GameNode {
             getParent().add(new Fade(this, new GameScene()).fadeOut(50).setAutoFadeIn(50, 100));
             break;
         case 2:
-            break;
-        case 3:
             isTransition = true;
             getParent().add(new Fade().fadeOut(50).setAutoFadeIn(0, 0).setMiddleAction(new Runnable() {
                 public void run() {
@@ -79,10 +77,8 @@ public class Title extends GameNode {
 
     private void setSelector(int selectID) {
         if(selectID == 1) {
-            selector.setBounds(345, 340, 100, 50);
-        } else if(selectID == 2) {
             selector.setBounds(345, 420, 100, 50);
-        } else if(selectID == 3) {
+        } else if(selectID == 2) {
             selector.setBounds(345, 500, 100, 50);
         }
     }

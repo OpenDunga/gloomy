@@ -92,7 +92,7 @@ public class InfomationNode extends GameNode
         
         g.drawText("length: " + lengthValue, 15, 460);
         g.drawText("charaCount: " + charaCountValue + "/" + levelUpValue, 15, 490);
-        g.drawText("level: " + levelValue, 15, 520);
+        g.drawText("level: " + (levelValue+1), 15, 520);
     }
 
 	@Override
