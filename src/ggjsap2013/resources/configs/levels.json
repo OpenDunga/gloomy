@@ -18,7 +18,9 @@
 		
 		"gameSpeed":20,
 		
-		"levelClearCount":5
+		"levelClearCount":5,
+		
+		"mapType":1
 	},
 	{
 		"index":1,
@@ -36,7 +38,10 @@
 
 		"gameSpeed":18,
 		
-		"levelClearCount":15
+		"levelClearCount":15,
+		
+		
+		"mapType":0
 	
 	},
 	{
@@ -59,8 +64,10 @@
 
 		"gameSpeed":16,
 		
-		"levelClearCount":2147483647
+		"levelClearCount":2147483647,
 	
+		"mapType":0
+
 	}
 	
 ]

@@ -71,6 +71,13 @@ public class Level
     private int							levelClearCount;
     
     
+    
+    /**
+     * マップの種類
+     */
+    private int							mapType;
+    
+    
 
 	/**
 	 * インスタンスつくるよ！
@@ -168,6 +175,16 @@ public class Level
     public int getLevelClearCount()
 	{
 		return levelClearCount;
+	}
+    
+    
+    public void setMapType(int mapType)
+	{
+		this.mapType = mapType;
+	}
+    public int getMapType()
+	{
+		return mapType;
 	}
 	
 }

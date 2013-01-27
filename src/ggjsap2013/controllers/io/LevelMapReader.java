@@ -2,7 +2,6 @@ package ggjsap2013.controllers.io;
 
 import ggjsap2013.models.level.Level;
 import ggjsap2013.models.map.MapModel;
-import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.barricades.Wall;
 
 import java.io.IOException;
@@ -35,7 +34,7 @@ public class LevelMapReader extends ConfigurationReader
     {
         
         try {
-            String[][] stageArray = JSON.decode(readConfiguration("level" + levelNum + ".json"), String[][].class);
+            String[][] stageArray = JSON.decode(readConfiguration("map_type_" + level.getMapType() + ".json"), String[][].class);
             
             int width = 0;
             int height = 0;
