@@ -19,7 +19,7 @@ public class StageNode extends GameNode {
     private final MapNode map = new MapNode(model);
     private final SnakeNode snake = new SnakeNode(model);
     
-    private final Color bgColor = new Color(255, 255, 255, 150);
+
     
     public StageNode(GameScene scene) {
         this.scene = scene;
@@ -30,10 +30,6 @@ public class StageNode extends GameNode {
 
     @Override
     protected void drawNode(NodeGraphics g) {
-        g.setColor(bgColor);
-        g.fillRect(0, 0, 
-                Gloomy.CHIP_SIZE * Gloomy.STAGE_WIDTH, 
-                Gloomy.CHIP_SIZE * Gloomy.STAGE_HEIGHT);
     }
 
     @Override

@@ -11,7 +11,7 @@ public class ImageLoader {
         
         Images.put("logo", prefix + "logo.jpg");
         Images.put("game_back", prefix + "system/game_back.jpg");
-
+        Images.put("field_back", prefix + "system/field_back.jpg");
         
 
         loadCharaChips();

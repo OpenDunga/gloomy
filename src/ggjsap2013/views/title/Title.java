@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.nodes.transition.Fade;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
@@ -25,6 +26,7 @@ public class Title extends GameNode {
     }
 
     public void drawNode(NodeGraphics g) {
+        g.drawGameImage(Images.get("game_back"));
         g.setColor(Color.blue);
         g.drawRect(selector);
         g.drawText("start", 345, 340);

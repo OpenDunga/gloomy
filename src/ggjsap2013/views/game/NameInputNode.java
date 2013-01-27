@@ -19,7 +19,7 @@ public class NameInputNode  extends GameNode {
     
     public NameInputNode() {
         this.setKeyWait(10);
-        this.setPosition(200,200);
+        this.setPosition(400, 500);
     }
     
     @Override

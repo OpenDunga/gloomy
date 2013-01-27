@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
+import jp.tohhy.gamepanel.images.Images;
 import jp.tohhy.gamepanel.sounds.BGMPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
@@ -27,12 +28,17 @@ public class GameOverNode extends GameNode {
 
     @Override
     protected void drawNode(NodeGraphics g) {
+        g.drawGameImage(Images.get("game_back"));
         g.setColor(bgColor);
         g.fillRect(0, 0, 800, 600);
+        g.setColor(Color.white);
+        g.fillRect(200, 80, 400, 350);
         g.setColor(Color.black);
-        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
-        g.drawText("Game Over!", 330, 220);
-        g.drawText("Press SPACE to restart.", 270, 270);
+        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 40));
+        g.drawText("Game Over", 290, 20);
+        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        g.drawText("Enter your name: ", 200, 500);
+        g.drawText("Press SPACE to restart.", 290, 550);
     }
 
     @Override
