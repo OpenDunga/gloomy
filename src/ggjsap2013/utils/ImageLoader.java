@@ -89,6 +89,10 @@ public class ImageLoader {
     	loadBarricadeChip("stone");
     	loadBarricadeChip("rock");
     	loadBarricadeChip("bomb");
+    	loadBarricadeChip("toy_s");
+    	loadBarricadeChip("toy_n");
+    	loadBarricadeChip("toy_w");
+    	loadBarricadeChip("toy_e");
     }
     
     private static void loadBarricadeChip(String name) throws IOException

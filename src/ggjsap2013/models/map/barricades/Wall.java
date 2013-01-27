@@ -11,7 +11,12 @@ public class Wall implements Block {
     @Override
     public void intersects(SnakeModel snake, MapModel map, Stage stage)
             throws GameOverException {
-        killHeads(snake, 255);
+    	
+    	if (snake.isCollisionDamageZero() || snake.isNoDamage()) {
+    		
+    	} else {
+            killHeads(snake, 255);
+    	}
     }
     
     private void killHeads(SnakeModel snake, int times) throws GameOverException {
@@ -42,7 +47,7 @@ public class Wall implements Block {
     }
 
     @Override
-    public void move(MapModel mapModel, int currentX, int currentY) {
+    public void move(SnakeModel snakeModel, MapModel mapModel, int currentX, int currentY) {
         // TODO Auto-generated method stub
     }
 

@@ -71,20 +71,11 @@ public class SnakeNode extends GameNode {
                 drawBody(b, p, d, g);
             }
             
-            boolean isRendered = false;
             for (int i=0; i<length; i++) {
                 if(i >= history.size()) break;
                 Point p = history.get(i).getPoint();
                 SnakeBody b = bodies.get(i);
-                if (drawEffect(b, p, g)) {
-                	isRendered = true;
-                }
-            }
-            
-            if (isRendered) {
-            	currentEffectCount++;
-            } else {
-            	currentEffectCount = 0;
+                drawEffect(b, p, g);
             }
         }
     }
@@ -209,6 +200,14 @@ public class SnakeNode extends GameNode {
         
         model.decreaseSkillCount();
         model.decreaseCollisionDamageZeroCount();
+        
+        
+        if (model.isSkillInvoked()) {
+        	currentEffectCount++;
+        } else {
+        	currentEffectCount = 0;
+        }
+
     }
 
     @Override
@@ -226,14 +225,13 @@ public class SnakeNode extends GameNode {
             
             //カーソルキーで上下左右に移動
             if(keys[KeyEvent.VK_LEFT]) {
-                model.setDirection(Direction.WEST);
+                model.setNextDirection(Direction.WEST);
             } else if(keys[KeyEvent.VK_RIGHT]) {
-                model.setDirection(Direction.EAST);
-            }
-            if(keys[KeyEvent.VK_UP]) {
-                model.setDirection(Direction.NORTH);
+                model.setNextDirection(Direction.EAST);
+            } else if(keys[KeyEvent.VK_UP]) {
+                model.setNextDirection(Direction.NORTH);
             } else if(keys[KeyEvent.VK_DOWN]) {
-                model.setDirection(Direction.SOUTH);
+                model.setNextDirection(Direction.SOUTH);
             }
             if(keys[KeyEvent.VK_Z]) {
                 model.getBodies().changeForward();
@@ -244,6 +242,7 @@ public class SnakeNode extends GameNode {
             if(keys[KeyEvent.VK_C]) {
             	/* ボディーが２以上のときだけスキル発動 */
             	if (model.getBodies().size() >= 2) {
+            		/* 先頭のキャラがスキル使用可能かとるよー */
                     Skill skill = model.getBodies().getHead().getSkill();
                     if (skill != null) {
                     	skill.invoke(model, stage.getMap(), stage);
