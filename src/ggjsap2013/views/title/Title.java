@@ -4,7 +4,6 @@ import ggjsap2013.views.game.GameScene;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 import jp.tohhy.gamepanel.GameNode;
@@ -19,8 +18,6 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  * @author tohhy
  */
 public class Title extends GameNode {
-    private final Rectangle selector = new Rectangle();
-    private int selectID = 1;
 
     public Title() {
         this.add(new Fade(null, null).fadeIn(200));
@@ -69,13 +66,4 @@ public class Title extends GameNode {
 
     @Override
     protected void updateNode() {}
-
-    private void setSelector(int selectID) {
-        if(selectID == 1) {
-            selector.setBounds(345, 420, 100, 50);
-        } else if(selectID == 2) {
-            selector.setBounds(345, 500, 100, 50);
-        }
-    }
-
 }
