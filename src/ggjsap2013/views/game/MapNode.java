@@ -21,6 +21,7 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
 public class MapNode extends GameNode {
     private final Stage stage;
     private final MapModel map;
+    private final Color bgColor = new Color(255, 255, 255, 150);
     
     public MapNode(Stage stage) {
         this.stage = stage;
@@ -30,13 +31,14 @@ public class MapNode extends GameNode {
     @Override
     protected void drawNode(NodeGraphics g) {
         int size = Gloomy.CHIP_SIZE;
+        g.drawGameImage(Images.get("field_back"));
+        g.setColor(bgColor);
+        g.fillRect(0, 0, 
+                Gloomy.CHIP_SIZE * Gloomy.STAGE_WIDTH, 
+                Gloomy.CHIP_SIZE * Gloomy.STAGE_HEIGHT);
         
         for(int i=0; i<map.getArray().length; i++) {
-            for(int j=0; j<map.getArray()[i].length; j++) {
-                //デバッグ用のマス目
-//                g.setColor(Color.orange);
-//                g.drawRect(j*size, i*size, size, size);
-                
+            for(int j=0; j<map.getArray()[i].length; j++) {                
                 Block b = map.getArray()[i][j];
                 if(b != null) {
                 	if (b instanceof PointItem) {

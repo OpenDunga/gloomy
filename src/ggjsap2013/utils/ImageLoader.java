@@ -8,12 +8,10 @@ public class ImageLoader {
     private static String prefix = "ggjsap2013/resources/images/";
     
     public static void load() throws IOException {
-        
-        Images.put("logo", prefix + "logo.jpg");
+        Images.put("logo", prefix + "kawaz.jpg");
         Images.put("game_back", prefix + "system/game_back.jpg");
-
+        Images.put("field_back", prefix + "system/field_back.jpg");
         
-
         loadCharaChips();
         
         loadAnimalCharaChips();

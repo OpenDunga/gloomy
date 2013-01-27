@@ -1,8 +1,7 @@
 package ggjsap2013;
 
 import ggjsap2013.utils.ImageLoader;
-import ggjsap2013.views.game.GameScene;
-import ggjsap2013.views.title.Title;
+import ggjsap2013.views.title.Splash;
 
 import java.awt.Rectangle;
 import java.io.IOException;
@@ -18,8 +17,8 @@ public class Launcher {
     public static void main(String[] args) {
         loadImages();
         new GameWindow("eternal march", new Rectangle(100, 100, 800, 600), 
-//                new Title());
-                new GameScene()); 
+                new Splash());
+//                new GameScene()); 
     }
     
     /**

@@ -103,7 +103,6 @@ public class SnakeModel {
             if(isSelfEat) throw new GameOverException();
         } catch (GameOverException e) {
             stage.gameOver();
-            System.out.println("GameOver!");
         }
     }
     
