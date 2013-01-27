@@ -7,8 +7,6 @@ import ggjsap2013.models.Stage;
  * @author tohhy
  */
 public class Score {
-    private static final int[] LEVEL_TERMS = 
-        {5, 10, Integer.MAX_VALUE};
     private final Stage stage;
     //スコア
     private int score = 0;
@@ -29,9 +27,9 @@ public class Score {
     
     public void charaCountUp() {
         charaCount++;
-        for(int term : LEVEL_TERMS) {
-            if(charaCount == term)
-                stage.nextLevel();
+        
+        if (stage.getCurrentLevel().getLevelClearCount() == charaCount) {
+            stage.nextLevel();
         }
         
     }

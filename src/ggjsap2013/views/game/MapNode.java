@@ -84,15 +84,20 @@ public class MapNode extends GameNode {
 	        case BOMB:
 	            return Images.get(ImageLoader.getBarricadeImageKey("bomb"));
 	        case BACHI_BACHI:
-	            return Images.get("stone");
+	        	//TODO:画像差し替え
+	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
 	        case SOLDIER:
-	            return Images.get("stone");
+	        	//TODO:画像差し替え
+	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
 	        case KING:
-	            return Images.get("stone");
+	        	//TODO:画像差し替え
+	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
 	        case JOKER:
-	            return Images.get("stone");
+	        	//TODO:画像差し替え
+	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
 	        case DARK_WINDOW:
-	            return Images.get("stone");
+	        	//TODO:画像差し替え
+	            return Images.get(ImageLoader.getBarricadeImageKey("stone"));
         }
         return null;
     }

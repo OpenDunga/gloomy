@@ -64,6 +64,20 @@ public class Level
     private int							gameSpeed;
     
     
+    
+    /**
+     * レベルクリア条件
+     */
+    private int							levelClearCount;
+    
+    
+    
+    /**
+     * マップの種類
+     */
+    private int							mapType;
+    
+    
 
 	/**
 	 * インスタンスつくるよ！
@@ -152,6 +166,25 @@ public class Level
     public int getGameSpeed()
 	{
 		return gameSpeed;
+	}
+    
+    public void setLevelClearCount(int levelClearCount)
+	{
+		this.levelClearCount = levelClearCount;
+	}
+    public int getLevelClearCount()
+	{
+		return levelClearCount;
+	}
+    
+    
+    public void setMapType(int mapType)
+	{
+		this.mapType = mapType;
+	}
+    public int getMapType()
+	{
+		return mapType;
 	}
 	
 }

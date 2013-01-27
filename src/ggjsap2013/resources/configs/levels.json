@@ -16,7 +16,11 @@
 		
 		
 		
-		"gameSpeed":20
+		"gameSpeed":20,
+		
+		"levelClearCount":5,
+		
+		"mapType":1
 	},
 	{
 		"index":1,
@@ -32,7 +36,13 @@
 			"ROCK": 2
 		},
 
-		"gameSpeed":18
+		"gameSpeed":18,
+		
+		"levelClearCount":15,
+		
+		
+		"mapType":0
+	
 	},
 	{
 		"index":2,
@@ -52,7 +62,12 @@
 		},
 
 
-		"gameSpeed":16
+		"gameSpeed":16,
+		
+		"levelClearCount":2147483647,
+	
+		"mapType":0
+
 	}
 	
 ]
