@@ -1,44 +1,46 @@
 package ggjsap2013.views.game;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.KeyEvent;
 
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.sounds.BGMPlayer;
 import jp.tohhy.gamepanel.utils.MouseInfo;
 
-public class GameOverNode extends GameNode {
+public class PauseNode extends GameNode {
     private final GameScene scene;
     private final Color bgColor = new Color(255,255,255,100);
     
-    public GameOverNode(GameScene scene) {
+    //1~7
+    private int page = 1;
+
+    public PauseNode(GameScene scene) {
         this.scene = scene;
         BGMPlayer.getInstance().stop();
     }
-
+    
     @Override
     protected void drawNode(NodeGraphics g) {
-        g.setColor(bgColor);
-        g.fillRect(0, 0, 800, 600);
-        g.setColor(Color.black);
-        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 30));
-        g.drawText("Game Over!", 330, 220);
-        g.drawText("Press SPACE to restart.", 270, 270);
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     protected void listenKeys(boolean[] keys) {
-        if(keys[KeyEvent.VK_SPACE]) {
-            scene.reset();
-        }
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
-    protected void listenMouse(MouseInfo info) {}
+    protected void listenMouse(MouseInfo info) {
+        // TODO Auto-generated method stub
+        
+    }
 
     @Override
-    protected void updateNode() {}
+    protected void updateNode() {
+        // TODO Auto-generated method stub
+        
+    }
 
 }

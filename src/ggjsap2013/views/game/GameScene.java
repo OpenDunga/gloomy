@@ -1,5 +1,6 @@
 package ggjsap2013.views.game;
 
+import ggjsap2013.models.Stage;
 import jp.tohhy.gamepanel.GameNode;
 import jp.tohhy.gamepanel.graphics.NodeGraphics;
 import jp.tohhy.gamepanel.images.Images;
@@ -11,13 +12,17 @@ import jp.tohhy.gamepanel.utils.MouseInfo;
  * @author tohhy
  */
 public class GameScene extends GameNode {
+    private Stage stage;
+    
     public GameScene() {
         reset();
     }
     
     public void reset() {
         removeAllChild();
+        this.pause(false);
         StageNode stage = new StageNode(this);
+        this.stage = stage.getStage();
         this.add(stage);
         InfomationNode score = new InfomationNode(stage.getStage());
         this.add(score);
@@ -25,9 +30,18 @@ public class GameScene extends GameNode {
         BGMPlayer.getInstance().play();
     }
     
+    @Override
+    protected void updateNode() {
+        if(stage.isGameOver()) {
+            gameOver();
+        }
+    }
+    
     public void gameOver() {
         this.add(new GameOverNode(this));
+        this.pause(true);
     }
+    
     @Override
     protected void drawNode(NodeGraphics g) {
         g.drawGameImage(Images.get("game_back"));
@@ -39,6 +53,5 @@ public class GameScene extends GameNode {
     @Override
     protected void listenMouse(MouseInfo info) {}
 
-    @Override
-    protected void updateNode() {}
+
 }

@@ -89,7 +89,7 @@ public class SnakeModel {
                     movedHistories.isIntersect(bodies.size(), movedHistories.get(0).getPoint());
             if(isSelfEat) throw new GameOverException();
         } catch (GameOverException e) {
-            stage.setGameOver(true);
+            stage.gameOver();
             System.out.println("GameOver!");
         }
     }
