@@ -51,19 +51,19 @@ public class CharacterItem implements Item
 	{
 		switch (getType()) {
 			case A:
-				snake.getBodies().addBody(new SnakeBody(BodyType.A));
+				snake.getBodies().addBody(new SnakeBody(BodyType.Alice));
 				break;
 			case B:
-				snake.getBodies().addBody(new SnakeBody(BodyType.B));
+				snake.getBodies().addBody(new SnakeBody(BodyType.Mermaid));
 				break;
 			case C:
-				snake.getBodies().addBody(new SnakeBody(BodyType.C));
+				snake.getBodies().addBody(new SnakeBody(BodyType.Akazukin));
 				break;
 			case D:
-				snake.getBodies().addBody(new SnakeBody(BodyType.D));
+				snake.getBodies().addBody(new SnakeBody(BodyType.Shirayuki));
 				break;
 			case E:
-				snake.getBodies().addBody(new SnakeBody(BodyType.E));
+				snake.getBodies().addBody(new SnakeBody(BodyType.TinkerBell));
 				break;
 		}
 		map.createCharacterItemBlock(stage.getCurrentLevel());

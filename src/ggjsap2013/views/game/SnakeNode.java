@@ -38,9 +38,9 @@ public class SnakeNode extends GameNode {
         this.setKeyWait(30);
         List<SnakeBody> bodies = new ArrayList<SnakeBody>();
         for(int i=0; i<2; i++) {
-            bodies.add(new SnakeBody(BodyType.A));
-            bodies.add(new SnakeBody(BodyType.B));
-            bodies.add(new SnakeBody(BodyType.C));
+            bodies.add(new SnakeBody(BodyType.Alice));
+            bodies.add(new SnakeBody(BodyType.Mermaid));
+            bodies.add(new SnakeBody(BodyType.Akazukin));
         }
         model.getBodies().init(bodies);
     }
@@ -90,29 +90,9 @@ public class SnakeNode extends GameNode {
     }
     
     private void drawBody(SnakeBody b, Point p, Direction d, NodeGraphics g) {
-        switch(b.getType()) {
-        case A:
-        case B:
-        case C:
-        case D:
-        case E:
-        case ahiru:
-        case kuma:
-        case lion:
-        case panda:
-        case usagi:
-            GameImage i = getCharaImage(b, d);
-            int heightGap = CHIP_SIZE - i.get(0).getHeight();
-            g.drawGameImage(i, p.x*CHIP_SIZE, p.y*CHIP_SIZE + heightGap);
-            
-            break;
-        default:
-            if (model.isNoDamage()) {
-                g.drawText("**" + b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
-            } else {
-                g.drawText(b.getType().toString(), p.x*CHIP_SIZE, p.y*CHIP_SIZE);
-            }
-        }
+        GameImage i = getCharaImage(b, d);
+        int heightGap = CHIP_SIZE - i.get(0).getHeight();
+        g.drawGameImage(i, p.x*CHIP_SIZE, p.y*CHIP_SIZE + heightGap);
     }
     
     
@@ -120,19 +100,19 @@ public class SnakeNode extends GameNode {
         String bodyType = "chara";
         int imageID = 0;
         switch(b.getType()) {
-        case A:
+        case Alice:
             imageID = 1;
             break;
-        case B:
+        case Mermaid:
             imageID = 2;
             break;
-        case C:
+        case Akazukin:
             imageID = 3;
             break;
-        case D:
+        case Shirayuki:
             imageID = 4;
             break;
-        case E:
+        case TinkerBell:
             imageID = 5;
             break;
         case ahiru:
@@ -233,7 +213,7 @@ public class SnakeNode extends GameNode {
 
     @Override
     protected void listenKeys(boolean[] keys) {
-            if(keys[KeyEvent.VK_C]) {
+            if(keys[KeyEvent.VK_SPACE]) {
                 if(!stage.isPaused()) {
                     stage.setPaused(true);
                 } else {
@@ -261,7 +241,7 @@ public class SnakeNode extends GameNode {
             if(keys[KeyEvent.VK_X]) {
                 model.getBodies().changeBackward();
             }
-            if(keys[KeyEvent.VK_SPACE]) {
+            if(keys[KeyEvent.VK_C]) {
             	/* ボディーが２以上のときだけスキル発動 */
             	if (model.getBodies().size() >= 2) {
                     Skill skill = model.getBodies().getHead().getSkill();

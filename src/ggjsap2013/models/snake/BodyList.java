@@ -85,6 +85,7 @@ public class BodyList {
      * @return
      */
     public SnakeBody getHead() {
+        if(list.size() == 0) return null;
         return list.getFirst();
     }
     
