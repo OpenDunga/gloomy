@@ -44,9 +44,9 @@ public class ResultNode extends GameNode {
     private void drawRanking(NodeGraphics g) {
         int x = 200;
         int y = 80;
-        g.setColor(Color.white);
+        g.setColor(Color.darkGray);
         g.fillRect(x, y, 400, 350);
-        g.setColor(Color.black);
+        g.setColor(Color.white);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24));
         int rows = 8;
         if(ranking.getRows() < rows) rows = ranking.getRows();
@@ -61,8 +61,8 @@ public class ResultNode extends GameNode {
     @Override
     protected void listenKeys(boolean[] keys) {
         if(keys[KeyEvent.VK_SPACE]) {
-            scene.reset();
             ranking.addRecord(new Record(input.getName(), scene.getStage().getScore().getScore()));
+            scene.reset();
             ranking.save();
         }
     }

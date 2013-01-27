@@ -22,7 +22,7 @@ public class Record implements Serializable, Comparable<Record> {
 
     @Override
     public int compareTo(Record o) {
-        return this.score - o.getScore();
+        return o.getScore() - this.score;
     }
     
     @Override
