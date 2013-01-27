@@ -77,7 +77,7 @@ public class SnakeNode extends GameNode {
     }
     
     
-    private String createImageName(SnakeBody b, Direction d) {
+    public static String createImageName(SnakeBody b, Direction d) {
         String bodyType = "chara";
         int imageID = 0;
         switch(b.getType()) {
