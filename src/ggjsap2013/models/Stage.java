@@ -45,7 +45,7 @@ public class Stage {
     public void setLevel(int level) {
         MapModel levelMap = MapBuilder.create(this, levelInfoList.get(level));
         map.clear();
-        map.mergeMap(levelMap.getArray());
+        map.mergeMap(levelMap);
         snake.setDefaultMoveWait(levelInfoList.get(level).getGameSpeed());
     }
     

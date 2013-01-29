@@ -1,6 +1,5 @@
 package ggjsap2013.models.map.barricades;
 
-import jp.tohhy.gamepanel.sounds.SEPlayer;
 import ggjsap2013.Gloomy;
 import ggjsap2013.exceptions.GameOverException;
 import ggjsap2013.models.Stage;
@@ -9,6 +8,7 @@ import ggjsap2013.models.map.MapModel;
 import ggjsap2013.models.snake.SnakeModel;
 import ggjsap2013.models.snake.SnakeModel.Direction;
 import ggjsap2013.utils.RandomUtil;
+import jp.tohhy.gamepanel.sounds.SEPlayer;
 
 /**
  * 障害物だーー
@@ -105,37 +105,37 @@ public class Barricade implements Block
 		switch (type) {
 			case STONE:
 				/* 一人減るよ */
-			    killHeads(snake, 1);
+			    snake.getBodies().killHeads(1);
 				break;
 				
 			case ROCK:
 				/* 三人減るよ */
-			    killHeads(snake, 3);
+			    snake.getBodies().killHeads(3);
 				break;
 				
 			case BOMB:
 				/* 五人減るよ */
-			    killHeads(snake, 5);
+			    snake.getBodies().killHeads(5);
 				break;
 				
 			case BACHI_BACHI:
 				/* 三人減るよ */
-			    killHeads(snake, 3);
+			    snake.getBodies().killHeads(3);
 				break;
 
 			case SOLDIER:
 				/* 一人減るよ */
-			    killHeads(snake, 1);
+			    snake.getBodies().killHeads(1);
 				break;
 				
 			case KING:
 				/* 五人減るよ */
-			    killHeads(snake, 5);
+			    snake.getBodies().killHeads(5);
 				break;
 
 			case JOKER:
 				/* 十人減るよ */
-			    killHeads(snake, 10);
+			    snake.getBodies().killHeads(10);
 				break;
         default:
             break;
@@ -152,13 +152,6 @@ public class Barricade implements Block
 		/* ランダムな位置に同じ障害物配置するよ */
 		map.createBarricadeBlock(stage, stage.getCurrentLevel(), type);
 		
-	}
-	
-	private void killHeads(SnakeModel snake, int times) throws GameOverException 
-	{
-	    for(int i=0; i<times; i++) {
-	        snake.getBodies().killHead();
-	    }
 	}
 	
 	@Override
@@ -234,11 +227,11 @@ public class Barricade implements Block
 			if (0 <= x && x < Gloomy.STAGE_WIDTH) {
 				if (0 <= y && y < Gloomy.STAGE_HEIGHT) {
 					/* 障害物とかない場合のみ動くよー */
-					if (mapModel.getArray()[y][x] == null) {
+					if (mapModel.getBlock(x, y) == null) {
 						/* ヘビの隊列に重ならない場合のみ動くよー */
 						if (snakeModel.getHistories().contains(snakeModel.getLength(), x, y) == false) {
-							mapModel.getArray()[currentY][currentX] = null;
-							mapModel.getArray()[y][x] = this;
+							mapModel.setBlock(currentX, currentY, null);
+							mapModel.setBlock(x, y, this);
 							
 							this.setCurrentDirection(direction);
 						}

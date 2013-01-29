@@ -13,10 +13,16 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapModel {	
+/**
+ * ゲームマップのモデル.
+ * @author tohhy
+ */
+public class MapModel 
+{	
     private final Block[][] map;
 
-    public MapModel(int width, int height) {
+    public MapModel(int width, int height) 
+    {
         map = new Block[height][width];
     }
     
@@ -144,16 +150,32 @@ public class MapModel {
         }
     }
     
-    public void clear() {
+    public void mergeMap(MapModel toMerge) {
+        mergeMap(toMerge.map);
+    }
+    
+    /**
+     * マップ上の全てのオブジェクトを削除します.
+     */
+    public void clear() 
+    {
         for(int i=0; i<map.length; i++) {
             for(int j=0;j<map[0].length; j++) {
                 map[i][j] = null;
             }
         }
     }
-
-    public Block[][] getArray() {
-        return map;
+    
+    public Block getBlock(int x, int y) {
+        return map[y][x];
+    }
+    
+    public int getHeight() {
+        return map.length;
+    }
+    
+    public int getWidth() {
+        return map[0].length;
     }
     
     /**

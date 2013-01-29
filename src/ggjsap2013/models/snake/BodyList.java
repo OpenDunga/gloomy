@@ -83,6 +83,19 @@ public class BodyList {
     }
     
     /**
+     * ヘビの頭を指定回数ぶん切り落とすよ
+     * @throws GameOverException 
+     * 
+     */
+    public void killHeads(int times)
+            throws GameOverException
+        {
+            for(int i=0; i<times; i++) {
+                killHead();
+            }
+        }
+    
+    /**
      * 頭を返す.
      * @return
      */

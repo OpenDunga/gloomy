@@ -19,15 +19,8 @@ public class Wall implements Block {
     	} else {
     	    //サウンド再生
             SEPlayer.play("ggjsap2013/resources/se/damage.wav");
-            killHeads(snake, 255);
+            snake.getBodies().killHeads(255);
     	}
-    }
-    
-    private void killHeads(SnakeModel snake, int times) throws GameOverException 
-    {
-        for(int i=0; i<times; i++) {
-            snake.getBodies().killHead();
-        }
     }
 
     @Override

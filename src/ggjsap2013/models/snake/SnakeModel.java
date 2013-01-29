@@ -113,14 +113,14 @@ public class SnakeModel {
      */
     private Point getLoopedPoint(Point p) {
         if(p.x >= 0 && p.y >= 0 && 
-                p.x < map.getArray()[0].length && p.y < map.getArray().length) {
+                p.x < map.getWidth() && p.y < map.getHeight()) {
             return p;
         } else {
             Point result = new Point(p.x, p.y);
-            while(result.x < 0) result.x = map.getArray()[0].length + result.x;
-            while(result.y < 0) result.y = map.getArray().length + result.y;
-            while(result.x >= map.getArray()[0].length) result.x = result.x - map.getArray()[0].length;
-            while(result.y >= map.getArray().length) result.y = result.y - map.getArray().length;
+            while(result.x < 0) result.x = map.getWidth() + result.x;
+            while(result.y < 0) result.y = map.getHeight() + result.y;
+            while(result.x >= map.getWidth()) result.x = result.x - map.getWidth();
+            while(result.y >= map.getHeight()) result.y = result.y - map.getHeight();
             return result;
         }
     }
@@ -152,11 +152,11 @@ public class SnakeModel {
      */
     public void intersectBlock() throws GameOverException {
         Point p = movedHistories.get(0).getPoint();
-        Block b = map.getArray()[p.y][p.x];
+        Block b = map.getBlock(p.x, p.y);
         if(b != null) {
         	/* 壁じゃない場合のみブロックを消す */
         	if (b instanceof Wall == false) {
-                map.getArray()[p.y][p.x] = null;
+                map.setBlock(p.x, p.y, null);
         	}
             b.intersects(this, map, stage);
         }

@@ -37,9 +37,9 @@ public class MapNode extends GameNode {
                 Gloomy.CHIP_SIZE * Gloomy.STAGE_WIDTH, 
                 Gloomy.CHIP_SIZE * Gloomy.STAGE_HEIGHT);
         
-        for(int i=0; i<map.getArray().length; i++) {
-            for(int j=0; j<map.getArray()[i].length; j++) {                
-                Block b = map.getArray()[i][j];
+        for(int i=0; i<map.getHeight(); i++) {
+            for(int j=0; j<map.getWidth(); j++) {                
+                Block b = map.getBlock(j, i);
                 if(b != null) {
                 	if (b instanceof PointItem) {
                 	    PointItem pointItem = (PointItem) b;
@@ -171,9 +171,9 @@ public class MapNode extends GameNode {
     @Override
     protected void updateNode()
     {
-        for(int i=0; i<map.getArray().length; i++) {
-            for(int j=0; j<map.getArray()[i].length; j++) {
-            	Block b = map.getArray()[i][j];
+        for(int i=0; i<map.getHeight(); i++) {
+            for(int j=0; j<map.getWidth(); j++) {
+            	Block b = map.getBlock(j, i);
             	if (b != null) {
                     
             		b.setCurrentMove(b.getCurrentMove() + 1);
