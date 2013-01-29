@@ -11,7 +11,8 @@ public class Wall implements Block {
 
     @Override
     public void intersects(SnakeModel snake, MapModel map, Stage stage)
-            throws GameOverException {
+            throws GameOverException 
+    {
     	
     	if (snake.isCollisionDamageZero() || snake.isNoDamage()) {
     		
@@ -22,7 +23,8 @@ public class Wall implements Block {
     	}
     }
     
-    private void killHeads(SnakeModel snake, int times) throws GameOverException {
+    private void killHeads(SnakeModel snake, int times) throws GameOverException 
+    {
         for(int i=0; i<times; i++) {
             snake.getBodies().killHead();
         }

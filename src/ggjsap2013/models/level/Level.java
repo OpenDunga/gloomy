@@ -1,20 +1,22 @@
 package ggjsap2013.models.level;
 
 import ggjsap2013.models.map.barricades.Barricade;
-import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 
 import java.util.List;
 import java.util.Map;
 
+/**
+ * レベルの情報.
+ * 個々のレベルの出現するアイテムの種類などを保持する.
+ */
 public class Level
 {
-	
+    
 	/**
 	 * レベル番号
 	 */
 	private int				            index;
-	
 	
 	
 	/**
@@ -22,7 +24,7 @@ public class Level
 	 */
 	private int							maxPointItemCount;
 	
-
+	
 	/**
 	 * マップ中に出てくる可能性のあるポイントアイテムの種類ですよー
 	 */
@@ -34,15 +36,17 @@ public class Level
 	 */
 	private int							maxCharacterItemCount;
 	
+	
 	/**
 	 * ヒロイン/動物アイテムの出現率
 	 */
 	private List<String>				availableCharacterItemTypes;
 	
     
-    
+    /**
+     * マップ中に出てくる可能性のある障害物の種類です
+     */
     private Map<Barricade.TYPES, Integer>	barricades;
-    
     
     
     /**
@@ -51,12 +55,10 @@ public class Level
     private int							gameSpeed;
     
     
-    
     /**
      * レベルクリア条件
      */
     private int							levelClearCount;
-    
     
     
     /**
@@ -71,14 +73,14 @@ public class Level
 	 */
 	public Level() {}
 	
-	public int getIndex()
+	
+	public void setIndex(int index) 
 	{
-		return index;
-	}
-	
-	
-	public void setIndex(int index) {
         this.index = index;
+    }
+    public int getIndex()
+    {
+    	return index;
     }
 
     public void setMaxPointItemCount(int maxPointItemCount)
@@ -86,31 +88,20 @@ public class Level
 		this.maxPointItemCount = maxPointItemCount;
 	}
 	public int getMaxPointItemCount()
-	{
-		return maxPointItemCount;
-	}
-	
-//	public void setAvailableBarricadeTypes(List<Barricade.TYPES> availableBarricadeTypes)
-//    {
-//        this.availableBarricadeTypes = availableBarricadeTypes;
-//    }
-//    public List<Barricade.TYPES> getAvailableBarricadeTypes()
-//    {
-//        return availableBarricadeTypes;
-//    }
-	
-	
-	public void setAvailablePointItemTypes(List<PointItem.TYPES> availablePointItemTypes)
+    {
+    	return maxPointItemCount;
+    }
+
+    public void setAvailablePointItemTypes(List<PointItem.TYPES> availablePointItemTypes)
 	{
 		this.availablePointItemTypes = availablePointItemTypes;
 	}
 	public List<PointItem.TYPES> getAvailablePointItemTypes()
-	{
-		return availablePointItemTypes;
-	}
-	
-	
-	public void setMaxCharacterItemCount(int maxCharacterItemCount)
+    {
+    	return availablePointItemTypes;
+    }
+
+    public void setMaxCharacterItemCount(int maxCharacterItemCount)
 	{
 		this.maxCharacterItemCount = maxCharacterItemCount;
 	}
@@ -118,6 +109,7 @@ public class Level
 	{
 		return maxCharacterItemCount;
 	}
+	
 	public void setAvailableCharacterItemTypes(
 			List<String> availableCharacterItemTypes)
 	{
@@ -154,7 +146,6 @@ public class Level
 	{
 		return levelClearCount;
 	}
-    
     
     public void setMapType(int mapType)
 	{

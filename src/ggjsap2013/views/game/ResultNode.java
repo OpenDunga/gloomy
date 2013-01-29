@@ -20,7 +20,7 @@ public class ResultNode extends GameNode {
     private final Color bgColor = new Color(255,255,255,100);
     private final NameInputNode input = new NameInputNode();
     private final RankingModel ranking = RankingModel.getInstance();
-    private int keyWait = 100;
+    private int keyWait = 50;
     private boolean isEnd = false;
     
     public ResultNode(GameScene scene) {

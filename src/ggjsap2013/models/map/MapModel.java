@@ -6,6 +6,7 @@ import ggjsap2013.models.map.barricades.Barricade;
 import ggjsap2013.models.map.item.CharacterItem;
 import ggjsap2013.models.map.item.PointItem;
 import ggjsap2013.models.snake.BodyType;
+import ggjsap2013.models.snake.SnakeModel;
 import ggjsap2013.utils.RandomUtil;
 
 import java.awt.Point;
@@ -19,7 +20,6 @@ public class MapModel {
         map = new Block[height][width];
     }
     
-    
     /**
      * 指定された障害物をランダムな位置に配置します
      * 
@@ -28,22 +28,10 @@ public class MapModel {
      */
     public void createBarricadeBlock(Stage stage, Level currentLevel, Barricade.TYPES type)
     {
-    	 while (true) {
-             int putX = RandomUtil.nextInt(map[0].length);
-             int putY = RandomUtil.nextInt(map.length);
+        //アイテムが設置可能な地点をランダムに算出
+        Point putPoint = sumItemPuttableRandomPoint(stage.getSnake());
              
-             if (map[putY][putX] != null) {
-                 continue;
-             }
-             
-             Point snakeHeadPos = stage.getSnake().getHeadPosition();
-             if (snakeHeadPos.x == putX && snakeHeadPos.y == putY) {
-            	 continue;
-             }
-             
-             map[putY][putX] = new Barricade(type);
-             break;
-         }
+        map[putPoint.y][putPoint.x] = new Barricade(type);
     }
     
     
@@ -52,26 +40,14 @@ public class MapModel {
      */
     public void createPointItemBlock(Stage stage, Level currentLevel) 
     {
-        while (true) {
-            int putX = RandomUtil.nextInt(map[0].length);
-            int putY = RandomUtil.nextInt(map.length);
-            
-            if (map[putY][putX] != null) {
-                continue;
-            }
-            
-            Point snakeHeadPos = stage.getSnake().getHeadPosition();
-            if (snakeHeadPos.x == putX && snakeHeadPos.y == putY) {
-           	 continue;
-            }
- 
-            
-            List<PointItem.TYPES> typeList = currentLevel.getAvailablePointItemTypes();
-            PointItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
-            
-            map[putY][putX] = new PointItem(itemType);
-            break;
-        }
+        //アイテムが設置可能な地点をランダムに算出
+        Point putPoint = sumItemPuttableRandomPoint(stage.getSnake());
+        
+        //設置するアイテムの種類を現在のレベルで設置可能なアイテム中からランダムに算出
+        List<PointItem.TYPES> typeList = currentLevel.getAvailablePointItemTypes();
+        PointItem.TYPES itemType = typeList.get(RandomUtil.nextInt(typeList.size()));
+        
+        map[putPoint.y][putPoint.x] = new PointItem(itemType);
     }
     
     /**
@@ -79,8 +55,46 @@ public class MapModel {
      */
     public void createCharacterItemBlock(Stage stage, Level currentLevel) 
     {
+        //アイテムが設置可能な地点をランダムに算出
+    	Point putPoint = sumItemPuttableRandomPoint(stage.getSnake());
     	
-    	
+    	//設置するアイテムのタイプを現在のレベルで設置可能なアイテムタイプ中からランダムに算出
+        List<String> typeList = currentLevel.getAvailableCharacterItemTypes();
+        String typeString = typeList.get(RandomUtil.nextInt(typeList.size()));
+        
+        CharacterItem.TYPES itemType = null;
+        if (typeString.equals("H")) {
+        	itemType = CharacterItem.HEROINES[RandomUtil.nextInt(CharacterItem.HEROINES.length)];
+        	
+            /* 既にマップ上に同じキャラアイテムが存在するか */
+            boolean hasSameItem = hasSameItemOnTheMap(itemType);
+            
+            if (hasSameItem) {
+            	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
+            }
+        	
+        } else {
+        	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
+        }
+        
+        /* 隊列に既にヒロインキャラが含まれていた場合、ランダムで動物アイテムを配置しますよ */
+        if (CharacterItem.isHeroineType(itemType)) {
+            BodyType bodyType = CharacterItem.getBodyTypeFromItemType(itemType);
+            boolean b = stage.getSnake().contains(bodyType);
+            if (b) {
+            	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
+            }
+        }
+        
+        map[putPoint.y][putPoint.x] = new CharacterItem(itemType);
+    }
+    
+    /**
+     * マップ上で新たにアイテムを設置できる地点をランダムに算出して返す.
+     * 既にアイテムが置かれておらず、かつSnakeのHeadと被らない地点.
+     * @return
+     */
+    private Point sumItemPuttableRandomPoint(SnakeModel snake) {
         while (true) {
             int putX = RandomUtil.nextInt(map[0].length);
             int putY = RandomUtil.nextInt(map.length);
@@ -89,55 +103,30 @@ public class MapModel {
                 continue;
             }
             
-            Point snakeHeadPos = stage.getSnake().getHeadPosition();
+            Point snakeHeadPos = snake.getHeadPosition();
             if (snakeHeadPos.x == putX && snakeHeadPos.y == putY) {
-            	continue;
+                continue;
             }
-            
-            List<String> typeList = currentLevel.getAvailableCharacterItemTypes();
-            String typeString = typeList.get(RandomUtil.nextInt(typeList.size()));
-            
-            CharacterItem.TYPES itemType = null;
-            if (typeString.equals("H")) {
-            	itemType = CharacterItem.HEROINES[RandomUtil.nextInt(CharacterItem.HEROINES.length)];
-            	
-                /* 既にマップ上に同じキャラアイテムが存在するか */
-            	boolean hasSameItem = false;
-                for(int i=0; i<map.length; i++) {
-                    for(int j=0;j<map[0].length; j++) {
-                    	Block b = map[i][j];
-                    	if (b != null && b instanceof CharacterItem) {
-                    		CharacterItem charItem = (CharacterItem)b;
-                    		if (charItem.getType() == itemType) {
-                    			hasSameItem = true;
-                    			break;
-                    		}
-                    	}
+            return new Point(putX, putY);
+        }
+    }
+    
+    /**
+     *  既にマップ上に同じキャラアイテムが存在するかを判定
+     */
+    private boolean hasSameItemOnTheMap(CharacterItem.TYPES itemType) {
+        for(int i=0; i<map.length; i++) {
+            for(int j=0;j<map[0].length; j++) {
+                Block b = map[i][j];
+                if (b != null && b instanceof CharacterItem) {
+                    CharacterItem charItem = (CharacterItem)b;
+                    if (charItem.getType() == itemType) {
+                        return true;
                     }
                 }
-                
-                if (hasSameItem) {
-                	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
-                }
-            	
-            } else {
-            	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
             }
-            
-            
-            
-            /* 隊列に既にヒロインキャラが含まれていた場合、ランダムで動物アイテムを配置しますよ */
-            if (CharacterItem.isHeroineType(itemType)) {
-                BodyType bodyType = CharacterItem.getBodyTypeFromItemType(itemType);
-                boolean b = stage.getSnake().contains(bodyType);
-                if (b) {
-                	itemType = CharacterItem.ANIMALS[RandomUtil.nextInt(CharacterItem.ANIMALS.length)];
-                }
-            }
-            
-            map[putY][putX] = new CharacterItem(itemType);
-            break;
         }
+        return false;
     }
     
     /**

@@ -18,7 +18,8 @@ import ggjsap2013.utils.RandomUtil;
  */
 public class Barricade implements Block
 {
-	public static enum TYPES {
+	public static enum TYPES 
+	{
 		STONE("S"),
 		ROCK("R"),
 		BOMB("B"),
@@ -37,6 +38,9 @@ public class Barricade implements Block
 		}
 	}
 	
+	/**
+	 * 短縮名に応じたTYPESの取得
+	 */
 	public static TYPES getType(String shortName)
 	{
 		TYPES type = null;
@@ -51,7 +55,6 @@ public class Barricade implements Block
 		
 		return type;
 	}
-	
 	
 	
 	/**
@@ -88,15 +91,6 @@ public class Barricade implements Block
 	}
 	
 	
-	public void setCurrentDirection(Direction currentDirection)
-	{
-		this.currentDirection = currentDirection;
-	}
-	public Direction getCurrentDirection()
-	{
-		return currentDirection;
-	}
-
 	@Override
 	public void intersects(SnakeModel snake, MapModel map, Stage stage)
 		throws GameOverException
@@ -160,13 +154,21 @@ public class Barricade implements Block
 		
 	}
 	
-	private void killHeads(SnakeModel snake, int times) throws GameOverException {
+	private void killHeads(SnakeModel snake, int times) throws GameOverException 
+	{
 	    for(int i=0; i<times; i++) {
 	        snake.getBodies().killHead();
 	    }
 	}
 	
 	@Override
+    public String toString()
+    {
+    	return type.toString();
+    }
+
+
+    @Override
 	public int getMoveWait()
 	{
 		if (isMovable()) {
@@ -200,18 +202,6 @@ public class Barricade implements Block
 				break;
 		}
 		return isMovable;
-	}
-	
-	@Override
-	public void setCurrentMove(int n)
-	{
-		currentMove = n;
-	}
-	
-	@Override
-	public int getCurrentMove()
-	{
-		return currentMove;
 	}
 	
 	@Override
@@ -258,11 +248,23 @@ public class Barricade implements Block
 		}
 	}
 
-	
 	@Override
-	public String toString()
-	{
-		return type + "";
-	}
-	
+    public void setCurrentMove(int n)
+    {
+    	currentMove = n;
+    }
+    @Override
+    public int getCurrentMove()
+    {
+    	return currentMove;
+    }
+
+    public void setCurrentDirection(Direction currentDirection)
+    {
+    	this.currentDirection = currentDirection;
+    }
+    public Direction getCurrentDirection()
+    {
+    	return currentDirection;
+    }
 }

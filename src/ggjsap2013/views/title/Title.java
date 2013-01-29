@@ -22,6 +22,7 @@ public class Title extends GameNode {
     public Title() {
         this.add(new Fade(null, null).fadeIn(200));
         this.setKeyWait(20);
+        BGMPlayer.getInstance().stop();
         BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/title.wav");
         BGMPlayer.getInstance().play();
     }
