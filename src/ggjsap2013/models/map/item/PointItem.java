@@ -14,7 +14,8 @@ import ggjsap2013.models.snake.SnakeModel;
 public class PointItem implements Item
 {
 	
-	public static enum TYPES {
+	public static enum TYPES 
+	{
 		CANDY,
 		DONUT,
 		RIBON,

@@ -9,7 +9,7 @@ import java.io.InputStream;
 
 
 /**
- * 設定値読み込みの基底クラス
+ * 設定値読み込みの基底クラス。
  * 
  * @author Casamorica
  *
@@ -40,7 +40,10 @@ public abstract class ConfigurationReader
 		ByteArrayOutputStream out = null;
 		
 		try {
-			in = new BufferedInputStream(ConfigurationReader.class.getClassLoader().getResourceAsStream("ggjsap2013/resources/configs/" + fileName), Gloomy.BUFFER_SIZE);
+			in = new BufferedInputStream(
+			        ConfigurationReader.class.getClassLoader()
+			        .getResourceAsStream("ggjsap2013/resources/configs/" + fileName), 
+			        Gloomy.BUFFER_SIZE);
 			out = new ByteArrayOutputStream();
 			
 			byte[] buffer = new byte[Gloomy.BUFFER_SIZE];

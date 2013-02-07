@@ -27,6 +27,7 @@ public enum BodyType {
 	{
 		return isCharacter;
 	}
+    
     public boolean isAnimal()
     {
     	return ! isCharacter;

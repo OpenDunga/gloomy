@@ -35,7 +35,7 @@ public class MapModel
     public void createBarricadeBlock(Stage stage, Level currentLevel, Barricade.TYPES type)
     {
         //アイテムが設置可能な地点をランダムに算出
-        Point putPoint = sumItemPuttableRandomPoint(stage.getSnake());
+        Point putPoint = getItemPuttableRandomPoint(stage.getSnake());
              
         map[putPoint.y][putPoint.x] = new Barricade(type);
     }
@@ -47,7 +47,7 @@ public class MapModel
     public void createPointItemBlock(Stage stage, Level currentLevel) 
     {
         //アイテムが設置可能な地点をランダムに算出
-        Point putPoint = sumItemPuttableRandomPoint(stage.getSnake());
+        Point putPoint = getItemPuttableRandomPoint(stage.getSnake());
         
         //設置するアイテムの種類を現在のレベルで設置可能なアイテム中からランダムに算出
         List<PointItem.TYPES> typeList = currentLevel.getAvailablePointItemTypes();
@@ -62,7 +62,7 @@ public class MapModel
     public void createCharacterItemBlock(Stage stage, Level currentLevel) 
     {
         //アイテムが設置可能な地点をランダムに算出
-    	Point putPoint = sumItemPuttableRandomPoint(stage.getSnake());
+    	Point putPoint = getItemPuttableRandomPoint(stage.getSnake());
     	
     	//設置するアイテムのタイプを現在のレベルで設置可能なアイテムタイプ中からランダムに算出
         List<String> typeList = currentLevel.getAvailableCharacterItemTypes();
@@ -97,10 +97,11 @@ public class MapModel
     
     /**
      * マップ上で新たにアイテムを設置できる地点をランダムに算出して返す.
-     * 既にアイテムが置かれておらず、かつSnakeのHeadと被らない地点.
+     * 既にアイテムが置かれておらず、かつSnakeのHeadと被らない地点
      * @return
      */
-    private Point sumItemPuttableRandomPoint(SnakeModel snake) {
+    private Point getItemPuttableRandomPoint(SnakeModel snake) 
+    {
         while (true) {
             int putX = RandomUtil.nextInt(map[0].length);
             int putY = RandomUtil.nextInt(map.length);
@@ -120,7 +121,8 @@ public class MapModel
     /**
      *  既にマップ上に同じキャラアイテムが存在するかを判定
      */
-    private boolean hasSameItemOnTheMap(CharacterItem.TYPES itemType) {
+    private boolean hasSameItemOnTheMap(CharacterItem.TYPES itemType) 
+    {
         for(int i=0; i<map.length; i++) {
             for(int j=0;j<map[0].length; j++) {
                 Block b = map[i][j];
@@ -138,7 +140,9 @@ public class MapModel
     /**
      * 引数に渡されたmapのnullでない値を現在のMapに上書きする.
      */
-    public void mergeMap(Block[][] toMerge) {
+    public void mergeMap(Block[][] toMerge) 
+    {
+        //渡されてくるMapとこのMapの幅と高さは同じになっているはず
         assert(toMerge.length == map.length && 
                 toMerge[0].length == map[0].length);
         
@@ -150,7 +154,11 @@ public class MapModel
         }
     }
     
-    public void mergeMap(MapModel toMerge) {
+    /**
+     * 引数に渡されたmapのnullでない値を現在のMapに上書きする.
+     */
+    public void mergeMap(MapModel toMerge) 
+    {
         mergeMap(toMerge.map);
     }
     
@@ -165,31 +173,6 @@ public class MapModel
             }
         }
     }
-    
-    public Block getBlock(int x, int y) {
-        return map[y][x];
-    }
-    
-    public int getHeight() {
-        return map.length;
-    }
-    
-    public int getWidth() {
-        return map[0].length;
-    }
-    
-    /**
-     * 指定された位置にブロック配置するよー
-     * 
-     * @param x
-     * @param y
-     * @param b
-     */
-    public void setBlock(int x, int y, Block b)
-    {
-    	map[y][x] = b;
-    }
-    
     
     /**
      * 指定されたブロックの位置取得
@@ -241,6 +224,47 @@ public class MapModel
         	map[pos.y][pos.x] = null;
         }
     }
+
     
+    /**
+     * マップの幅（横方向のマス数）を返す
+     * @return
+     */
+    public int getWidth() 
+    {
+        return map[0].length;
+    }
+
+    /**
+     * マップの高さ（縦方向のマス数）を返す
+     * @return
+     */
+    public int getHeight() 
+    {
+        return map.length;
+    }
+
+    /**
+     * 指定された位置にブロック配置するよー
+     * 
+     * @param x
+     * @param y
+     * @param b
+     */
+    public void setBlock(int x, int y, Block b)
+    {
+    	map[y][x] = b;
+    }
+    
+    /**
+     * 指定位置のブロックを取得する
+     * @param x
+     * @param y
+     * @return
+     */
+    public Block getBlock(int x, int y) 
+    {
+        return map[y][x];
+    }
     
 }

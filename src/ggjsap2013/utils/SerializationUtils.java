@@ -11,9 +11,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/**
+ * ランキングデータ保持用のシリアライズ処理を行うためのユーティリティクラス.
+ * @author tohhy
+ */
 public class SerializationUtils {
-    private static final String SAVE_DATA_NAME = "score.ser";
-    private static final File SAVE_DATA = new File(SAVE_DATA_NAME);
+    /**
+     * セーブデータのファイル.
+     */
+    private static final File SAVE_DATA = new File("score.ser");
     
     public static boolean isSaveDataExists() {
         return SAVE_DATA.exists();

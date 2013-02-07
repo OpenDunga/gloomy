@@ -19,7 +19,8 @@ public class CharacterItem implements Item
 {
 	
 
-	public static enum TYPES {
+	public static enum TYPES 
+	{
 		Alice,
 		Mermaid,
 		Akazukin,

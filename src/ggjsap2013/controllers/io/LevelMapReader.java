@@ -34,7 +34,9 @@ public class LevelMapReader extends ConfigurationReader
     {
         
         try {
-            String[][] stageArray = JSON.decode(readConfiguration("map_type_" + level.getMapType() + ".json"), String[][].class);
+            String[][] stageArray = JSON.decode(
+                    readConfiguration("map_type_" + level.getMapType() + ".json"), 
+                    String[][].class);
             
             int width = 0;
             int height = 0;
@@ -50,10 +52,7 @@ public class LevelMapReader extends ConfigurationReader
                     try {
                         if(stageArray[y][x].equals("W")) {
                             mapModel.setBlock(x, y, new Wall());
-                        }
-//                        TYPES type = Barricade.getType(stageArray[y][x]);
-//                        Barricade barricade = new Barricade(type);
-                        
+                        }                        
                     } catch (Exception e) {
                         //例外は障害物じゃないよ
                     }

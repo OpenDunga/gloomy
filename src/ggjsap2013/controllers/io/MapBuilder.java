@@ -8,11 +8,14 @@ import ggjsap2013.models.map.barricades.Barricade;
 import java.util.Map;
 
 /**
- * レベル値とレベルからマップを作成する.
+ * レベルからマップを作成する.
  * @author tohhy
  */
 public class MapBuilder {
     
+    /**
+     * レベルを受け取ってそのレベル向けに初期化されたマップを生成して返す.
+     */
     public static MapModel create(Stage stage, Level level) {
         MapModel map = new LevelMapReader().readLevelMap(level.getIndex(), level);
         addRandomBlocks(stage, level, map);
@@ -36,9 +39,5 @@ public class MapBuilder {
         		map.createBarricadeBlock(stage, level, entry.getKey());
         	}
         }
-        
-//        for (int i=0; i<level.getMaxBarricadeCount(); i++) {
-//            map.createBarricadeBlock(level);
-//        }
     }
 }

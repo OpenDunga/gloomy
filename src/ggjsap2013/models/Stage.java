@@ -32,57 +32,70 @@ public class Stage {
     	snake.setMoveWait(defaultMoveWait);
 	}
     
-    public Level getCurrentLevel() {
+    public Level getCurrentLevel() 
+    {
         return levelInfoList.get(currentLevelNum);
     }
     
-    public void nextLevel() {
+    public void nextLevel() 
+    {
         currentLevelNum++;
         setLevel(currentLevelNum);
         (new Skill(Skill.TYPES.DAMAGE_ZERO)).invoke(snake, map, this, false);
     }
     
-    public void setLevel(int level) {
+    public void setLevel(int level) 
+    {
         MapModel levelMap = MapBuilder.create(this, levelInfoList.get(level));
         map.clear();
         map.mergeMap(levelMap);
         snake.setDefaultMoveWait(levelInfoList.get(level).getGameSpeed());
     }
     
-    public MapModel getMap() {
-        return map;
-    }
-    
-    public SnakeModel getSnake() {
-        return snake;
-    }
-    
-    public Score getScore() {
-        return score;
-    }
-
-    public boolean isGameOver() {
-        return isGameOver;
-    }
-
-    public void gameOver() {
+    /**
+     * ゲームオーバーフラグを立てる.
+     */
+    public void gameOver() 
+    {
         this.isGameOver = true;
         System.out.println("GameOver!");
     }
 
-    public int getCurrentLevelNum() {
+    public MapModel getMap() 
+    {
+        return map;
+    }
+
+    public SnakeModel getSnake() 
+    {
+        return snake;
+    }
+
+    public Score getScore() 
+    {
+        return score;
+    }
+
+    public boolean isGameOver() 
+    {
+        return isGameOver;
+    }
+
+    public void setCurrentLevelNum(int currentLevelNum) 
+    {
+        this.currentLevelNum = currentLevelNum;
+    }
+    public int getCurrentLevelNum() 
+    {
         return currentLevelNum;
     }
 
-    public void setCurrentLevelNum(int currentLevelNum) {
-        this.currentLevelNum = currentLevelNum;
-    }
-
-    public boolean isPaused() {
-        return isPaused;
-    }
-
-    public void setPaused(boolean isPaused) {
+    public void setPaused(boolean isPaused) 
+    {
         this.isPaused = isPaused;
+    }
+    public boolean isPaused() 
+    {
+        return isPaused;
     }
 }
