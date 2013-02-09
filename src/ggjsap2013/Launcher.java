@@ -16,7 +16,8 @@ public class Launcher {
     
     public static void main(String[] args) {
         loadImages();
-        new GameWindow("eternal march", new Rectangle(100, 100, 800, 600), 
+        new GameWindow("eternal march", 
+                new Rectangle(100, 100, 800, 600), 
                 new Splash());
 //                new GameScene()); 
     }

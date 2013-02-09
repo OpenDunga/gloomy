@@ -92,7 +92,7 @@ public class InfomationNode extends GameNode
             g.setFont(defultFont);
             
             if(skill != null) {
-                g.drawText(skill.getType().getDescription(),50, 240);
+                g.drawText(skill.getType().getDescription(), 50, 240);
             }
         }
     }

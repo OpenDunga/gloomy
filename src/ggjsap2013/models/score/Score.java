@@ -33,6 +33,10 @@ public class Score {
         }
         
     }
+    
+    public void applyBonus() {
+        score += charaCount*1000;
+    }
 
     public int getScore() {
         return score;

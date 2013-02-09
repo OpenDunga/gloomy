@@ -25,6 +25,7 @@ public class ResultNode extends GameNode {
     
     public ResultNode(GameScene scene) {
         this.scene = scene;
+        scene.getStage().getScore().applyBonus();
         BGMPlayer.getInstance().stop();
         BGMPlayer.getInstance().setMedia("ggjsap2013/resources/sounds/result.wav");
         BGMPlayer.getInstance().play();
@@ -38,24 +39,40 @@ public class ResultNode extends GameNode {
         g.fillRect(0, 0, 800, 600);
         g.drawGameImage(Images.get("result_logo"), 0, 0);
         drawRanking(g);
+        drawScore(g);
         g.setColor(Color.black);
 //        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 40));
 //        g.drawText("Game Over", 290, 20);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
-        g.drawText("Your score: " + scene.getStage().getScore().getScore(), 200, 450);
         g.drawText("Enter your name: ", 200, 500);
         g.drawText("Press SPACE to restart.", 290, 550);
         if(keyWait > 0) keyWait--;
+    }
+    
+    private void drawScore(NodeGraphics g) {
+        int x = 200;
+        int y = 340;
+        g.setColor(Color.darkGray);
+        g.fillRect(x, y, 400, 130);
+        g.setColor(Color.white);
+        g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 20));
+        int charas = scene.getStage().getScore().getCharaCount();
+        g.drawText("Chara Count: " + charas, x + 20, 350);
+        g.drawText(
+                "Bonus Point: 1000 × " + charas + 
+                " = " + (charas * 1000), 
+                x + 20, 390);
+        g.drawText("Your score: " + scene.getStage().getScore().getScore(), x + 20, 430);
     }
     
     private void drawRanking(NodeGraphics g) {
         int x = 200;
         int y = 80;
         g.setColor(Color.darkGray);
-        g.fillRect(x, y, 400, 350);
+        g.fillRect(x, y, 400, 230);
         g.setColor(Color.white);
         g.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 24));
-        int rows = 8;
+        int rows = 5;
         if(ranking.getRows() < rows) rows = ranking.getRows();
         for(int i=0; i < rows; i++) {
             int drawY = y+20 + (i * 40);
