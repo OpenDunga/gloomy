@@ -51,7 +51,7 @@ public class Skill
 		SLOW("スピード低下"),
 		BREAK("敵キャラクター破壊"),
 		POINT_DOUBLE("ポイント２倍"),
-		FRIEND_POINT("メンバー数×1000ポイント獲得");
+		FRIEND_POINT("長さ×1000Pt獲得");
 		
 		private String description;
 		
